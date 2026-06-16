@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Fundraising OS with Claude — 11 Claude Skills to Run Your Raise Like a System</title>
+<meta name="description" content="11 Claude skills that run the operational raise — build the target list, map warm intros, write outreach, manage the pipeline, prep the data room, and keep every investor warm. Built on the HAAO model from Atomic Scaling. Free, MIT license." />
+<meta name="keywords" content="fundraising OS, Claude skills, raise seed round, investor list, warm intro, data room, pipeline, Ludovic Bodin, Atomic Scaling, passive fundraising, active fundraising" />
+<meta property="og:title" content="The Fundraising OS with Claude — Run your raise like a system" />
+<meta property="og:description" content="11 Claude skills for the operational raise: targets, intros, deck, model, outreach, pipeline, data room, warmth, close. Free, MIT." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://fundraising.atomicscaling.com/" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#070b16;
+    --bg-elev:#0c1322;
+    --bg-card:#0e1626;
+    --ink:#eaf0fb;
+    --muted:#8a97b4;
+    --faint:#5a6a8a;
+    --cobalt:#2f6bff;
+    --cyan:#39d8ff;
+    --indigo:#6a5cff;
+    --ember:#ff7a45;
+    --gold:#d8b15a;
+    --line:rgba(255,255,255,.08);
+    --line-2:rgba(255,255,255,.13);
+    --maxw:1140px;
+    --r:14px;
+    --display:"Space Grotesk",system-ui,sans-serif;
+    --body:"Inter",system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);
+    line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  /* ambient blue field */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(900px 500px at 78% -8%, rgba(47,107,255,.18), transparent 60%),
+      radial-gradient(700px 480px at 12% 8%, rgba(57,216,255,.10), transparent 60%),
+      radial-gradient(900px 700px at 50% 120%, rgba(106,92,255,.10), transparent 60%);
+  }
+  main,header,footer{position:relative;z-index:1}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.02em;line-height:1.08;margin:0}
+  .mono{font-family:var(--mono)}
+  .accent{color:var(--cyan)}
+
+  /* ---------- nav ---------- */
+  .nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
+    background:rgba(7,11,22,.72);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;gap:28px;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:1.02rem}
+  .brand .dot{width:11px;height:11px;border-radius:3px;background:linear-gradient(135deg,var(--cyan),var(--cobalt));box-shadow:0 0 16px rgba(57,216,255,.6)}
+  .nav-links{display:flex;gap:26px;margin-left:auto;align-items:center}
+  .nav-links a{color:var(--muted);font-size:.92rem;font-weight:500;transition:color .15s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-ghx{display:inline-flex;align-items:center;gap:7px;color:var(--ink)!important;
+    border:1px solid var(--line-2);padding:7px 14px;border-radius:9px;font-family:var(--mono);font-size:.82rem}
+  .nav-ghx:hover{border-color:var(--cobalt)}
+  .burger{display:none;margin-left:auto;background:none;border:0;color:var(--ink);cursor:pointer}
+
+  /* ---------- buttons ---------- */
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--display);font-weight:600;
+    font-size:.96rem;padding:13px 22px;border-radius:11px;cursor:pointer;border:1px solid transparent;transition:transform .12s,box-shadow .15s,border-color .15s}
+  .btn-primary{background:linear-gradient(135deg,var(--cobalt),var(--indigo));color:#fff;box-shadow:0 8px 28px rgba(47,107,255,.34)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(47,107,255,.46)}
+  .btn-ghost{background:transparent;border-color:var(--line-2);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--cyan);color:#fff}
+
+  /* ---------- hero ---------- */
+  .hero{padding:74px 0 36px}
+  .badge{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.78rem;
+    color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 14px;margin-bottom:26px}
+  .badge b{color:var(--cyan);font-weight:500}
+  .hero h1{font-size:clamp(2.5rem,6vw,4.5rem)}
+  .hero h1 em{font-style:normal;display:block;color:var(--muted);font-weight:400}
+  .hero h1 em b{font-weight:600;color:var(--ink);font-style:normal;
+    background:linear-gradient(120deg,var(--cyan),var(--cobalt));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .lede{max-width:640px;color:var(--muted);font-size:1.16rem;margin:24px 0 0}
+  .lede b{color:var(--ink);font-weight:500}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin:30px 0 28px}
+  .cmd{display:flex;align-items:center;gap:14px;max-width:560px;background:#060a13;border:1px solid var(--line-2);
+    border-radius:12px;padding:14px 16px}
+  .cmd .pmt{color:var(--cyan)}
+  .cmd code{font-family:var(--mono);font-size:.9rem;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cmd .copy{margin-left:auto;background:var(--bg-elev);border:1px solid var(--line-2);color:var(--muted);
+    font-family:var(--mono);font-size:.74rem;padding:6px 11px;border-radius:8px;cursor:pointer;transition:.15s}
+  .cmd .copy:hover{color:#fff;border-color:var(--cobalt)}
+  .byline{margin-top:24px;color:var(--faint);font-size:.92rem}
+  .byline b{color:var(--muted);font-weight:600}
+
+  /* ---------- pipeline rail (signature) ---------- */
+  .rail{margin:48px 0 8px;border:1px solid var(--line);border-radius:var(--r);background:linear-gradient(180deg,rgba(255,255,255,.02),transparent);padding:26px 22px}
+  .rail-h{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:18px}
+  .rail-track{display:flex;align-items:center;gap:0;overflow-x:auto;padding-bottom:6px}
+  .stage{display:flex;align-items:center;flex:0 0 auto}
+  .node{display:flex;flex-direction:column;gap:7px;align-items:center;min-width:104px;text-align:center}
+  .node .pip{width:13px;height:13px;border-radius:50%;border:2px solid var(--cobalt);background:#060a13}
+  .stage.live .pip{background:var(--cyan);border-color:var(--cyan);box-shadow:0 0 14px rgba(57,216,255,.7)}
+  .stage.done .pip{background:var(--cobalt)}
+  .node span{font-family:var(--mono);font-size:.76rem;color:var(--muted)}
+  .stage.live .node span{color:var(--ink)}
+  .link{width:40px;height:2px;background:linear-gradient(90deg,var(--cobalt),rgba(47,107,255,.25))}
+
+  /* ---------- stats ---------- */
+  .stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:40px}
+  .stats-in{display:flex;flex-wrap:wrap}
+  .stat{flex:1 1 0;min-width:140px;padding:26px 18px;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:0}
+  .stat .n{font-family:var(--display);font-size:2rem;font-weight:600;letter-spacing:-.02em}
+  .stat .n.sm{font-size:1.5rem}
+  .stat .l{color:var(--muted);font-size:.84rem;margin-top:3px}
+
+  /* ---------- generic section ---------- */
+  section{padding:84px 0;scroll-margin-top:80px}
+  #top{scroll-margin-top:0}
+  .eyebrow{font-family:var(--mono);font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+  .sec-h{font-size:clamp(1.8rem,3.6vw,2.7rem);max-width:760px}
+  .sec-sub{color:var(--muted);font-size:1.08rem;max-width:680px;margin-top:18px}
+
+  /* thesis band */
+  .band{background:linear-gradient(180deg,rgba(47,107,255,.07),transparent);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .band .big{font-family:var(--display);font-weight:600;font-size:clamp(1.7rem,3.6vw,2.6rem);letter-spacing:-.02em;max-width:880px}
+  .band p{color:var(--muted);max-width:680px;margin-top:18px;font-size:1.05rem}
+
+  /* problem grid */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:46px}
+  .pcard{background:var(--bg-card);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+  .pcard .tag{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;color:var(--ember);display:flex;align-items:center;gap:8px;margin-bottom:13px}
+  .pcard h3{font-size:1.12rem;margin-bottom:9px}
+  .pcard p{color:var(--muted);font-size:.95rem;margin:0}
+
+  /* loop / phases */
+  .phases{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:46px}
+  .phase{background:var(--bg-card);border:1px solid var(--line);border-radius:var(--r);padding:22px;position:relative;overflow:hidden}
+  .phase::before{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,var(--cobalt),var(--cyan))}
+  .phase .pn{font-family:var(--mono);font-size:.78rem;color:var(--faint)}
+  .phase h3{font-size:1.16rem;margin:8px 0 10px}
+  .phase p{color:var(--muted);font-size:.92rem;margin:0 0 14px}
+  .phase ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:7px}
+  .phase li{font-family:var(--mono);font-size:.76rem;color:var(--muted);border:1px solid var(--line-2);border-radius:7px;padding:4px 9px}
+
+  /* skills */
+  .skill-group{margin-top:54px}
+  .sg-head{display:flex;align-items:baseline;gap:14px;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+  .sg-head h3{font-size:1.3rem}
+  .sg-head .meta{font-family:var(--mono);font-size:.78rem;color:var(--faint);margin-left:auto}
+  .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .scard{background:var(--bg-card);border:1px solid var(--line);border-radius:var(--r);padding:22px;transition:border-color .15s,transform .15s}
+  .scard:hover{border-color:var(--cobalt);transform:translateY(-2px)}
+  .scard .cmdname{font-family:var(--mono);font-size:.95rem;color:var(--cyan);margin-bottom:4px}
+  .scard .role{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:12px}
+  .scard h4{font-family:var(--display);font-weight:600;font-size:1.05rem;margin:0 0 8px}
+  .scard p{color:var(--muted);font-size:.92rem;margin:0}
+
+  /* rhythm */
+  .rhythm{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:46px}
+  table{width:100%;border-collapse:collapse;font-size:.92rem}
+  th,td{text-align:left;padding:13px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:500}
+  td.when{font-family:var(--mono);color:var(--cyan);white-space:nowrap;font-size:.84rem}
+  td.what{color:var(--muted)}
+  .term{background:#060a13;border:1px solid var(--line-2);border-radius:var(--r);padding:20px;font-family:var(--mono);font-size:.82rem;line-height:1.7;overflow-x:auto}
+  .term .u{color:var(--cyan)}
+  .term .a{color:var(--ink)}
+  .term .dim{color:var(--faint)}
+  .term .hot{color:var(--ember)}
+
+  /* install */
+  .steps{counter-reset:s;margin-top:40px;display:grid;gap:14px}
+  .step{background:var(--bg-card);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start}
+  .step .num{counter-increment:s;font-family:var(--display);font-weight:700;font-size:1.1rem;color:#fff;
+    width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--cobalt),var(--indigo))}
+  .step .num::before{content:counter(s)}
+  .step h4{font-family:var(--display);font-weight:600;font-size:1.05rem;margin:4px 0 10px}
+  .step pre{margin:0;background:#060a13;border:1px solid var(--line);border-radius:10px;padding:13px 15px;overflow-x:auto;
+    font-family:var(--mono);font-size:.82rem;color:var(--muted);white-space:pre-wrap}
+  .step pre b{color:var(--cyan);font-weight:500}
+  .pathb{margin-top:26px;padding:20px 22px;border:1px dashed var(--line-2);border-radius:var(--r);color:var(--muted);font-size:.95rem}
+  .pathb b{color:var(--ink)}
+
+  /* faq */
+  .faq{margin-top:40px;border-top:1px solid var(--line)}
+  .qa{border-bottom:1px solid var(--line)}
+  .qa summary{cursor:pointer;list-style:none;padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;
+    font-family:var(--display);font-weight:600;font-size:1.08rem}
+  .qa summary::-webkit-details-marker{display:none}
+  .qa summary .plus{color:var(--cyan);font-family:var(--mono);transition:transform .2s}
+  .qa[open] summary .plus{transform:rotate(45deg)}
+  .qa p{color:var(--muted);margin:0 0 22px;max-width:760px}
+
+  /* creator */
+  .creator{display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center;margin-top:40px;
+    background:var(--bg-card);border:1px solid var(--line);border-radius:var(--r);padding:32px}
+  .creator .av{width:96px;height:96px;border-radius:16px;background:linear-gradient(135deg,var(--cobalt),var(--indigo));
+    display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:1.8rem;color:#fff}
+  .creator h3{font-size:1.4rem;margin-bottom:8px}
+  .creator p{color:var(--muted);margin:0 0 8px}
+  .creator .cred{font-family:var(--mono);font-size:.8rem;color:var(--faint)}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:40px 0;color:var(--faint);font-size:.88rem}
+  .foot-in{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+  footer a{color:var(--muted)}footer a:hover{color:var(--ink)}
+
+  /* responsive */
+  @media(max-width:900px){
+    .nav-links{display:none}.burger{display:block}
+    .nav-links.open{display:flex;position:absolute;top:64px;left:0;right:0;flex-direction:column;
+      background:var(--bg-elev);border-bottom:1px solid var(--line);padding:18px 24px;gap:18px}
+    .grid-3,.phases,.skills,.rhythm{grid-template-columns:1fr}
+    .creator{grid-template-columns:1fr;text-align:center;justify-items:center}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+  :focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><span class="dot"></span> Fundraising OS</a>
+    <button class="burger" aria-label="Menu" onclick="document.getElementById('nl').classList.toggle('open')">☰</button>
+    <nav class="nav-links" id="nl">
+      <a href="#problem">Why</a>
+      <a href="#loop">The Loop</a>
+      <a href="#skills">Skills</a>
+      <a href="#rhythm">Rhythm</a>
+      <a href="#install">Install</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-ghx" href="https://github.com/kalibrio/fundraising-os">★ GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero" style="padding-bottom:0">
+  <div class="wrap">
+    <span class="badge">Open Source · MIT License · <b>11 Claude Skills</b></span>
+    <h1>The Fundraising OS<em>Run your raise like <b>a system.</b></em></h1>
+    <p class="lede">Most rounds aren't lost on the pitch. They're lost on the process — the list you never built, the intro you didn't map, the follow-up that landed three days late. <b>Eleven Claude skills run the operational raise</b> so you can spend your attention on the conversations that matter.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://github.com/kalibrio/fundraising-os">★ Star on GitHub</a>
+      <a class="btn btn-ghost" href="#skills">See the 11 skills →</a>
+    </div>
+    <div class="cmd">
+      <span class="pmt mono">$</span>
+      <code id="cmd1">/plugin marketplace add kalibrio/fundraising-os</code>
+      <button class="copy" data-copy="cmd1">Copy</button>
+    </div>
+    <p class="byline">By <b>Ludovic Bodin</b> · Author of <b>Atomic Scaling</b> · Inspired by Guillermo Flor's <b>Fundraising Machine</b></p>
+
+    <!-- signature: pipeline rail -->
+    <div class="rail">
+      <div class="rail-h">Every conversation, one rail — the OS keeps the whole pipeline in sync</div>
+      <div class="rail-track">
+        <div class="stage done"><div class="node"><span class="pip"></span><span>Sourced</span></div></div>
+        <div class="link"></div>
+        <div class="stage done"><div class="node"><span class="pip"></span><span>Contacted</span></div></div>
+        <div class="link"></div>
+        <div class="stage live"><div class="node"><span class="pip"></span><span>Meeting</span></div></div>
+        <div class="link"></div>
+        <div class="stage"><div class="node"><span class="pip"></span><span>Diligence</span></div></div>
+        <div class="link"></div>
+        <div class="stage"><div class="node"><span class="pip"></span><span>Term sheet</span></div></div>
+        <div class="link"></div>
+        <div class="stage"><div class="node"><span class="pip"></span><span>Closed</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="wrap stats-in">
+    <div class="stat"><div class="n">11</div><div class="l">Claude Skills</div></div>
+    <div class="stat"><div class="n">4</div><div class="l">Raise Phases</div></div>
+    <div class="stat"><div class="n">1</div><div class="l">Context File</div></div>
+    <div class="stat"><div class="n n sm">2 modes</div><div class="l">Passive · Active</div></div>
+    <div class="stat"><div class="n n sm">MIT</div><div class="l">License</div></div>
+    <div class="stat"><div class="n n sm">30s</div><div class="l">Install</div></div>
+  </div>
+</div>
+
+<!-- THESIS BAND -->
+<section class="band">
+  <div class="wrap">
+    <div class="eyebrow">The thesis</div>
+    <p class="big">Inbound won't fill a round. You have to build the list, find the paths in, and keep every thread moving in parallel — without dropping one.</p>
+    <p>And once you're in conversations, the operational signals matter as much as the pitch: how fast you follow up, how specific your outreach is, how ready your data room is the moment someone asks. The OS handles both — and configures its own intensity to whether you're running a quiet, passive raise or a sharp, time-boxed process.</p>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="wrap">
+    <div class="eyebrow">The problem</div>
+    <h2 class="sec-h">Most founders raise by improvising. That's the wrong lever.</h2>
+    <p class="sec-sub">A raise is a parallel operation with a dozen live threads, each decaying if you miss the next action. Here's where it leaks.</p>
+    <div class="grid-3">
+      <div class="pcard"><div class="tag">✗ NO LIST</div><h3>Waiting on inbound</h3><p>You take the meetings that come instead of building the 40 funds whose thesis actually fits. The round never gets a real top of funnel.</p></div>
+      <div class="pcard"><div class="tag">✗ NO PATHS</div><h3>Cold into the void</h3><p>You email partners with no warm path mapped. A trusted intro beats ten perfect cold emails — but only if you find it first.</p></div>
+      <div class="pcard"><div class="tag">✗ GENERIC</div><h3>Mail-merge outreach</h3><p>The same email with the name swapped. A partner smells it in one line. Specificity is the difference between ignored and answered.</p></div>
+      <div class="pcard"><div class="tag">✗ DROPPED</div><h3>Threads fall through</h3><p>Twelve conversations, twelve next-actions, no system. The follow-up that comes three days late tells the investor how you'll run the company.</p></div>
+      <div class="pcard"><div class="tag">✗ UNREADY</div><h3>Scrambled data room</h3><p>A partner asks for the room and you spend two days assembling it. Readiness on the spot is itself a signal — absence of it is too.</p></div>
+      <div class="pcard"><div class="tag">✗ GHOSTED</div><h3>Silence after a "no"</h3><p>You go quiet on the funds that passed. They're often the leads of your next round — if they watch you execute for six months.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOOP / PHASES -->
+<section id="loop" class="band">
+  <div class="wrap">
+    <div class="eyebrow">The Raise Loop</div>
+    <h2 class="sec-h">Four phases. Eleven skills. One context file.</h2>
+    <p class="sec-sub">You fill the context once; every skill inherits its numbers, names, and narrative. The phases run roughly in order, with warmth running the whole time and the close at the end.</p>
+    <div class="phases">
+      <div class="phase"><div class="pn">Phase 01</div><h3>Foundation</h3><p>Set the source of truth, then decide how you're raising at all.</p><ul><li>raise-context</li><li>fundraising-plan</li></ul></div>
+      <div class="phase"><div class="pn">Phase 02</div><h3>Build</h3><p>Targets, paths in, the story, and the numbers behind it.</p><ul><li>investor-list</li><li>warm-intro-map</li><li>deck</li><li>financial-projection</li></ul></div>
+      <div class="phase"><div class="pn">Phase 03</div><h3>Run</h3><p>Reach out, manage the pipeline, pre-answer diligence.</p><ul><li>outreach</li><li>pipeline</li><li>data-room</li></ul></div>
+      <div class="phase"><div class="pn">Phase 04</div><h3>Sustain &amp; Close</h3><p>Keep everyone warm; drive a clean window to the wire.</p><ul><li>investor-comms</li><li>closing</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow">The 11 skills</div>
+    <h2 class="sec-h">Eleven specialists. One source of truth. All free.</h2>
+    <p class="sec-sub">This is a Human-Assisted Autonomous Organization (HAAO) for your raise: the skills do the operational work and surface the calls only you can make.</p>
+
+    <!-- Foundation -->
+    <div class="skill-group">
+      <div class="sg-head"><h3>Foundation</h3><span class="meta">Phase 01 · context &amp; strategy</span></div>
+      <div class="skills">
+        <div class="scard"><div class="cmdname">raise-context</div><div class="role">Context Engine</div><h4>The single source of truth</h4><p>Interviews you, pressure-tests every claim, and flags what's missing or weak before it ever reaches an investor. Everything downstream inherits this file.</p></div>
+        <div class="scard"><div class="cmdname">fundraising-plan</div><div class="role">Raise Strategist</div><h4>Passive vs. active vs. hybrid</h4><p>Decides the mode before you target anyone — a quiet "always slightly raising" or a sharp, time-boxed process — and sets the intensity for every skill after it.</p></div>
+      </div>
+    </div>
+
+    <!-- Build -->
+    <div class="skill-group">
+      <div class="sg-head"><h3>Build</h3><span class="meta">Phase 02 · list, paths, story, model</span></div>
+      <div class="skills">
+        <div class="scard"><div class="cmdname">investor-list</div><div class="role">Target Builder</div><h4>The 40 funds worth your time</h4><p>Researched and scored by fit, output as a paste-ready sheet with a fit tier and a warm-path flag per partner. Depth over volume — a clean 35 beats a bloated 80.</p></div>
+        <div class="scard"><div class="cmdname">warm-intro-map</div><div class="role">Path Finder</div><h4>The best path to each partner</h4><p>Maps the strongest warm intro through your network and drafts the forwardable note your connector can send in fifteen seconds.</p></div>
+        <div class="scard"><div class="cmdname">deck</div><div class="role">Narrative Architect</div><h4>Story first, slides second</h4><p>Headlines that are claims, not labels. A traction page partners screenshot. Hands the structure to the deck builder for the rendered file.</p></div>
+        <div class="scard"><div class="cmdname">financial-projection</div><div class="role">Model Builder</div><h4>Defensible, not fantastical</h4><p>A driver-based model plus the one-page assumptions memo you actually defend. Runway and ask reconcile exactly with the deck.</p></div>
+      </div>
+    </div>
+
+    <!-- Run -->
+    <div class="skill-group">
+      <div class="sg-head"><h3>Run</h3><span class="meta">Phase 03 · reach, manage, anticipate</span></div>
+      <div class="skills">
+        <div class="scard"><div class="cmdname">outreach</div><div class="role">Message Writer</div><h4>Written for one partner</h4><p>A researched hook, one proof point, a small specific ask — never the same body with the name swapped. Warm and cold variants per target.</p></div>
+        <div class="scard"><div class="cmdname">pipeline</div><div class="role">Process Manager</div><h4>Nothing drops</h4><p>A weekly Monday brief of what needs action, same-day follow-up generators, and stage tracking across every thread in parallel. Speed is the message.</p></div>
+        <div class="scard"><div class="cmdname">data-room</div><div class="role">Diligence Anticipator</div><h4>Answers before they're asked</h4><p>The full index, a claim-to-proof map, a ranked gap list, and staged access. Ready the moment a partner asks — which is itself the signal.</p></div>
+      </div>
+    </div>
+
+    <!-- Sustain & Close -->
+    <div class="skill-group">
+      <div class="sg-head"><h3>Sustain &amp; Close</h3><span class="meta">Phase 04 · warmth &amp; the wire</span></div>
+      <div class="skills">
+        <div class="scard"><div class="cmdname">investor-comms</div><div class="role">Warmth Engine</div><h4>Two tracks — yes and no</h4><p>Monthly updates that show up like clockwork, with an honest challenges line. Out-execute the reason they passed, in writing, and the next round writes itself.</p></div>
+        <div class="scard"><div class="cmdname">closing</div><div class="role">Close Driver</div><h4>The terms that actually matter</h4><p>A plain-language term-sheet readout — pool placement, preference, board — negotiation prep, and a real close window. Clarifies so you decide; not legal advice.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RHYTHM -->
+<section id="rhythm" class="band">
+  <div class="wrap">
+    <div class="eyebrow">Operating rhythm</div>
+    <h2 class="sec-h">Plan → Build → Reach → Manage → Sustain → Close</h2>
+    <p class="sec-sub">The skills run at the cadence a live raise runs. Each feeds the next; the pipeline keeps every thread in sync.</p>
+    <div class="rhythm">
+      <table>
+        <thead><tr><th>When</th><th>What runs</th></tr></thead>
+        <tbody>
+          <tr><td class="when">Per meeting</td><td class="what">Same-day follow-up that answers their specific questions</td></tr>
+          <tr><td class="when">Daily</td><td class="what">Overdue-thread scan — anything live untouched &gt;5 days</td></tr>
+          <tr><td class="when">Weekly</td><td class="what">Monday pipeline brief; the next wave of outreach</td></tr>
+          <tr><td class="when">Monthly</td><td class="what">Investor update to both tracks — committed and passed</td></tr>
+          <tr><td class="when">Per stage</td><td class="what">Decision gate — keep going, pause, or flip passive→active</td></tr>
+          <tr><td class="when">At close</td><td class="what">Term-sheet readout, negotiation prep, the close window</td></tr>
+        </tbody>
+      </table>
+      <div class="term">
+<span class="u">you ▸</span> <span class="a">weekly fundraising brief</span>
+
+<span class="dim">Fundraising OS ▸</span>
+FUNDRAISE — WEEK OF JUN 16
+<span class="hot">🔥 Needs action now</span>
+  · Northwind (Lena) — follow-up overdue 6d — draft ready
+  · Atlas Seed — answer their retention question — pull from context
+⏳ Awaiting them
+  · Meridian — partner meeting Thu — prep pack ready
+🌱 Advance this week
+  · Foundry — warm intro via your advisor — send today
+📊 Funnel: 18 contacted · 6 meetings · 2 in DD
+   1 term sheet · €1.1M of €2.5M soft-circled
+
+<span class="accent">This week's one priority:</span> convert Northwind
+before the momentum leaks.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALL -->
+<section id="install">
+  <div class="wrap">
+    <div class="eyebrow">Install</div>
+    <h2 class="sec-h">Running in 5 minutes. No terminal needed.</h2>
+    <p class="sec-sub">Two ways in: as a Claude Code plugin, or dropped straight into a Claude project on the web.</p>
+    <div class="steps">
+      <div class="step"><div class="num"></div><div><h4>Download Claude Code Desktop</h4><pre>Go to <b>https://claude.com/code</b> · download for your OS
+Open it and sign in with your Claude account.</pre></div></div>
+      <div class="step"><div class="num"></div><div><h4>Open any folder as a project</h4><pre>File → Open Folder… · pick any folder, even an empty one.
+The skills write their sheets and drafts into it.</pre></div></div>
+      <div class="step"><div class="num"></div><div><h4>Install the plugin (two commands)</h4><pre><b>/plugin marketplace add kalibrio/fundraising-os</b>
+<b>/plugin install fundraising-os@kalibrio/fundraising-os</b></pre></div></div>
+      <div class="step"><div class="num"></div><div><h4>Confirm 11 skills are loaded</h4><pre>Type "/" then "raise" — you should see:
+  /raise-context   /fundraising-plan ...</pre></div></div>
+      <div class="step"><div class="num"></div><div><h4>Run your first skill</h4><pre><b>/raise-context</b>
+# It interviews you, builds your source-of-truth file,
+# and tells you exactly what to fix before outreach.</pre></div></div>
+    </div>
+    <div class="pathb"><b>Path B — Claude.ai web, nothing to install.</b> Create a Claude project, add the eleven <span class="mono">SKILL.md</span> files and the <span class="mono">raise-context.md</span> template to its knowledge, and drive it phase by phase in chat. Same machine, no terminal.</div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="band">
+  <div class="wrap">
+    <div class="eyebrow">FAQ</div>
+    <h2 class="sec-h">Common questions</h2>
+    <div class="faq">
+      <details class="qa"><summary>What's the difference between passive and active fundraising? <span class="plus">+</span></summary><p>Passive is "always slightly raising": a rolling instrument kept quietly open, warm inbound only, founder stays building — lower intensity, no public in-market signal, but weaker competitive tension. Active is a structured, time-boxed process: full list, parallel conversations, an engineered close window — better terms and speed, but it consumes the founder and a stalled process is visible. The <span class="mono">fundraising-plan</span> skill makes that call deliberately, and then configures every other skill to match the mode you chose.</p></details>
+      <details class="qa"><summary>Do I need to be technical to use this? <span class="plus">+</span></summary><p>No. The skills are markdown — run them as slash commands in Claude Code, or drop them into a Claude project and use them in web chat. If you can paste a command and answer questions, you can run the whole raise.</p></details>
+      <details class="qa"><summary>Who is this for? <span class="plus">+</span></summary><p>Founders running an early raise (pre-seed through Series A) who can't rely on inbound and want the operational process handled with discipline — so their attention goes to the conversations, not the spreadsheet.</p></details>
+      <details class="qa"><summary>How does this relate to Atomic Scaling OS? <span class="plus">+</span></summary><p>It's the companion OS. <a href="https://os.atomicscaling.com">Atomic Scaling OS</a> runs your growth operating system on the 3P3R Method®; the Fundraising OS runs the raise. Same HAAO model — the skills do the work, you make the calls — same MIT license.</p></details>
+      <details class="qa"><summary>Is the closing skill giving me legal advice? <span class="plus">+</span></summary><p>No. It explains term-sheet clauses in plain language and flags what's standard vs. off-market so you can decide and brief your lawyer efficiently. It never tells you what to sign — anything non-standard goes to a real startup lawyer.</p></details>
+      <details class="qa"><summary>Can I fork and adapt it? <span class="plus">+</span></summary><p>Yes — MIT license, fork freely. Adapt the skills to your stage, sector, and geography, change the scoring, add your own. Pull requests welcome.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CREATOR -->
+<section id="creator">
+  <div class="wrap">
+    <div class="eyebrow">Creator</div>
+    <h2 class="sec-h">Built from running real raises, not a whiteboard.</h2>
+    <div class="creator">
+      <div class="av">LB</div>
+      <div>
+        <h3>Ludovic Bodin</h3>
+        <p>Serial entrepreneur and author of <b>Atomic Scaling</b>, building a portfolio of ventures across AI, wealth, and creative work. The Fundraising OS encodes the operational discipline of a raise — the list, the paths, the pipeline, the warmth — into skills any founder can run.</p>
+        <div class="cred">3× Entrepreneur · 2× Unicorn Investor · 1× IPO · Founder, BOBIC Generational Wealth · Author, Atomic Scaling</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>The Fundraising OS · Open source · MIT License · © 2026 Ludovic Bodin</span>
+    <span>
+      <a href="https://github.com/kalibrio/fundraising-os">GitHub</a> ·
+      <a href="https://os.atomicscaling.com">Atomic Scaling OS</a> ·
+      <a href="https://atomicscaling.com">atomicscaling.com</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+  // copy buttons
+  document.querySelectorAll('.copy').forEach(b=>{
+    b.addEventListener('click',()=>{
+      const t=document.getElementById(b.dataset.copy).textContent;
+      navigator.clipboard.writeText(t).then(()=>{const o=b.textContent;b.textContent='Copied ✓';setTimeout(()=>b.textContent=o,1400);});
+    });
+  });
+  // close mobile nav on link tap
+  document.querySelectorAll('#nl a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nl').classList.remove('open')));
+</script>
+</body>
+</html>

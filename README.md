@@ -4,13 +4,13 @@
 
 Inbound won't fill a round. You have to build the target list yourself, research the right partners, find the warm paths in, write outreach that reads like it was written for one specific investor, track every conversation, and keep it all moving in parallel without dropping a thread. And once you're in conversations, the operational signals matter as much as the pitch — how fast you follow up, how specific your outreach is, how ready your data room is the moment someone asks, how consistently you keep investors warm even when there's nothing to report.
 
-I'm Ludovic Bodin. I wrote *Atomic Scaling* and built [Atomic Scaling OS](https://os.atomicscaling.com) to run a company's growth on the 3P3R Method®. **The Fundraising OS** is its companion: 11 Claude skills that run the operational raise so you can spend your attention on the conversations that matter.
+I'm Ludovic Bodin. I wrote *Atomic Scaling* and built [Atomic Scaling OS](https://os.atomicscaling.com) to run a company's growth on the 3P3R Method®. **The Fundraising OS** is its companion: 12 Claude skills that orchestrate the operational raise so you can spend your attention on the conversations that matter.
 
 The single biggest strategic choice in a raise isn't which funds — it's **how** you raise: a quiet, opportunistic *passive* process, or a sharp, time-boxed *active* one. The OS makes that call deliberately, then configures its own intensity to match.
 
 This is a **Human-Assisted Autonomous Organization (HAAO)**. The skills do the work. You make the calls.
 
-Eleven specialists, all slash commands, all Markdown, all free, MIT license. Fork it. Adapt it. Raise with it.
+Twelve specialists, all slash commands, all Markdown, all free, MIT license. Fork it. Adapt it. Raise with it.
 
 ## Who this is for
 
@@ -78,13 +78,13 @@ Everything lives inside `.claude/`. Nothing touches your PATH or runs in the bac
 
 ## The Raise Loop
 
-The Fundraising OS is a process, not a collection of tools. Four phases, eleven skills, one context file. The phases run roughly in order; warmth runs the whole time, and the close comes at the end.
+The Fundraising OS is a process, not a collection of tools. Four phases, twelve skills, one context file. The phases run roughly in order; warmth runs the whole time, and the close comes at the end.
 
 **Foundation → Build → Run → Sustain & Close**
 
-`/raise-context` defines the source of truth that every skill reads. `/fundraising-plan` decides whether you run a passive or active process and sets the intensity for everything after it. `/investor-list` and `/warm-intro-map` build the targets and the paths in; `/deck` and `/financial-projection` sharpen the story and the numbers. `/outreach`, `/pipeline`, and `/data-room` run the live process. `/investor-comms` keeps every investor warm — including the ones who passed — and `/closing` drives a clean window to the wire. Nothing falls through the cracks because every skill knows what came before it.
+`/raise-context` defines the source of truth that every skill reads. `/fundraising-plan` decides whether you run a passive or active process and sets the intensity for everything after it. `/investor-list` and `/warm-intro-map` build the targets and the paths in; `/deck` and `/financial-projection` sharpen the story and the numbers. `/outreach`, `/pipeline`, and `/data-room` run the live process. `/investor-comms` keeps every investor warm — including the ones who passed — `/pace` is the chief of staff that sets the tempo and keeps every skill in sync, and `/closing` drives a clean window to the wire. Nothing falls through the cracks because every skill knows what came before it.
 
-## The 11 skills
+## The 12 skills
 
 ### Foundation
 - **`/raise-context`** — Context Engine. The single source of truth. Interviews you, pressure-tests every claim, flags what's missing before it reaches an investor.
@@ -103,6 +103,7 @@ The Fundraising OS is a process, not a collection of tools. Four phases, eleven 
 
 ### Sustain & Close
 - **`/investor-comms`** — Warmth Engine. Monthly updates and two parallel tracks (yes & no). Out-execute the reason they passed, in writing.
+- **`/pace`** — Chief of Staff. Paces the communication, decides which skill runs next, keeps every artifact in sync, and surfaces the one thing that has to happen today. The glue that orchestrates the whole raise.
 - **`/closing`** — Close Driver. Plain-language term-sheet readout, the terms that actually matter, negotiation prep, the close window. Not legal advice.
 
 ## Honest by construction
@@ -113,4 +114,4 @@ These skills draft; you decide. They never send an email, commit to terms, or ma
 
 MIT — see [LICENSE](LICENSE). Fork freely; pull requests welcome.
 
-Built by [Ludovic Bodin](https://atomicscaling.com) · Author of *Atomic Scaling* · Inspired by Guillermo Flor's Fundraising Machine.
+Built by [Ludovic Bodin](https://atomicscaling.com) · Author of *Atomic Scaling*.

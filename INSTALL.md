@@ -1,6 +1,6 @@
 # Install The Fundraising OS
 
-Two ways to use the 11 skills. The first (Claude Code Desktop) is the recommended setup — it's what the skills are designed for, and it works without ever touching a terminal.
+Two ways to use the 12 skills. The first (Claude Code Desktop) is the recommended setup — it's what the skills are designed for, and it works without ever touching a terminal.
 
 | You want to… | Use |
 |---|---|
@@ -47,7 +47,7 @@ Claude Code confirms it added the repo as a marketplace. Takes 1–2 seconds.
 /plugin install fundraising-os@kalibrio/fundraising-os
 ```
 
-Claude Code confirms the plugin is installed and 11 skills are now available.
+Claude Code confirms the plugin is installed and 12 skills are now available.
 
 ### Step 4 — Test that it worked
 

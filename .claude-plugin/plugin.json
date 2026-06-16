@@ -1,6 +1,6 @@
 {
     "name": "fundraising-os",
-    "description": "11 Claude skills that run the operational raise — target list, warm intros, deck, model, personalised outreach, pipeline, data room, investor warmth, and the close. A Human-Assisted Autonomous Organization (HAAO) for fundraising, by Ludovic Bodin. Inspired by Guillermo Flor's Fundraising Machine. Decides passive vs. active mode, then runs the whole process so founders focus on the conversations that matter.",
+    "description": "12 Claude skills that orchestrate the operational raise — target list, warm intros, deck, model, personalised outreach, pipeline, data room, investor warmth, and the close, paced by a chief-of-staff skill. A Human-Assisted Autonomous Organization (HAAO) for fundraising, by Ludovic Bodin. Decides passive vs. active mode, then runs the whole process so founders focus on the conversations that matter.",
     "version": "1.0.0",
     "author": {
           "name": "Ludovic Bodin",

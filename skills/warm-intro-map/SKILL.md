@@ -1,35 +1,31 @@
 ---
 name: warm-intro-map
-type: skill
-description: Map the best possible warm-introduction path to each investor target before any cold email is sent, and draft the forwardable intro-request notes that mobilise the user's network. Use this skill whenever the user asks how to get introduced to a VC/fund/partner, wants to map their network to investors, asks "who can intro me to X", wants to find warm paths, or is about to start outreach. Trigger it right after the investor list is built and before outreach — a warm path changes everything about how the first email should read.
-triggers:
-  - "warm intro"
-  - "get introduced"
-  - "intro path"
-  - "/warm-intro-map"
-author: Ludovic Bodin
-version: 1.0
-scheduled_routine: "After list build, before outreach"
+description: Map the best possible warm-introduction path to each investor target before any cold email is sent, and draft the forwardable intro-request notes that mobilise the founders' networks. Use this skill whenever the user asks how to get introduced to a VC/fund/partner, wants to map their network to investors, asks "who can intro me to X", wants to find warm paths or an intro path, or is about to start outreach. Trigger it right after the investor list is built and before outreach — a warm path changes everything about how the first email should read.
 ---
 
 # Warm Intro Map
 
 A warm intro from someone the partner trusts is worth more than ten perfect cold
-emails. Before sending anything, find the strongest path to each target and arm
-your connectors with a note they can forward without thinking.
+emails. Before sending anything, find the strongest path to each target — through
+whichever founder actually holds the relationship — and arm your connectors with
+a note they can forward without thinking.
 
 ## Prerequisites
 
-- The investor target sheet from `investor-list` (the partners to reach).
-- `raise-context.md` §11 (founder network: cap table, advisors,
-  customers, where your network concentrates) and §1/§9 (the one-liner and spine,
-  so the forwardable note is sharp).
+- `investors.tsv` from the project folder (the partners to reach, written by
+  `investor-list`). If it's missing, run `/investor-list` first.
+- `raise-context.md` §11 (founder networks — one subsection per founder: cap
+  table, advisors, customers, where each network concentrates) and §1/§9 (the
+  one-liner and spine, so the forwardable note is sharp).
 
 ## Procedure
 
-1. **Build the connector inventory** from §11: existing investors, advisors,
-   notable customers/design partners, and dense network nodes (funds, schools,
-   former employers, cities). These are your bridges.
+1. **Build the connector inventory** from §11 — across ALL founders' subsections,
+   tagging each connector with the founder who holds the relationship: existing
+   investors, advisors, notable customers/design partners, and dense network
+   nodes (funds, schools, former employers, cities). These are your bridges, and
+   the ask must come from the founder the connector actually knows — an intro
+   request relayed through the wrong founder is a cold email wearing a warm coat.
 
 2. **For each target partner, find the strongest path.** Rank path types by
    strength:
@@ -51,17 +47,21 @@ your connectors with a note they can forward without thinking.
    *connector* sends to the *partner* — written as if from the connector, not from
    you. It must be: 4–6 sentences, lead with why the connector rates you, one
    crisp line on what the company does (from the spine), one proof point, and a
-   soft ask ("worth a quick chat?"). Also draft the even shorter note the user
-   sends *to the connector* asking for the intro and giving them the forwardable
-   blurb so saying yes costs them nothing.
+   soft ask ("worth a quick chat?"). Also draft the even shorter note the
+   *owning founder* sends *to the connector* — in that founder's voice — asking
+   for the intro and giving them the forwardable blurb so saying yes costs them
+   nothing.
+
+5. **Update `investors.tsv`** — set each target's `Warm Path?` column to the
+   resolved answer so `outreach` and `pipeline` inherit it.
 
 ## Output format
 
 For each target with a path:
 
 ```
-TARGET: [Partner, Fund]   PATH: [Tier A/B/C]  via [Connector name]   [verified/unverified]
-— Note to connector (the ask): [2–3 sentences]
+TARGET: [Partner, Fund]   PATH: [Tier A/B/C]  via [Connector name] (relationship held by [Founder])   [verified/unverified]
+— Note to connector (the ask, sent by [Founder]): [2–3 sentences]
 — Forwardable blurb (connector → partner): [4–6 sentences, sounds like the connector]
 ```
 

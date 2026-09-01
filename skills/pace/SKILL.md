@@ -1,94 +1,81 @@
 ---
 name: pace
-description: The chief of staff for your raise — paces the communication, orchestrates which skill runs when, keeps every artifact in sync, and surfaces the one thing that has to happen next. Use this skill whenever the user asks what to do next, how to keep the raise on track, how to sequence the work, when to send the next update or follow-up, or wants someone to glue the whole process together and make it move. Trigger it as the default "where are we and what now" layer over the entire Fundraising OS — it spans every phase and runs continuously, not just at the end.
-triggers:
-  - "pace the raise"
-  - "what should I do next"
-  - "keep the raise on track"
-  - "chief of staff"
-  - "orchestrate the raise"
-  - "what's the next move"
-  - "/pace"
-author: Ludovic Bodin
-version: 1.0
-scheduled_routine: "Continuous — daily chief-of-staff brief, weekly orchestration review"
+description: The orchestration layer of the Fundraising OS — decides which skill runs next and why, keeps the durable artifacts (raise-decision, raise-context, fundraising-plan, investors.tsv, pipeline.md) consistent with each other, and protects the founders' attention from the raise itself. Use this skill when the user asks how to sequence the fundraising work, which skill or phase comes next, whether the machine is in sync, how to keep the raise on track or orchestrate it, or wants a chief-of-staff view over the whole process. (For "what should I do next" on live investor threads — follow-ups, who to chase — that's the pipeline skill; pace answers "which part of the machine runs next".)
 ---
 
 # Pace
 
-Think of this as your chief of staff. The other skills each do one job well; `pace`
-is the one that makes them move together — setting the tempo, deciding what runs
-next, keeping every artifact consistent, and making sure the single most important
-thing actually happens. A raise rarely fails because one piece was missing; it
-fails because the pieces drifted out of sync, the cadence slipped, and the founder
-got pulled in ten directions. This skill holds the line.
+The other skills each do one job well; `pace` makes them move together. It does
+not generate raise content, track investor threads, or write briefs about who to
+email — `pipeline` owns what needs action. `pace` owns three things only: the
+**sequence** (which skill runs next), the **sync** (do the artifacts agree), and
+the **attention budget** (is the raise eating the company).
 
 ## When this runs
 
-Continuously, as the orchestration layer over the whole OS — not a phase you reach,
-a hand on the tiller the entire raise. Reach for it whenever you're unsure what to
-do next, when momentum feels off, or when you just want the machine driven.
+Whenever the user is unsure which part of the OS to run, when the process feels
+out of order, or periodically as a health check on the machine. Suggested
+cadence: a quick orchestration check weekly, or at any phase transition.
 
 ## Prerequisites
 
-Read `raise-context.md` (the facts), `fundraising-plan.md` (the mode sets the
-tempo — passive runs patient, active runs tight), and the current pipeline state.
-`pace` doesn't generate raise content itself; it directs the skills that do.
+Read whichever of these exist in the project folder: `raise-decision.md`,
+`raise-context.md`, `fundraising-plan.md`, `investors.tsv`, `pipeline.md`.
+Missing files are not errors here — they ARE the answer: the first missing
+artifact in the sequence is usually the next skill to run.
 
 ## What it does
 
-1. **Orchestrate the sequence.** Know which phase you're in and name the next skill
-   to run and why. Keep the machine moving in the right order — context before
-   targets, deck and model before serious meetings, data room ready before launch.
-   When a step is being skipped, say so.
+1. **Orchestrate the sequence.** Know which phase the raise is in and name the
+   next skill to run and why. The canonical order:
+   `raise-decision → raise-context → fundraising-plan → deck / financial-projection
+   → investor-list → warm-intro-map → data-room → outreach → pipeline (+
+   investor-comms) → closing`. Decision before context, mode before targets,
+   deck and model before serious meetings, data room ready before an active
+   launch. When a step is being skipped, say so and name the risk.
 
-2. **Pace the communication.** Set and hold the cadence so you neither flood nor go
-   silent: outreach in waves, follow-ups inside their window, monthly updates on
-   the clock, a close window that's driven but not forced. Match the tempo to the
-   mode — in passive, patient and relationship-led; in active, a tight beat with a
-   real clock. Over-communicating reads as anxious; going dark reads as stalling.
-   The right rhythm is itself a signal.
+2. **Keep the artifacts in sync.** Check that the durable files agree with each
+   other and with reality: the mode in `fundraising-plan.md` still matches the
+   verdict and gate in `raise-decision.md`; `investors.tsv` is sized to the
+   mode; `pipeline.md` isn't stale (last rewrite vs. today); the numbers the
+   deck, model, and data room claim all trace back to the same
+   `raise-context.md`. A figure that says one thing in the deck and another in
+   the room is a trust leak — name the drift and the skill that fixes it.
 
-3. **Glue the artifacts.** Make each skill's output feed the next and keep
-   everything reconciled — the deck, the model, the data room, and the claims in
-   outreach must all tell the same numbers. Catch drift the moment it appears; a
-   figure that says one thing in the deck and another in the room is a trust leak.
+3. **Match the tempo to the mode.** In passive, the machine runs patient and
+   relationship-led; in active, on a tight clock with a real window. If the
+   observed behaviour (outreach volume, pipeline cadence) doesn't match the
+   declared mode, either the behaviour or the plan is wrong — flag it and route
+   to `fundraising-plan` to re-decide.
 
-4. **Make things happen.** Produce a short chief-of-staff brief — the 1–3 things
-   that must happen now, what's slipping, who owns each, and the single priority.
-   Chase the threads that have gone quiet. Turn "a lot to do" into "this, next."
+4. **Protect the team's attention.** A raise will eat the company if you let it.
+   Check the load per founder (from `pipeline.md`'s owner column): is the raise
+   lead underwater while others are idle? Is the whole team in fundraising mode
+   when the plan says one founder runs it? Guard build time — especially in
+   passive mode, where staying heads-down is the point — and say what to drop.
 
-5. **Protect the founder's attention.** A raise will eat the company if you let it.
-   Guard build time, flag when the process is consuming too much — especially in
-   passive mode, where the whole point is to stay heads-down — and decide what to
-   drop. Focus is the scarcest resource; spend it on the highest-leverage move.
+## Output format
 
-## Output formats
-
-**Chief-of-staff brief** (daily / on demand):
 ```
-CHIEF OF STAFF — [date]
-Where we are: [phase · mode · funnel one-liner]
-Must happen today (≤3): [item — owner — is it ready?]
-Slipping: [thread/artifact going cold or out of sync]
-Run next: [which skill, on what]
-The one priority: [single highest-leverage move]
+ORCHESTRATION — [date]
+Phase: [where the raise is]   Mode: [from fundraising-plan.md]
+Run next: [skill] — because [reason]
+Then: [skill] → [skill].  Hold off on [skill] until [condition].
+Sync check: [artifacts consistent / DRIFT: what disagrees, fix via which skill]
+Attention check: [load per founder — anything eating the company]
 ```
 
-**Orchestration call** (when asked "what now?"):
-```
-You're in [phase]. The next move is [skill] because [reason].
-After that: [skill] → [skill]. Hold off on [skill] until [condition].
-Cadence check: [next update / follow-up / wave due when]
-```
+For "what needs action on investor threads", route to `/pipeline` — that's its
+brief, not this one's.
 
 ## Principles
 
-- **Tempo is a strategy.** The same conversations win or lose on rhythm. Pace the
-  raise like a campaign with a clock, not a to-do list.
-- **One priority at a time.** A chief of staff who lists twenty things is no help.
-  Name the single move that matters most and protect the time to make it.
-- **Glue beats heroics.** Keeping the pieces in sync prevents the fires that
-  otherwise need heroics later. Consistency is the cheapest leverage in a raise.
-- **Direct, don't duplicate.** `pace` points to the right skill; it doesn't redo
-  their work. Its value is sequence, tempo, and follow-through.
+- **Direct, don't duplicate.** `pace` points to the right skill; it never redoes
+  their work. Its value is sequence, sync, and follow-through — the moment it
+  starts writing emails or briefs, it's the wrong skill.
+- **The first missing artifact is the answer.** The machine's own files tell you
+  where it is. Read them before opining.
+- **Sync is the cheapest leverage.** Catching a drifted number costs a minute;
+  an investor catching it costs the round's momentum.
+- **The raise serves the company, not the reverse.** When in doubt, protect
+  build time. A great quarter closes more rounds than a great follow-up.

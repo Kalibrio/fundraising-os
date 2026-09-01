@@ -1,6 +1,6 @@
 # Install The Fundraising OS
 
-Two ways to use the 12 skills. The first (Claude Code Desktop) is the recommended setup — it's what the skills are designed for, and it works without ever touching a terminal.
+Two ways to use the 13 skills. The first (Claude Code Desktop) is the recommended setup — it's what the skills are designed for, and it works without ever touching a terminal.
 
 | You want to… | Use |
 |---|---|
@@ -44,10 +44,10 @@ Claude Code confirms it added the repo as a marketplace. Takes 1–2 seconds.
 **Then type this and press Enter:**
 
 ```
-/plugin install fundraising-os@kalibrio/fundraising-os
+/plugin install fundraising-os@fundraising-os
 ```
 
-Claude Code confirms the plugin is installed and 12 skills are now available.
+Claude Code confirms the plugin is installed and 13 skills are now available.
 
 ### Step 4 — Test that it worked
 
@@ -62,14 +62,15 @@ If you see it, you're done installing.
 ### Step 5 — Run your first skill
 
 ```
-/raise-context
+/raise-decision
 ```
 
-It interviews you, builds your `raise-context.md` source-of-truth file in your project folder, and tells you exactly what to fix before you start outreach. Then:
+Should you raise at all, and now? Each founder answers a short questionnaire independently; the skill surfaces where you disagree, runs the dilution math, and returns a verdict — raise now, not yet, or don't raise. If the verdict is raise:
 
 ```
-/fundraising-plan     → decide passive vs. active, set the intensity
-/investor-list        → the ~40 funds worth your time, as a paste-ready sheet
+/raise-context        → build your source-of-truth file
+/fundraising-plan     → decide passive vs. active vs. hybrid, set the intensity
+/investor-list        → the target list sized to your mode, written to investors.tsv
 /warm-intro-map       → the best path to each partner
 ```
 
@@ -106,10 +107,11 @@ Because there's no project folder on the web, Claude returns the outputs inline 
 **Manual install (corporate firewall, etc.)**
 
 ```bash
-git clone https://github.com/kalibrio/fundraising-os.git ~/.claude/plugins/fundraising-os
+git clone https://github.com/kalibrio/fundraising-os.git
+cp -R fundraising-os/skills/* ~/.claude/skills/
 ```
 
-Then in Claude Code: `/reload-plugins`.
+Then restart Claude Code (or start a new session) — the skills load from `~/.claude/skills/`.
 
 ---
 

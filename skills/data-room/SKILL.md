@@ -1,15 +1,6 @@
 ---
 name: data-room
-type: skill
-description: Build a data room that answers diligence questions before they're asked — the full index, what goes in each section, and a gap list of what's missing or weak. Use this skill whenever the user mentions a data room, due diligence, DD, "what investors will ask for", preparing documents for investors, or an investor has requested access to materials. Trigger it before outreach goes hot — a data room that's ready the moment someone asks is itself a signal of how the company is run. Flags gaps honestly rather than papering over missing documents.
-triggers:
-  - "data room"
-  - "due diligence"
-  - "DD prep"
-  - "/data-room"
-author: Ludovic Bodin
-version: 1.0
-scheduled_routine: "Before launch; maintain through diligence"
+description: Build a data room that answers diligence questions before they're asked — the full index, what goes in each section, and a gap list of what's missing or weak. Use this skill whenever the user mentions a data room, due diligence, DD, DD prep, "what investors will ask for", preparing documents for investors, or an investor has requested access to materials. Trigger it before outreach goes hot — a data room that's ready the moment someone asks is itself a signal of how the company is run. Flags gaps honestly rather than papering over missing documents.
 ---
 
 # Data Room
@@ -19,10 +10,17 @@ anticipating the next question reads as "this founder runs a tight company."
 Scrambling to assemble it after a partner asks reads as the opposite. Build it
 before you need it.
 
-## Prerequisite
+## Prerequisites
 
-Read `raise-context.md` — it tells you what exists (§12 assets) and what
-the numbers/claims are that the data room must substantiate.
+1. Read `fundraising-plan.md` from the project folder — the mode sets the
+   deadline. **Active:** the room must be ready *before* launch — it's a
+   precondition of going in-market, not a parallel task. **Passive:** build the
+   core now, deepen as conversations get serious. If `fundraising-plan.md` is
+   missing, run `/fundraising-plan` first.
+2. Read `raise-context.md` — it tells you what exists (§12 assets) and what
+   the numbers/claims are that the data room must substantiate.
+
+Suggested cadence: build before launch; maintain through diligence.
 
 ## Standard seed data-room index
 

@@ -1,15 +1,6 @@
 ---
 name: raise-context
-type: skill
-description: Build, interview for, and maintain the raise-context file that powers the entire Fundraising Machine. Use this skill whenever the user is starting a fundraise, says they want to "set up the raise", asks Claude to help prepare to raise money, mentions a seed/pre-seed/Series A round, or whenever any downstream fundraising skill (investor list, outreach, deck, data room, pipeline) needs context that is missing or stale. Always run this FIRST before any other fundraising work — even if the user jumps straight to "write me investor emails", check the context exists and is current first.
-triggers:
-  - "raise context"
-  - "fundraise setup"
-  - "prepare to raise"
-  - "/raise-context"
-author: Ludovic Bodin
-version: 1.0
-scheduled_routine: "At raise kickoff; refresh on any material change"
+description: Build, interview for, and maintain the raise-context file that powers the entire Fundraising Machine. Use this skill whenever the user is starting a fundraise, says they want to "set up the raise" or "prepare to raise", asks Claude to help prepare to raise money, mentions a seed/pre-seed/Series A round, or whenever any downstream fundraising skill (investor list, outreach, deck, data room, pipeline) needs context that is missing or stale. Run this before any other raise-preparation work — even if the user jumps straight to "write me investor emails", check the context exists and is current first. (The one thing upstream of it: if the team hasn't decided whether to raise at all, that's the raise-decision skill.)
 ---
 
 # Raise Context
@@ -21,21 +12,30 @@ machine run on a thin or stale one.
 
 ## When this runs
 
-- At the start of a raise.
+- At the start of a raise (after the `raise-decision` verdict, if the team ran one).
 - Whenever a downstream skill finds a field it needs is `TBD` or missing.
 - Whenever the user reports a material change (new traction, new terms, a pivot).
 
+Suggested cadence: build at raise kickoff; refresh the moment anything material
+changes.
+
 ## Procedure
 
-1. **Locate or create.** Look for `raise-context.md` in the working folder. If it
+1. **Locate or create.** Look for `raise-context.md` in the project folder. If it
    exists, read it and treat it as a draft to complete, not a blank slate. If it
    doesn't, create it there from the bundled `references/raise-context-template.md`.
 
-2. **Interview to fill gaps — don't fabricate.** Walk the 13 sections. For each
-   empty or weak field, ask the user a tight, specific question. Ask in small
-   batches (3–5 questions), not one giant wall. Prioritise the fields that block
-   the most downstream skills: the one-liner, the raise terms, traction, the
-   ideal-investor profile, and the founder network.
+2. **Interview to fill gaps — don't fabricate.** Start by asking **which founders
+   are involved in this raise** — the file serves the whole team, and §3 and §11
+   are per-founder. Then walk the 13 sections. For each empty or weak field, ask
+   the user a tight, specific question. Ask in small batches (3–5 questions), not
+   one giant wall. Prioritise the fields that block the most downstream skills:
+   the one-liner, the raise terms, traction, the ideal-investor profile, and the
+   founder networks. For §11, gather **each founder's network separately** — who
+   they know is different, and the warm-intro map needs to know whose relationship
+   each path rides on. If founders other than the one at the keyboard need to
+   contribute, give the user the questions to relay and record the answers under
+   that founder's name.
 
 3. **Pressure-test, gently.** Your value is honest friction. For each claim:
    - Is this number *true as stated*, or rounded up? Restate it as-is.

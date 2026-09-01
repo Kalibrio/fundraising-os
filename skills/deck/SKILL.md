@@ -1,15 +1,6 @@
 ---
 name: deck
-type: skill
-description: Build the fundraising pitch deck — narrative arc, slide-by-slide structure, and the actual copy for each slide — derived from the raise context. Use this skill whenever the user wants to build, write, revise, or pressure-test a pitch deck, investor deck, or slide story for a raise; when they ask "help me with my deck", "what slides do I need", or want to sharpen the narrative. Trigger early in the raise — the deck forces the narrative that outreach, data room, and meetings all inherit. Produces the structure and copy; hand off to the pptx skill to render an actual .pptx if the user wants the file.
-triggers:
-  - "pitch deck"
-  - "investor deck"
-  - "build my deck"
-  - "/deck"
-author: Ludovic Bodin
-version: 1.0
-scheduled_routine: "Early in the raise; revise on narrative shifts"
+description: Build the fundraising pitch deck — narrative arc, slide-by-slide structure, and the actual copy for each slide — derived from the raise context. Use this skill whenever the user wants to build, write, revise, or pressure-test a pitch deck, investor deck, or slide story for a raise; when they ask "help me with my deck", "what slides do I need", or want to sharpen the narrative. Trigger early in the raise — the deck forces the narrative that outreach, data room, and meetings all inherit — and revise it on narrative shifts. Produces the structure and copy; hand off to the pptx skill to render an actual .pptx if the user wants the file.
 ---
 
 # Deck

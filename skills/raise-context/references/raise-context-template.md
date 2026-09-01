@@ -73,11 +73,22 @@ the data room all inherit. Write it last, after everything above is filled.
 - **Portfolio signals of fit (the kind of company that, if they backed it, means they'll get us):**
 - **Anti-fit / conflicts to exclude (direct competitors in portfolio):**
 
-## 11. Founder network (drives warm-intro mapping)
-- **Cap table & existing investors who can intro:**
-- **Advisors / operators who know VCs:**
-- **Notable customers / design partners who'd vouch:**
-- **Where my network is concentrated (cities, funds, schools, companies):**
+## 11. Founder networks (drives warm-intro mapping — one subsection PER founder)
+
+> Each founder's network is different, and a warm path is only as strong as the
+> actual relationship it rides on. Fill one subsection per founder (add or remove
+> as needed), then the merged view. The warm-intro map uses this to pick both the
+> path AND which founder makes the ask.
+
+### 11.x — [Founder name] (repeat this block per founder)
+- **Investors they know personally (incl. anyone on the cap table):**
+- **Advisors / operators they know who know VCs:**
+- **Notable customers / design partners who'd vouch for them:**
+- **Where their network concentrates (cities, funds, schools, companies):**
+
+### Merged view (whole team)
+- **Strongest combined nodes (people/funds reachable through 2+ founders):**
+- **Coverage gaps (investor types nobody on the team can reach warm):**
 
 ## 12. Assets already built
 - [ ] Deck (link / status)

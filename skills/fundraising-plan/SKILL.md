@@ -1,15 +1,6 @@
 ---
 name: fundraising-plan
-type: skill
-description: Plan the raise before running it — choose the fundraising MODE (passive vs. active vs. hybrid), set the timeline, intensity, and decision gates, and configure how hard every downstream skill should run. Use this skill whenever the user is deciding whether to raise, how to raise, asks "should I run a process", wants a fundraising plan or strategy, is weighing a structured raise against staying opportunistically open, or is unsure how aggressive to be. Trigger it right after the raise context is built and BEFORE building the investor list — the mode you choose changes the list size, the outreach intensity, the pipeline cadence, and the close mechanics. Don't let the machine run an active process by default; make the passive/active call deliberately.
-triggers:
-  - "fundraising plan"
-  - "passive vs active fundraising"
-  - "should I run a process"
-  - "/fundraising-plan"
-author: Ludovic Bodin
-version: 1.0
-scheduled_routine: "At raise kickoff; re-evaluate at each decision gate"
+description: Plan the raise before running it — choose the fundraising MODE (passive vs. active vs. hybrid), set the timeline, intensity, and decision gates, and configure how hard every downstream skill should run. Use this skill whenever the user is deciding HOW to raise, asks "should I run a process", wants a fundraising plan or strategy, asks about passive vs. active fundraising, is weighing a structured raise against staying opportunistically open, or is unsure how aggressive to be. Trigger it after the raise decision and raise context exist and BEFORE building the investor list — the mode you choose changes the list size, the outreach intensity, the pipeline cadence, and the close mechanics. (Whether to raise at all is the raise-decision skill; this one plans a raise the team has already said yes to.)
 ---
 
 # Fundraising Plan
@@ -21,12 +12,20 @@ you run a sharp, time-boxed **active process** or stay in a low-intensity
 or leave leverage and valuation on the table. This skill makes that call
 deliberately and then configures the rest of the machine to match.
 
-## Prerequisite
+## Prerequisites
 
-Read `raise-context.md` — especially §2 (amount, runway, committed),
-§4 (traction strength), §10 (whether right-fit leads even exist now), and §11
-(do you have warm inbound / an anchor?). If runway or traction are `TBD`, resolve
-them via `raise-context` first — you cannot choose a mode without them.
+1. Read `raise-decision.md` from the project folder. If it's missing, run
+   `/raise-decision` first — this skill plans a raise the team has already
+   decided to make. If the verdict is **NOT YET** or **DON'T RAISE**, stop and
+   say so: either the milestone gate has been hit (update the decision file
+   first) or the team is overriding its own decision, which deserves a
+   conversation, not a quiet plan.
+2. Read `raise-context.md` — especially §2 (amount, runway, committed),
+   §4 (traction strength), §10 (whether right-fit leads even exist now), and §11
+   (do you have warm inbound / an anchor?). If runway or traction are `TBD`,
+   resolve them via `raise-context` first — you cannot choose a mode without them.
+
+Suggested cadence: once at raise kickoff; re-run at each decision gate.
 
 ## The two modes
 
@@ -38,7 +37,7 @@ and strategics as they come, and otherwise stay heads-down building.
   more raisable), you have inbound, you don't need a lead, or the amount is small
   and angel-fillable. Also the right default when timing is bad and you'd rather
   wait for a stronger position.
-- **Pros:** founder stays focused on the company; no public "in-market" signal to
+- **Pros:** the founders stay focused on the company; no public "in-market" signal to
   leak; no hard failure event; you raise into strength as it appears.
 - **Cons:** little competitive tension, so weaker terms; slow; can drift for
   months; hard to land a true lead without a window.
@@ -52,12 +51,14 @@ tight window, parallel meetings, competitive tension engineered, driven to a lea
 and a close inside weeks.
 - **Use when:** you have a clear milestone-backed story, enough traction to
   withstand scrutiny *now*, a defined amount that needs an institutional lead, and
-  the founder bandwidth to go full-time on it for 4–8 weeks. Also when you need the
-  money on a clock (runway pressure makes the window real, not manufactured).
+  a founder who can go near-full-time on it for 4–8 weeks (on a multi-founder
+  team, name that founder in the plan — the others keep the company running).
+  Also when you need the money on a clock (runway pressure makes the window
+  real, not manufactured).
 - **Pros:** competitive tension → better terms and valuation; fast; a real close
   window; momentum compounds across threads.
-- **Cons:** consumes the founder; "in-market" is visible and a stalled or failed
-  process leaks; the round becomes a public success/failure event.
+- **Cons:** consumes the raising founder; "in-market" is visible and a stalled or
+  failed process leaks; the round becomes a public success/failure event.
 - **Machine config:** full ~40 target list with tiers; warm-intro mapping on every
   Circle 1–2; personalised outreach launched in waves; tight weekly pipeline with
   same-day follow-ups; data room ready *before* launch; a deliberately engineered
@@ -80,8 +81,8 @@ crosses €X", "runway hits 9 months").
      passive.
    - Inbound/anchor: have warm inbound or a soft-circled anchor → passive or
      hybrid. Cold start, no inbound → active to manufacture a market.
-   - Founder bandwidth: can disappear from the business for 6 weeks → active. Can't
-     → passive (or wait).
+   - Team bandwidth: one founder can disappear into the raise for 6 weeks while
+     the others hold the business → active. Nobody can → passive (or wait).
    - Market timing: hot window for your category → active. Soft → passive and wait.
 2. **Make the call** — state the recommended mode and the 2–3 signals that drove
    it. If hybrid, name the explicit flip trigger.
@@ -90,14 +91,19 @@ crosses €X", "runway hits 9 months").
 4. **Define the kill / pause criteria** — for active: how many passes before you
    stop, regroup, and protect the company from a leaked failed process. For
    passive: the trigger to escalate to active.
-5. **Write the plan** to `fundraising-plan.md` so every downstream skill
-   inherits the chosen mode and runs at the right intensity.
+5. **Write the plan** to `fundraising-plan.md` in the project folder. This file
+   is the contract every downstream skill starts by reading — `investor-list`
+   sizes the target set from it, `outreach` takes its wave structure,
+   `pipeline` its cadence, `data-room` its readiness deadline, `investor-comms`
+   its track intensity, `closing` its window mechanics. Also name the **raise
+   lead** — the founder who owns the process day-to-day.
 
 ## Output format
 
 ```
 FUNDRAISING PLAN
 Mode: [PASSIVE / ACTIVE / HYBRID]   (drivers: [2–3 signals])
+Raise lead: [founder who owns the process]
 Amount & instrument: [...]          Window: [time-box or "open"]
 Flip trigger (if hybrid): [...]
 Sequence & intensity:

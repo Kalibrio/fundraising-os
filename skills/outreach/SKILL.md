@@ -1,30 +1,34 @@
 ---
 name: outreach
-type: skill
-description: Write outreach that reads like it was written for one specific investor — cold emails, intro-request notes, and the message that rides along a warm intro — each grounded in real research on that partner. Use this skill whenever the user wants to write investor emails, cold outreach to VCs, a message to send a fund, an intro request, or wants to personalise their fundraising outreach. Trigger it after the investor list and warm-intro map exist. Never produces templated mail-merge spam — each message is built from that partner's actual thesis and a real reason to talk now.
-triggers:
-  - "investor email"
-  - "cold outreach"
-  - "intro request"
-  - "/outreach"
-author: Ludovic Bodin
-version: 1.0
-scheduled_routine: "Per target, sent in waves"
+description: Write outreach that reads like it was written for one specific investor, by one specific founder — cold emails, intro-request notes, and the message that rides along a warm intro — each grounded in real research on that partner and drafted in the voice of the founder who owns the relationship. Use this skill whenever the user wants to write investor emails, cold outreach to VCs, a message to send a fund, an intro request, or wants to personalise their fundraising outreach. Trigger it after the investor list and warm-intro map exist. Never produces templated mail-merge spam — each message is built from that partner's actual thesis and a real reason to talk now.
 ---
 
 # Outreach
 
 The difference between ignored and answered is specificity. A partner can smell a
-mail-merge in one line. Each message must prove you researched *them* and give one
-concrete reason this is relevant to them *now*.
+mail-merge in one line. Each message must prove you researched *them*, give one
+concrete reason this is relevant to them *now* — and come from the right founder,
+in that founder's actual voice.
 
 ## Prerequisites
 
-- The investor sheet (`investor-list`) — to know the partner and the fit.
-- The warm-intro map (`warm-intro-map`) — to know if this is warm or cold.
-- `raise-context.md` §1, §4, §9, §13 — one-liner, traction, spine, founder voice.
+- `fundraising-plan.md` from the project folder — the mode sets the shape:
+  active means waves on a clock, passive means opportunistic single sends. If
+  it's missing, run `/fundraising-plan` first.
+- `investors.tsv` (written by `investor-list`) — the partner, the fit, the warm
+  path. If it's missing, run `/investor-list` first.
+- The warm-intro map (`warm-intro-map`) — to know if this is warm or cold, and
+  which founder holds the path.
+- `raise-context.md` §1, §4, §9, §13 — one-liner, traction, spine, voice.
 
-## Decide the message type first
+## Decide the sender and message type first
+
+**Sender:** each message goes out from one named founder — the one who owns the
+relationship (warm: whoever the connector or partner actually knows; cold:
+usually the raise lead from `fundraising-plan.md`, unless another founder is the
+obvious hook — e.g. the technical founder writing to a technical partner). Draft
+in *that* founder's voice, and say in the output who sends it. A CEO-voiced email
+signed by the CTO reads as ghostwritten, because it is.
 
 - **Warm (riding an intro):** the connector has already vouched. The email is
   short, picks up the thread, and gives the partner an easy yes. Don't re-pitch
@@ -44,8 +48,9 @@ concrete reason this is relevant to them *now*.
    strongest true traction fact (§4). No feature lists.
 4. **Make the ask small and specific.** "Worth 20 minutes next week?" beats "let me
    know if you'd like to learn more." For warm intros, the ask is even lighter.
-5. **Match the founder's voice** (§13). Short paragraphs, no corporate throat-
-   clearing, no adjectives doing the work of facts.
+5. **Match the sending founder's voice** (§13 — per-founder if the team noted
+   differences). Short paragraphs, no corporate throat-clearing, no adjectives
+   doing the work of facts.
 
 ## Length & format rules
 
@@ -59,10 +64,11 @@ concrete reason this is relevant to them *now*.
 For each target, produce:
 
 ```
-TARGET: [Partner, Fund]   TYPE: [warm/cold]   HOOK: [the specific true reason]
+TARGET: [Partner, Fund]   TYPE: [warm/cold]   SENDER: [founder — why them]
+HOOK: [the specific true reason]
 SUBJECT: [specific]
 BODY:
-[the email]
+[the email, in the sender's voice]
 ```
 
 Plus a short note on what to personalise further if the user knows something you

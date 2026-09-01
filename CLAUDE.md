@@ -5,8 +5,8 @@ or "ship this", follow the **Deploy** section below exactly.
 
 ## What this repo is
 
-The **Fundraising OS** — a Claude Code plugin of **12 skills** that run a startup
-raise, plus its marketing site. This single repo does double duty:
+The **Fundraising OS** — a Claude Code plugin of **13 skills** that run a startup
+raise (starting with whether/when to raise at all), plus its marketing site. This single repo does double duty:
 
 1. **The plugin marketplace** — installed with
    `/plugin marketplace add kalibrio/fundraising-os`.
@@ -17,11 +17,13 @@ raise, plus its marketing site. This single repo does double duty:
 ## Structure
 
 ```
-.claude-plugin/plugin.json   manifest — "skills": "./skills/"
-skills/<command>/SKILL.md     12 skills; folder name == slash command
-  raise-context · fundraising-plan · investor-list · warm-intro-map · deck ·
-  financial-projection · outreach · pipeline · data-room · investor-comms ·
-  pace · closing
+.claude-plugin/plugin.json     plugin manifest
+.claude-plugin/marketplace.json marketplace manifest — REQUIRED for
+                                /plugin marketplace add to work
+skills/<command>/SKILL.md       13 skills; folder name == slash command
+  raise-decision · raise-context · fundraising-plan · investor-list ·
+  warm-intro-map · deck · financial-projection · outreach · pipeline ·
+  data-room · investor-comms · pace · closing
 docs/                         index.html, atomic-logo.jpg, ludovic.jpg,
                               favicon.svg, CNAME (fundraising.atomicscaling.com)
 README.md · INSTALL.md · LICENSE
@@ -45,13 +47,14 @@ the `kalibrio` org, and `git` is available. Run from the repo root.
    If the repo already exists, instead do:
    ```bash
    git remote add origin https://github.com/kalibrio/fundraising-os.git 2>/dev/null || true
-   git branch -M main && git push -u origin main
+   git push origin master
    ```
+   (The repo's default branch is **master** — do not rename it; Pages builds from it.)
 
-3. **Enable GitHub Pages from `/docs` on `main`.** (Ignore a 409 — means already on.)
+3. **Enable GitHub Pages from `/docs` on `master`.** (Ignore a 409 — means already on.)
    ```bash
    gh api -X POST repos/kalibrio/fundraising-os/pages \
-     -f "source[branch]=main" -f "source[path]=/docs" || true
+     -f "source[branch]=master" -f "source[path]=/docs" || true
    gh api repos/kalibrio/fundraising-os/pages --jq '.html_url, .status'
    ```
 
@@ -72,16 +75,16 @@ the `kalibrio` org, and `git` is available. Run from the repo root.
    ```bash
    curl -sI https://fundraising.atomicscaling.com | head -1   # expect 200 after propagation
    gh api repos/kalibrio/fundraising-os --jq '.visibility'     # expect "public"
-   ls skills | wc -l                                           # expect 12
+   ls skills | wc -l                                           # expect 13
    ```
    Then confirm the plugin installs (in a Claude Code session):
    ```
    /plugin marketplace add kalibrio/fundraising-os
-   /plugin install fundraising-os@kalibrio/fundraising-os
+   /plugin install fundraising-os@fundraising-os
    ```
-   Type `/` then `raise` → you should see `/raise-context`, `/fundraising-plan`, …
-   (12 total). Manual fallback: `git clone … ~/.claude/plugins/fundraising-os` then
-   `/reload-plugins`.
+   Type `/` then `raise` → you should see `/raise-decision`, `/raise-context`,
+   `/fundraising-plan`, … (13 total). Manual fallback: copy each `skills/<name>`
+   folder into `~/.claude/skills/` (or the project's `.claude/skills/`).
 
 ## Guardrails
 

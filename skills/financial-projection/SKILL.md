@@ -1,15 +1,6 @@
 ---
 name: financial-projection
-type: skill
-description: Build the fundraising financial projection — the operating model, the assumptions behind it, and the one-page assumptions memo that survives investor scrutiny. Use this skill whenever the user wants a financial model, projections, forecast, revenue model, burn/runway analysis, unit economics, or "the numbers" for a raise; when they ask what to put in the model tab of the data room; or when an investor has asked for financials. Produces the model structure and assumptions; hand off to the xlsx skill to render the actual spreadsheet.
-triggers:
-  - "financial model"
-  - "projections"
-  - "unit economics"
-  - "/financial-projection"
-author: Ludovic Bodin
-version: 1.0
-scheduled_routine: "Early in the raise; update with new traction"
+description: Build the fundraising financial projection — the operating model, the assumptions behind it, and the one-page assumptions memo that survives investor scrutiny. Use this skill whenever the user wants a financial model, projections, forecast, revenue model, burn/runway analysis, unit economics, or "the numbers" for a raise; when they ask what to put in the model tab of the data room; or when an investor has asked for financials. Build it early in the raise and update it with new traction. Produces the model structure and assumptions; hand off to the xlsx skill to render the actual spreadsheet.
 ---
 
 # Financial Projection

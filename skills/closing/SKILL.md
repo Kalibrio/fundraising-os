@@ -1,15 +1,6 @@
 ---
 name: closing
-type: skill
-description: Run the close — read and explain a term sheet in plain language, flag the terms that actually matter, prepare the negotiation, build the closing checklist, and create the urgency window that gets a round to a clean finish. Use this skill whenever the user receives a term sheet, asks what terms mean, needs to compare offers, wants to negotiate a round, is trying to create a close window, or asks "how do I close this". Trigger it for any term-sheet, valuation, dilution, SAFE/equity-terms, or "how do I get them to commit" request. Explains terms and trade-offs so the founder decides — never gives legal advice or tells them what to sign.
-triggers:
-  - "term sheet"
-  - "negotiate the round"
-  - "close the round"
-  - "/closing"
-author: Ludovic Bodin
-version: 1.0
-scheduled_routine: "On receipt of a term sheet, through to wire"
+description: Run the close — read and explain a term sheet in plain language, flag the terms that actually matter, prepare the negotiation, build the closing checklist, and create the urgency window that gets a round to a clean finish. Use this skill whenever the user receives a term sheet, asks what terms mean, needs to compare offers, wants to negotiate or close the round, is trying to create a close window, or asks "how do I close this". Trigger it for any term-sheet, valuation, dilution, SAFE/equity-terms, or "how do I get them to commit" request, from receipt of a term sheet through to the wire. Explains terms and trade-offs so the founders decide — never gives legal advice or tells them what to sign.
 ---
 
 # Closing
@@ -19,10 +10,15 @@ window where saying yes now is the obvious move. This skill helps you read the
 terms that matter, run the negotiation, and drive to a clean, fast finish without
 losing leverage or goodwill.
 
-## Prerequisite
+## Prerequisites
 
-Read `raise-context.md` §2 (your target terms) and the pipeline state
-from `pipeline` (who's live, who's close — your leverage map).
+- Read `raise-context.md` §2 (your target terms).
+- Read `pipeline.md` from the project folder (who's live, who's close — your
+  leverage map). If it's missing, run `/pipeline` first — you cannot map
+  leverage without the pipeline state.
+- Read `fundraising-plan.md` for the close mechanics the mode implies (active:
+  engineer the window; passive: take commitments as they come). If missing, run
+  `/fundraising-plan` first.
 
 > **Not legal advice.** This skill explains terms and trade-offs so you can decide
 > and brief your lawyer efficiently. It never tells you what to sign. Anything
@@ -45,14 +41,16 @@ Most term-sheet anxiety is about the wrong terms. Focus order:
 7. **Vesting / founder terms** — re-vesting of founder shares, acceleration.
 
 For each present term, output: what it says in plain language, whether it's
-standard or off-market, and the practical consequence for the founder.
+standard or off-market, and the practical consequence for the founders (dilution
+and control terms hit every founder on the cap table — the readout is for the
+whole team to see, not just whoever fielded the term sheet).
 
 ## Procedure
 
 1. **Translate the term sheet** — plain-language readout of every clause, standard
    vs. flag, and the real-world effect. Surface the quiet ones (pool placement,
    pref, board) the headline number distracts from.
-2. **Map leverage** — from the pipeline, how many live alternatives exist. Honest
+2. **Map leverage** — from `pipeline.md`, how many live alternatives exist. Honest
    competing interest (never fabricated) is your only real negotiating power; know
    exactly how much you have.
 3. **Prep the negotiation** — the 2–3 terms worth pushing on (rarely valuation

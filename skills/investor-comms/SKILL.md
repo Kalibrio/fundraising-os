@@ -1,16 +1,6 @@
 ---
 name: investor-comms
-type: skill
-description: Keep every investor warm — including the ones who said no — through consistent monthly updates and two parallel communication tracks, plus the public communication (announcements, social, launch posts) that surrounds a raise. Use this skill whenever the user wants to write an investor update, keep investors warm, follow up with a fund that passed, nurture their pipeline between milestones, announce a raise, draft a funding announcement, or run public comms around fundraising. Trigger it for monthly updates, "stay in touch with investors who passed", and any announce/launch/social-around-the-raise request. Consistency here — updating even when there's nothing dramatic to report — is what turns a "no" into a "yes" next round.
-triggers:
-  - "investor update"
-  - "keep investors warm"
-  - "monthly update"
-  - "announce the raise"
-  - "/investor-comms"
-author: Ludovic Bodin
-version: 1.0
-scheduled_routine: "Monthly, to both tracks"
+description: Keep every investor warm — including the ones who said no — through consistent monthly updates on two parallel communication tracks. Use this skill whenever the user wants to write an investor update or monthly update, keep investors warm, follow up with a fund that passed, or nurture their pipeline between milestones. Trigger it for monthly updates and any "stay in touch with investors who passed" request (it also points the way on announcing a closed raise). Consistency here — updating even when there's nothing dramatic to report — is what turns a "no" into a "yes" next round.
 ---
 
 # Investor Comms
@@ -18,12 +8,19 @@ scheduled_routine: "Monthly, to both tracks"
 Most founders go quiet after a "no" and silent between milestones. That's the
 mistake. The investors who pass this round are often the leads of your next one —
 *if* they watch you execute for six months. Warmth is built by consistency, not
-charisma. This skill runs that consistency, plus the public comms around the raise.
+charisma. This skill runs that consistency.
 
-## Prerequisite
+Suggested cadence: monthly, to both tracks, same week every month.
 
-Read `raise-context.md` for the facts, and the pipeline state from
-`pipeline` to know who's on which track.
+## Prerequisites
+
+- Read `pipeline.md` from the project folder to know who's on which track
+  (live/yes vs. passed) and who owns each relationship. If it's missing, run
+  `/pipeline` first — you can't segment tracks without the state.
+- Read `fundraising-plan.md` for the mode — in passive mode this skill IS the
+  raise (converting warmth over time); in active mode it's the between-milestones
+  layer. If missing, run `/fundraising-plan` first.
+- Read `raise-context.md` for the facts every update draws on.
 
 ## Two parallel tracks
 
@@ -55,26 +52,20 @@ The honest "challenges" line is the most important. Updates that are all wins re
 as PR and get skipped. Naming a real challenge — and later showing you solved it —
 is what makes investors trust the wins.
 
-## Public communication around the raise
+## Announcing the raise
 
-When the round closes (or for a planned announcement):
-- **The announcement post** — what you raised, from whom, what it's for, the
-  vision. Lead with the mission, not the money. Credit the leads.
-- **Founder social posts** — the story behind the raise, written in the founder's
-  voice (§13), not a press release. The "why now" and a thank-you to the people who
-  helped.
-- **Press note / one-paragraph boilerplate** — for any journalist or partner who
-  asks. Consistent facts with the data room and deck.
-Coordinate timing with the leads — never announce before they're ready.
+When the round closes: lead with the mission not the money, write it in the
+founders' own voices (§13), keep the facts reconciled with the deck and room,
+and never announce before the leads are ready — draft it then as ordinary
+writing work, coordinated with them.
 
 ## Procedure
 
-1. Identify the track (yes/live vs. passed) or the public-comms ask.
+1. Read `pipeline.md` and identify the track (yes/live vs. passed) for each
+   recipient.
 2. For updates: pull the same recurring metrics each month so progress is legible;
    write the honest-challenge line; make the asks specific.
-3. For public comms: lead with mission, match founder voice, keep facts reconciled
-   with deck/model/room, and confirm timing with leads.
-4. Keep a consistent cadence — the value is in showing up every month, on time.
+3. Keep a consistent cadence — the value is in showing up every month, on time.
 
 ## Principles
 

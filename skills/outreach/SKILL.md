@@ -1,6 +1,6 @@
 ---
 name: outreach
-description: Write outreach that reads like it was written for one specific investor, by one specific founder — cold emails, intro-request notes, and the message that rides along a warm intro — each grounded in real research on that partner and drafted in the voice of the founder who owns the relationship. Use this skill whenever the user wants to write investor emails, cold outreach to VCs, a message to send a fund, an intro request, or wants to personalise their fundraising outreach. Trigger it after the investor list and warm-intro map exist. Never produces templated mail-merge spam — each message is built from that partner's actual thesis and a real reason to talk now.
+description: "Write outreach that reads like it was written for one specific investor, by one specific founder — cold emails, intro-request notes, and the message that rides along a warm intro — each grounded in real research on that partner and drafted in the voice of the founder who owns the relationship. Use this skill whenever the user wants to write investor emails, cold outreach to VCs, a message to send a fund, an intro request, or wants to personalise their fundraising outreach. Trigger it after the investor list and warm-intro map exist. Never produces templated mail-merge spam — each message is built from that partner's actual thesis and a real reason to talk now."
 ---
 
 # Outreach
@@ -10,13 +10,27 @@ mail-merge in one line. Each message must prove you researched *them*, give one
 concrete reason this is relevant to them *now* — and come from the right founder,
 in that founder's actual voice.
 
+Prepare drafts by default. Generating a draft does not mean it was sent and must
+not advance a thread to Contacted. Send or publish only when the user explicitly
+requests it and an appropriate integration is available; record a sent date only
+after confirmed delivery or a user-reported send.
+
+Research with the web tools available in the host app. If browsing is unavailable,
+work from supplied sources and label unverified facts; do not claim fresh research
+or invent investor details, relationships, or citations.
+
+Use the user's instructions and existing decisions as the authority. Read and write
+raise artifacts in the user's project folder, not the installed skill directory.
+In chat-only sessions, use the supplied files and return updated artifacts inline
+or as downloads; do not claim a project file was saved unless it was.
+
 ## Prerequisites
 
 - `fundraising-plan.md` from the project folder — the mode sets the shape:
   active means waves on a clock, passive means opportunistic single sends. If
-  it's missing, run `/fundraising-plan` first.
+  it's missing, run `fundraising-plan` first.
 - `investors.tsv` (written by `investor-list`) — the partner, the fit, the warm
-  path. If it's missing, run `/investor-list` first.
+  path. If it's missing, run `investor-list` first.
 - The warm-intro map (`warm-intro-map`) — to know if this is warm or cold, and
   which founder holds the path.
 - `raise-context.md` §1, §4, §9, §13 — one-liner, traction, spine, voice.
@@ -40,7 +54,7 @@ signed by the CTO reads as ghostwritten, because it is.
 
 1. **Research the one hook.** For this partner, find the single most specific, true
    reason to reach out now: a company they backed that rhymes with yours, a thesis
-   they published, a market view they hold. Use `web_search`; cite the hook to
+   they published, a market view they hold. Use the available web search tool; cite the hook to
    yourself so it's real, not flattery.
 2. **Open with the hook, not yourself.** First line references them or the timing.
    Never open "I'm the founder of X and we're raising."

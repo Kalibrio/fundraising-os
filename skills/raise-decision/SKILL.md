@@ -1,6 +1,6 @@
 ---
 name: raise-decision
-description: Decide whether and when to raise — as a team, before any fundraising machinery runs. Use this skill whenever the user asks "should we raise", "do we need to raise money", "when should we raise", "are we ready to raise", "raise or bootstrap", says they're thinking about raising, or is weighing outside capital against alternatives. Also trigger it whenever any downstream fundraising skill (fundraising-plan, investor-list, outreach, deck, pipeline…) is invoked and no `raise-decision.md` exists — the machine must not start on an undecided question. Designed for founding teams of 1–5; surfaces founder disagreements instead of papering over them, and is explicitly allowed to answer "don't raise".
+description: "Decide whether and when to raise — as a team, before any fundraising machinery runs. Use this skill whenever the user asks \"should we raise\", \"do we need to raise money\", \"when should we raise\", \"are we ready to raise\", \"raise or bootstrap\", says they're thinking about raising, or is weighing outside capital against alternatives. Also trigger it whenever any downstream fundraising skill (fundraising-plan, investor-list, outreach, deck, pipeline…) is invoked and no `raise-decision.md` exists — the machine must not start on an undecided question. Designed for founding teams of 1–5; surfaces founder disagreements instead of papering over them, and is explicitly allowed to answer \"don't raise\"."
 ---
 
 # Raise Decision
@@ -10,6 +10,11 @@ that's allowed to say no. Raising is a five-year relationship, permanent dilutio
 and months of founder attention — taken on because it changes the company's
 trajectory, not because raising is what startups do. Decide first, together,
 on paper. Then run the machine, or don't.
+
+Use the user's instructions and existing decisions as the authority. Read and write
+raise artifacts in the user's project folder, not the installed skill directory.
+In chat-only sessions, use the supplied files and return updated artifacts inline
+or as downloads; do not claim a project file was saved unless it was.
 
 ## Prerequisite
 
@@ -87,7 +92,7 @@ verdict, not a footnote to it.
 Never default to "raise". Pick one:
 
 - **RAISE NOW** — the signals line up and the team is aligned (or has resolved
-  its disagreements). Next step: run `/fundraising-plan` to choose how.
+  its disagreements). Next step: complete `raise-context`, then run `fundraising-plan` to choose how.
 - **NOT YET** — the right move at the wrong time. Define the **milestone gate**:
   the specific numbers or events that flip the answer ("MRR crosses $20k",
   "retention D30 > 25%", "design-partner LOIs signed") plus a **revisit date**.
@@ -111,7 +116,7 @@ Per-founder positions: [founder → gut call → key concern, one line each]
 Disagreements & how resolved: [each one, and the resolution — or "open, discuss on (date)"]
 Milestone gate (if NOT YET): [specific numbers/events] — revisit: [date]
 Instead (if DON'T RAISE): [the chosen alternative and first step]
-Next step: [/fundraising-plan | build until gate | alternative path]
+Next step: [raise-context → fundraising-plan | build until gate | alternative path]
 ```
 
 `fundraising-plan` reads this file and will not run an active raise against a

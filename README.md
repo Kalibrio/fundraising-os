@@ -1,121 +1,127 @@
 # The Fundraising OS
 
-> "Most rounds aren't lost on the pitch. They're lost on the process — the list you never built, the intro you didn't map, the follow-up that landed three days late."
+**13 skills for Claude Code and Codex to decide, prepare and run a startup raise.**
 
-Inbound won't fill a round. You have to build the target list yourself, research the right partners, find the warm paths in, write outreach that reads like it was written for one specific investor, track every conversation, and keep it all moving in parallel without dropping a thread. And once you're in conversations, the operational signals matter as much as the pitch — how fast you follow up, how specific your outreach is, how ready your data room is the moment someone asks, how consistently you keep investors warm even when there's nothing to report.
+Decide whether and when to raise, build the target list, find warm paths, prepare
+the story and numbers, draft outreach, and keep every investor thread moving.
+The same Markdown skills work in both apps and share the same project files.
+Built by Ludovic Bodin, author of *Atomic Scaling*. Free under the MIT license;
+your AI app's subscription or usage charges still apply.
 
-I'm Ludovic Bodin. I wrote *Atomic Scaling* and built [Atomic Scaling OS](https://os.atomicscaling.com) to run a company's growth on the 3P3R Method®. **The Fundraising OS** is its companion: 13 Claude skills that run the raise as a system — starting with whether and when to raise at all — so you can spend your attention on the conversations that matter.
+[Website](https://fundraising.atomicscaling.com/) · [Full installation guide](INSTALL.md)
 
-The two biggest strategic choices in a raise aren't which funds. The first is **whether to raise at all** — `/raise-decision` puts that question to every founder independently, runs the dilution math and the alternatives, and returns a verdict that is allowed to say no. The second is **how** you raise: a quiet, opportunistic *passive* process, or a sharp, time-boxed *active* one. The OS makes both calls deliberately, then configures its own intensity to match.
+## Start in Claude Code
 
-This is a **Human-Assisted Autonomous Organization (HAAO)**. The skills do the work. You make the calls.
+Run in a Claude Code terminal session:
 
-Thirteen specialists, all slash commands, all Markdown, all free, MIT license. Built for founding teams, not just solo founders. Fork it. Adapt it. Raise with it.
-
-## Who this is for
-
-**Founding teams deciding whether to raise** — the decision skill collects every founder's position independently, surfaces the disagreements, and returns a verdict with teeth.
-
-**Founders running an early raise** — pre-seed through Series A — who can't rely on inbound and want the operational process handled with discipline.
-
-**Solo and small teams** — who'd rather spend their hours in investor conversations than in a spreadsheet of follow-ups.
-
-**Anyone who read *Atomic Scaling*** — and wants the same systematic leverage applied to fundraising.
-
-## The one thing to do first
-
-Run `/raise-decision`. Before any deck, list, or email, it answers the question that decides everything else: should you raise at all, and now? Each founder answers a short questionnaire independently; the skill surfaces where you disagree, runs the dilution math in dollars-per-founder, weighs the alternatives, and returns one of three verdicts — **raise now**, **not yet** (with the milestone gate that flips it), or **don't raise** (with what to do instead).
-
-If the verdict is raise: run `/raise-context` next. It interviews you, builds your single source-of-truth file (`raise-context.md`), pressure-tests every claim, and tells you exactly what's missing before it reaches an investor. **Every other skill inherits its numbers, names, and narrative from this file.**
-
-## Quick start
-
-1. Install the Fundraising OS (see below)
-2. Run `/raise-decision` — decide, as a team, whether and when to raise
-3. Run `/raise-context` — build your source of truth
-4. Run `/fundraising-plan` — decide passive vs. active vs. hybrid, set the intensity
-5. Run `/investor-list` — build the target list sized to your mode
-
-Stop there. You'll know if this is for you.
-
-## Install — 30 seconds
-
-**Requirements:** [Claude Code](https://docs.claude.com/en/docs/claude-code) (v1.0.33+) and Git.
-
-> Want the full walkthrough — including how to use the skills in Claude.ai web chat, trigger phrases, and troubleshooting? See **[INSTALL.md](INSTALL.md)**.
-
-### Option A: Install from marketplace (recommended)
-
-Open Claude Code and run:
-
-```
+```text
 /plugin marketplace add kalibrio/fundraising-os
-```
-
-Then install the plugin:
-
-```
 /plugin install fundraising-os@fundraising-os
+/reload-plugins
+/fundraising-os:raise-decision
 ```
 
-### Option B: Manual install
+The `fundraising-os:` prefix is required for plugin commands. Desktop users can
+manage plugins through the Code tab's Plugins menu; see [INSTALL.md](INSTALL.md).
 
-Run this in your **terminal** (not inside Claude Code):
+## Start in Codex
 
-```bash
-git clone https://github.com/kalibrio/fundraising-os.git
-cp -R fundraising-os/skills/* ~/.claude/skills/
+Download and extract the [repository ZIP](https://github.com/Kalibrio/fundraising-os/archive/refs/heads/master.zip),
+or use your existing checkout. From that directory, run in a terminal
+(Python 3.9+):
+
+```sh
+python3 scripts/install.py --app codex --project /path/to/my-raise
 ```
 
-Then restart Claude Code (or start a new session) — the skills load from `~/.claude/skills/`.
+Open your raise folder in Codex, start a new conversation and run:
 
-### Share with your team (optional)
-
-```bash
-git clone https://github.com/kalibrio/fundraising-os.git /tmp/fundraising-os && mkdir -p .claude/skills && cp -R /tmp/fundraising-os/skills/* .claude/skills/ && rm -rf /tmp/fundraising-os
+```text
+$raise-decision
 ```
 
-Everything lives inside `.claude/`. Nothing touches your PATH or runs in the background.
+The installer includes all 13 skills and their references in `.agents/skills/`.
+Use `--app both` to also install standalone Claude skills in `.claude/skills/`.
+It protects existing skills; `--replace` backs up different versions before
+updating. [Details, updates and Claude.ai web instructions →](INSTALL.md)
 
-## The Raise Loop
+## The first three steps
 
-The Fundraising OS is a process, not a collection of tools. Five phases, thirteen skills, five durable files. The phases run roughly in order; warmth runs the whole time, and the close comes at the end.
+1. **Decide:** `raise-decision` gathers each founder's position and returns
+   **raise now**, **not yet** (with measurable milestones), or **don't raise**.
+2. **Set the facts:** if raising, `raise-context` builds `raise-context.md`, the
+   source of truth for numbers, narrative, team and networks. Unknowns stay `TBD`.
+3. **Plan the process:** `fundraising-plan` chooses passive, active or hybrid,
+   names the raise lead and sets the intensity before research or outreach.
 
-**Decide → Foundation → Build → Run → Sustain & Close**
-
-`/raise-decision` settles whether and when to raise — as a team. `/raise-context` defines the source of truth that every skill reads. `/fundraising-plan` decides whether you run a passive, active, or hybrid process and writes the mode to `fundraising-plan.md` — which every downstream skill reads before it runs. `/investor-list` and `/warm-intro-map` build the targets (`investors.tsv`) and the paths in; `/deck` and `/financial-projection` sharpen the story and the numbers. `/outreach`, `/pipeline`, and `/data-room` run the live process — `pipeline.md` is the durable state where nothing drops, with a named founder owning every next action. `/investor-comms` keeps every investor warm — including the ones who passed — `/pace` keeps every artifact in sync, and `/closing` drives a clean window to the wire.
+Invoke by app: `/fundraising-os:<name>` for the Claude plugin,
+`/<name>` for standalone Claude skills, or `$<name>` for Codex.
 
 ## The 13 skills
 
-### Decide
-- **`/raise-decision`** — Decision Engine. Whether and when to raise, decided as a team: independent founder questionnaires, dilution math in dollars-per-founder, the alternatives to venture money, and a verdict with teeth — raise now, not yet (milestone gate), or don't raise.
+| Phase | Skill | Output or purpose |
+|---|---|---|
+| Decide | `raise-decision` | Team decision, dilution math, milestone gates → `raise-decision.md` |
+| Foundation | `raise-context` | Facts, narrative and founder networks → `raise-context.md` |
+| Foundation | `fundraising-plan` | Mode, timing, ownership and decision gates → `fundraising-plan.md` |
+| Build | `investor-list` | Researched, ranked partners sized to your mode → `investors.tsv` |
+| Build | `warm-intro-map` | Verified or unverified introduction paths and forwardable drafts |
+| Build | `deck` | Narrative and slide content → `deck.md`; editable deck when tools permit |
+| Build | `financial-projection` | Driver-based model, downside case and assumptions memo |
+| Run | `outreach` | Partner-specific email drafts in the relationship owner's voice |
+| Run | `pipeline` | Durable thread state → `pipeline.md`; brief and follow-up drafts |
+| Run | `data-room` | Diligence index, claim-to-proof map and ranked gaps |
+| Sustain | `investor-comms` | Updates for live investors and those who passed |
+| Sustain | `pace` | Next skill, artifact consistency and founder workload |
+| Close | `closing` | Term-sheet explanation, negotiation preparation and close checklist |
 
-### Foundation
-- **`/raise-context`** — Context Engine. The single source of truth. Interviews you (and maps each founder's network), pressure-tests every claim, flags what's missing before it reaches an investor.
-- **`/fundraising-plan`** — Raise Strategist. Passive vs. active vs. hybrid. Sets the mode, names the raise lead, and writes the intensity every skill downstream reads.
+## Shared files, on-demand work
 
-### Build
-- **`/investor-list`** — Target Builder. The funds worth your time — sized to your mode (~40 active, a curated ~10 passive) — researched, scored by fit, and written to a durable `investors.tsv`.
-- **`/warm-intro-map`** — Path Finder. The strongest warm path to each partner, plus the forwardable note your network can send in 15 seconds.
-- **`/deck`** — Narrative Architect. Story first, slides second. Headlines that are claims; a traction page partners screenshot.
-- **`/financial-projection`** — Model Builder. A driver-based model plus the one-page assumptions memo you actually defend.
+Open the same raise folder in Claude Code or Codex to continue the work. Finish
+one app's edits before using the other on those files. The package has no
+concurrent-edit synchronization.
 
-### Run
-- **`/outreach`** — Message Writer. Outreach written for one partner, in the voice of the founder who owns the relationship — a researched hook, one proof, a small ask. Never mail-merge.
-- **`/pipeline`** — Process Manager. A durable `pipeline.md` read and rewritten every run: stage, days-since-touch, and a named founder owning every next action. Weekly Monday brief grouped by owner. Nothing drops — across sessions.
-- **`/data-room`** — Diligence Anticipator. A data room that pre-answers DD. Claim-to-proof map, ranked gap list, staged access.
+These are skills that run **when invoked**, not an installed background service.
+Daily scans, weekly briefs and monthly updates are suggested cadences; recurring
+runs need a separately configured host-app schedule. No email, calendar, CRM or
+Drive integration is bundled. Supply current information or connect those tools
+separately. A draft is not a sent email and does not reset last contact.
 
-### Sustain & Close
-- **`/investor-comms`** — Warmth Engine. Monthly updates and two parallel tracks (yes & no). Out-execute the reason they passed, in writing.
-- **`/pace`** — Chief of Staff. Decides which skill runs next, keeps the plan, sheet, and pipeline files consistent with each other, and protects founder attention. The glue that orchestrates the whole raise.
-- **`/closing`** — Close Driver. Plain-language term-sheet readout, the terms that actually matter, negotiation prep, the close window. Not legal advice.
+Research uses the host's web tools; without browsing, supplied evidence is used
+and unverified details are marked. Decks and spreadsheets use the host's available
+artifact tools or code libraries, without assuming a skill named `pptx` or `xlsx`.
+If the session cannot create files, it returns labelled text/CSV fallbacks.
+See [capabilities and limits](INSTALL.md#what-runs-and-what-does-not).
 
 ## Honest by construction
 
-These skills draft; you decide. They never send an email, commit to terms, or make a representation on your behalf. No skill fabricates a number, a name, or a claim — if the context file lacks it, the skill flags the gap rather than inventing it, because anything overstated surfaces in diligence and ends the conversation. `/closing` explains terms so you can brief your lawyer efficiently; it is not legal advice.
+You make the decisions. The skills prepare material and maintain the process;
+they do not automatically send messages, share a data room, or commit to terms.
+External actions require your instructions and an available integration. Missing
+facts are surfaced instead of invented. `closing` helps you brief your lawyer;
+it does not replace legal advice.
+
+## Development and verification
+
+Both plugin manifests point to the same `skills/` directory. The Claude
+marketplace installs the plugin; Codex users can install project skills with the
+bundled installer. The `.codex-plugin/plugin.json` manifest is also available for
+Codex plugin packagers.
+
+```sh
+python3 -m pip install -r requirements-dev.txt
+python3 -m unittest discover -s tests -v
+claude plugin validate .claude-plugin/plugin.json
+claude plugin validate .claude-plugin/marketplace.json
+claude plugin validate skills
+```
+
+Use the [synthetic runtime fixture](tests/SMOKE.md) to check actual behavior in
+both apps. See [AGENTS.md](AGENTS.md) for maintainer and deployment instructions.
 
 ## License
 
-MIT — see [LICENSE](LICENSE). Fork freely; pull requests welcome.
+[MIT](LICENSE). Fork freely; pull requests welcome.
 
-Built by [Ludovic Bodin](https://atomicscaling.com) · Author of *Atomic Scaling*.
+Built by [Ludovic Bodin](https://atomicscaling.com) · Companion to
+[Atomic Scaling OS](https://os.atomicscaling.com).

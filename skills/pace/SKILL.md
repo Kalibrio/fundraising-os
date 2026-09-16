@@ -1,6 +1,6 @@
 ---
 name: pace
-description: The orchestration layer of the Fundraising OS — decides which skill runs next and why, keeps the durable artifacts (raise-decision, raise-context, fundraising-plan, investors.tsv, pipeline.md) consistent with each other, and protects the founders' attention from the raise itself. Use this skill when the user asks how to sequence the fundraising work, which skill or phase comes next, whether the machine is in sync, how to keep the raise on track or orchestrate it, or wants a chief-of-staff view over the whole process. (For "what should I do next" on live investor threads — follow-ups, who to chase — that's the pipeline skill; pace answers "which part of the machine runs next".)
+description: "The orchestration layer of the Fundraising OS — decides which skill runs next and why, keeps the durable artifacts (raise-decision, raise-context, fundraising-plan, investors.tsv, pipeline.md) consistent with each other, and protects the founders' attention from the raise itself. Use this skill when the user asks how to sequence the fundraising work, which skill or phase comes next, whether the machine is in sync, how to keep the raise on track or orchestrate it, or wants a chief-of-staff view over the whole process. (For \"what should I do next\" on live investor threads — follow-ups, who to chase — that's the pipeline skill; pace answers \"which part of the machine runs next\".)"
 ---
 
 # Pace
@@ -10,6 +10,16 @@ not generate raise content, track investor threads, or write briefs about who to
 email — `pipeline` owns what needs action. `pace` owns three things only: the
 **sequence** (which skill runs next), the **sync** (do the artifacts agree), and
 the **attention budget** (is the raise eating the company).
+
+This skill runs when invoked. Its cadence is a recommendation, not an installed
+schedule. Use the project files and user-supplied updates; do not imply that email,
+calendar or CRM activity has been synced unless an available, authorized
+integration actually supplied it. Report the date and source of the latest data.
+
+Use the user's instructions and existing decisions as the authority. Read and write
+raise artifacts in the user's project folder, not the installed skill directory.
+In chat-only sessions, use the supplied files and return updated artifacts inline
+or as downloads; do not claim a project file was saved unless it was.
 
 ## When this runs
 
@@ -65,7 +75,7 @@ Sync check: [artifacts consistent / DRIFT: what disagrees, fix via which skill]
 Attention check: [load per founder — anything eating the company]
 ```
 
-For "what needs action on investor threads", route to `/pipeline` — that's its
+For "what needs action on investor threads", route to `pipeline` — that's its
 brief, not this one's.
 
 ## Principles

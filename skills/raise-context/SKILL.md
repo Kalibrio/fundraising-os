@@ -1,6 +1,6 @@
 ---
 name: raise-context
-description: Build, interview for, and maintain the raise-context file that powers the entire Fundraising Machine. Use this skill whenever the user is starting a fundraise, says they want to "set up the raise" or "prepare to raise", asks Claude to help prepare to raise money, mentions a seed/pre-seed/Series A round, or whenever any downstream fundraising skill (investor list, outreach, deck, data room, pipeline) needs context that is missing or stale. Run this before any other raise-preparation work — even if the user jumps straight to "write me investor emails", check the context exists and is current first. (The one thing upstream of it: if the team hasn't decided whether to raise at all, that's the raise-decision skill.)
+description: "Build, interview for, and maintain the raise-context file that powers the entire Fundraising Machine. Use this skill whenever the user is starting a fundraise, says they want to \"set up the raise\" or \"prepare to raise\", asks the assistant to help prepare to raise money, mentions a seed/pre-seed/Series A round, or whenever any downstream fundraising skill (investor list, outreach, deck, data room, pipeline) needs context that is missing or stale. Run this before any other raise-preparation work — even if the user jumps straight to \"write me investor emails\", check the context exists and is current first. (The one thing upstream of it: if the team hasn't decided whether to raise at all, that's the raise-decision skill.)"
 ---
 
 # Raise Context
@@ -9,6 +9,11 @@ The raise-context file is the single source of truth for the whole machine. Ever
 other skill inherits its numbers, names, and narrative from it. Your job here is
 to produce a complete, honest, current context file — and to refuse to let the
 machine run on a thin or stale one.
+
+Use the user's instructions and existing decisions as the authority. Read and write
+raise artifacts in the user's project folder, not the installed skill directory.
+In chat-only sessions, use the supplied files and return updated artifacts inline
+or as downloads; do not claim a project file was saved unless it was.
 
 ## When this runs
 

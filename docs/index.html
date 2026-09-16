@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>The Fundraising OS with Claude — 13 Claude Skills to Decide, Prepare, and Run Your Raise</title>
-<meta name="description" content="13 Claude skills that run a startup raise as a system — the whether/when decision, target list, warm intros, deck, model, outreach, pipeline, data room, and the close. A Human-Assisted Autonomous Organization for fundraising. Free, MIT license." />
-<meta name="keywords" content="fundraising OS, Claude skills, raise seed round, investor list, warm intro, data room, pipeline, Ludovic Bodin, Atomic Scaling, passive fundraising, active fundraising" />
-<meta property="og:title" content="The Fundraising OS with Claude — Run your raise like a system" />
-<meta property="og:description" content="13 Claude skills for the raise: the whether/when decision, targets, intros, deck, model, outreach, pipeline, data room, warmth, close. Free, MIT." />
+<title>Fundraising OS — 13 Skills for Claude Code and Codex</title>
+<meta name="description" content="13 skills for Claude Code and Codex that run a startup raise as a system — the whether/when decision, target list, warm intros, deck, model, outreach, pipeline, data room, and the close. An on-demand fundraising workflow with shared project files. Free, MIT license." />
+<meta name="keywords" content="fundraising OS, Claude Code skills, Codex skills, raise seed round, investor list, warm intro, data room, pipeline, Ludovic Bodin, Atomic Scaling, passive fundraising, active fundraising" />
+<meta property="og:title" content="Fundraising OS — Claude Code + Codex" />
+<meta property="og:description" content="13 skills for Claude Code and Codex for the raise: the whether/when decision, targets, intros, deck, model, outreach, pipeline, data room, warmth, close. Free, MIT." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://fundraising.atomicscaling.com/" />
 <meta property="og:image" content="https://fundraising.atomicscaling.com/ludovic.jpg" />
@@ -217,6 +217,17 @@
   }
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
   :focus-visible{outline:2px solid var(--green);outline-offset:3px}
+
+  .install-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;margin-top:2.5rem}
+  .install-option{min-width:0;background:var(--bg-2);border:1px solid var(--border);padding:1.8rem;scroll-margin-top:82px}
+  .install-option h3{font-size:1.8rem}
+  .install-option p{color:var(--cream-dim);font-size:.94rem}
+  .install-option pre{background:#060606;border:1px solid var(--border-2);padding:1rem;white-space:pre-wrap;overflow-wrap:anywhere;font-family:var(--mono);font-size:.76rem;line-height:1.7;color:var(--cream)}
+  .install-option .copy{background:transparent;border:1px solid var(--green-border);color:var(--green);padding:.6rem .85rem;font:inherit;font-size:.8rem;cursor:pointer;border-radius:2px}
+  .guide-link{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+  .install-note{color:var(--cream-dim);font-size:.88rem;margin-top:1.5rem}
+  .pathb code,.qa code{overflow-wrap:anywhere}
+  @media(max-width:900px){.install-options{grid-template-columns:1fr}.install-option{padding:1.3rem}.hero{padding-top:4.5rem}.install-banner{font-size:.8rem}}
 </style>
 </head>
 <body>
@@ -227,7 +238,7 @@
       <img class="brand-logo" src="atomic-logo.jpg" alt="Atomic Scaling" />
       <span class="brand-sub">Fundraising OS</span>
     </a>
-    <button class="burger" aria-label="Menu" onclick="document.getElementById('nl').classList.toggle('open')">☰</button>
+    <button class="burger" aria-label="Menu" aria-controls="nl" aria-expanded="false">☰</button>
     <nav class="nav-links" id="nl">
       <a href="#problem">Why</a>
       <a href="#loop">The Loop</a>
@@ -244,16 +255,15 @@
 
 <section class="hero">
   <div class="wrap">
-    <span class="badge"><span class="d"></span> Open Source · MIT License · 13 Claude Skills</span>
+    <span class="badge"><span class="d"></span> Open Source · MIT License · 13 Skills · Claude Code + Codex</span>
     <h1>The Fundraising OS.<br><em>Run your raise like a system.</em></h1>
-    <p class="hero-sub">Most rounds aren't lost on the pitch. They're lost on the process — the list you never built, the intro you didn't map, the follow-up that landed three days late. <b>Thirteen Claude skills run the raise as a system — starting with whether and when to raise at all</b> — so your attention goes to the conversations that matter.</p>
+    <p class="hero-sub">Most rounds aren't lost on the pitch. They're lost on the process — the list you never built, the intro you didn't map, the follow-up that landed three days late. <b>Thirteen skills for Claude Code and Codex run the raise as a system — starting with whether and when to raise at all</b> — so your attention goes to the conversations that matter.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="https://github.com/kalibrio/fundraising-os">★ Star on GitHub</a>
+      <a class="btn btn-primary" href="#install">Get the skills →</a>
       <a class="btn btn-secondary" href="#skills">See the 13 skills →</a>
     </div>
     <div class="install-banner">
-      <code id="cmd1">/plugin marketplace add kalibrio/fundraising-os</code>
-      <button class="copy" data-copy="cmd1">Copy</button>
+      <span class="mono">One set of skills. Two apps. Your project files.</span>
     </div>
     <p class="byline">By <b>Ludovic Bodin</b> · Author of <b>Atomic Scaling</b></p>
 
@@ -278,12 +288,12 @@
 
 <div class="stats">
   <div class="wrap stats-in">
-    <div class="stat"><div class="n">13</div><div class="l">Claude Skills</div></div>
+    <div class="stat"><div class="n">13</div><div class="l">Shared Skills</div></div>
     <div class="stat"><div class="n">5</div><div class="l">Raise Phases</div></div>
     <div class="stat"><div class="n">1</div><div class="l">Context File</div></div>
     <div class="stat"><div class="n sm">3 modes</div><div class="l">Passive · Active · Hybrid</div></div>
     <div class="stat"><div class="n sm">MIT</div><div class="l">License</div></div>
-    <div class="stat"><div class="n sm">2</div><div class="l">Commands to install</div></div>
+    <div class="stat"><div class="n sm">2</div><div class="l">Claude Code + Codex</div></div>
   </div>
 </div>
 
@@ -291,7 +301,7 @@
   <div class="wrap">
     <div class="label">The thesis</div>
     <p class="big">Inbound won't fill a round. You build the list, find the paths in, and keep every thread moving in parallel — <em>without dropping one.</em></p>
-    <p class="q">And once you're in conversations, the operational signals matter as much as the pitch: how fast you follow up, how specific your outreach is, how ready your data room is the moment someone asks. The OS handles both — and configures its own intensity to whether you're running a quiet, passive raise or a sharp, time-boxed process.</p>
+    <p class="q">And once you're in conversations, the operational signals matter as much as the pitch: how fast you follow up, how specific your outreach is, how ready your data room is the moment someone asks. Run the skills when you need them; each uses your shared project files and adapts to a quiet, passive raise or a sharp, time-boxed process.</p>
   </div>
 </section>
 
@@ -318,7 +328,7 @@
     <p class="sec-sub">It starts with a decision, not a deck. You fill the context once; every skill inherits its numbers, names, and narrative. The phases run roughly in order, with warmth running the whole time and the close at the end.</p>
     <div class="phases">
       <div class="phase"><div class="pn">Phase 00</div><h3>Decide</h3><p>Whether and when to raise — each founder weighs in, the verdict has teeth.</p><ul><li>raise-decision</li></ul></div>
-      <div class="phase"><div class="pn">Phase 01</div><h3>Foundation</h3><p>Set the source of truth, then decide how you're raising at all.</p><ul><li>raise-context</li><li>fundraising-plan</li></ul></div>
+      <div class="phase"><div class="pn">Phase 01</div><h3>Foundation</h3><p>Set the source of truth, then choose how to run the raise.</p><ul><li>raise-context</li><li>fundraising-plan</li></ul></div>
       <div class="phase"><div class="pn">Phase 02</div><h3>Build</h3><p>Targets, paths in, the story, and the numbers behind it.</p><ul><li>investor-list</li><li>warm-intro-map</li><li>deck</li><li>financial-projection</li></ul></div>
       <div class="phase"><div class="pn">Phase 03</div><h3>Run</h3><p>Reach out, manage the pipeline, pre-answer diligence.</p><ul><li>outreach</li><li>pipeline</li><li>data-room</li></ul></div>
       <div class="phase"><div class="pn">Phase 04</div><h3>Sustain &amp; Close</h3><p>Keep everyone warm, pace the whole thing, and drive a clean window to the wire.</p><ul><li>investor-comms</li><li>pace</li><li>closing</li></ul></div>
@@ -330,48 +340,48 @@
   <div class="wrap">
     <div class="label">The 13 skills</div>
     <h2 class="sec-h">Thirteen specialists. One source of truth. <em>All free.</em></h2>
-    <p class="sec-sub">This is a Human-Assisted Autonomous Organization (HAAO) for your raise: the skills do the operational work and surface the calls only you can make.</p>
+    <p class="sec-sub">An on-demand workflow for your raise: invoke a skill in Claude Code or Codex to prepare materials, update the project files, and surface the decisions that need you. Scheduling and external integrations are configured separately.</p>
 
     <div class="skill-group">
       <div class="sg-head"><h3>Decide</h3><span class="meta">Phase 00 · whether &amp; when</span></div>
       <div class="skills">
-        <div class="scard"><div class="cmdname">/raise-decision</div><div class="role">Decision Engine</div><h4>Should you raise at all?</h4><p>Each founder answers a short questionnaire independently — readiness, dilution tolerance, time appetite. It surfaces where you disagree, runs the dilution math and the alternatives, and returns a verdict with teeth: raise now, not yet (with the milestone that flips it), or don\'t raise.</p></div>
+        <div class="scard"><div class="cmdname">raise-decision</div><div class="role">Decision Engine</div><h4>Should you raise at all?</h4><p>Each founder answers a short questionnaire independently — readiness, dilution tolerance, time appetite. It surfaces where you disagree, runs the dilution math and the alternatives, and returns a verdict with teeth: raise now, not yet (with the milestone that flips it), or don't raise.</p></div>
       </div>
     </div>
 
     <div class="skill-group">
       <div class="sg-head"><h3>Foundation</h3><span class="meta">Phase 01 · context &amp; strategy</span></div>
       <div class="skills">
-        <div class="scard"><div class="cmdname">/raise-context</div><div class="role">Context Engine</div><h4>The single source of truth</h4><p>Interviews you, pressure-tests every claim, and flags what's missing or weak before it ever reaches an investor. Everything downstream inherits this file.</p></div>
-        <div class="scard"><div class="cmdname">/fundraising-plan</div><div class="role">Raise Strategist</div><h4>Passive vs. active vs. hybrid</h4><p>Picks up the verdict from /raise-decision and sets the mode — a quiet "always slightly raising" or a sharp, time-boxed process — writing the intensity into a plan file every downstream skill reads.</p></div>
+        <div class="scard"><div class="cmdname">raise-context</div><div class="role">Context Engine</div><h4>The single source of truth</h4><p>Interviews you, pressure-tests every claim, and flags what's missing or weak before it ever reaches an investor. Everything downstream inherits this file.</p></div>
+        <div class="scard"><div class="cmdname">fundraising-plan</div><div class="role">Raise Strategist</div><h4>Passive vs. active vs. hybrid</h4><p>Picks up the verdict from raise-decision and sets the mode — a quiet "always slightly raising" or a sharp, time-boxed process — writing the intensity into a plan file every downstream skill reads.</p></div>
       </div>
     </div>
 
     <div class="skill-group">
       <div class="sg-head"><h3>Build</h3><span class="meta">Phase 02 · list, paths, story, model</span></div>
       <div class="skills">
-        <div class="scard"><div class="cmdname">/investor-list</div><div class="role">Target Builder</div><h4>The 40 funds worth your time</h4><p>Researched and scored by fit, output as a paste-ready sheet with a fit tier and a warm-path flag per partner. Depth over volume — a clean 35 beats a bloated 80.</p></div>
-        <div class="scard"><div class="cmdname">/warm-intro-map</div><div class="role">Path Finder</div><h4>The best path to each partner</h4><p>Maps the strongest warm intro through your network and drafts the forwardable note your connector can send in fifteen seconds.</p></div>
-        <div class="scard"><div class="cmdname">/deck</div><div class="role">Narrative Architect</div><h4>Story first, slides second</h4><p>Headlines that are claims, not labels. A traction page partners screenshot. Hands the structure to the deck builder for the rendered file.</p></div>
-        <div class="scard"><div class="cmdname">/financial-projection</div><div class="role">Model Builder</div><h4>Defensible, not fantastical</h4><p>A driver-based model plus the one-page assumptions memo you actually defend. Runway and ask reconcile exactly with the deck.</p></div>
+        <div class="scard"><div class="cmdname">investor-list</div><div class="role">Target Builder</div><h4>The 40 funds worth your time</h4><p>Researched and scored by fit, output as a paste-ready sheet with a fit tier and a warm-path flag per partner. Depth over volume — a clean 35 beats a bloated 80.</p></div>
+        <div class="scard"><div class="cmdname">warm-intro-map</div><div class="role">Path Finder</div><h4>The best path to each partner</h4><p>Maps the strongest warm intro through your network and drafts the forwardable note your connector can send in fifteen seconds.</p></div>
+        <div class="scard"><div class="cmdname">deck</div><div class="role">Narrative Architect</div><h4>Story first, slides second</h4><p>Headlines that are claims, not labels. A traction page partners screenshot. Creates a deck with your app’s available tools, or returns clearly labelled slide content.</p></div>
+        <div class="scard"><div class="cmdname">financial-projection</div><div class="role">Model Builder</div><h4>Defensible, not fantastical</h4><p>A driver-based model plus the one-page assumptions memo you actually defend. Runway and ask reconcile exactly with the deck.</p></div>
       </div>
     </div>
 
     <div class="skill-group">
       <div class="sg-head"><h3>Run</h3><span class="meta">Phase 03 · reach, manage, anticipate</span></div>
       <div class="skills">
-        <div class="scard"><div class="cmdname">/outreach</div><div class="role">Message Writer</div><h4>Written for one partner</h4><p>A researched hook, one proof point, a small specific ask — never the same body with the name swapped. Warm and cold variants per target.</p></div>
-        <div class="scard"><div class="cmdname">/pipeline</div><div class="role">Process Manager</div><h4>Nothing drops</h4><p>A weekly Monday brief of what needs action, same-day follow-up generators, and stage tracking across every thread in parallel. Speed is the message.</p></div>
-        <div class="scard"><div class="cmdname">/data-room</div><div class="role">Diligence Anticipator</div><h4>Answers before they're asked</h4><p>The full index, a claim-to-proof map, a ranked gap list, and staged access. Ready the moment a partner asks — which is itself the signal.</p></div>
+        <div class="scard"><div class="cmdname">outreach</div><div class="role">Message Writer</div><h4>Written for one partner</h4><p>A researched hook, one proof point, a small specific ask — never the same body with the name swapped. Warm and cold variants per target.</p></div>
+        <div class="scard"><div class="cmdname">pipeline</div><div class="role">Process Manager</div><h4>Nothing drops</h4><p>A weekly Monday brief of what needs action, same-day follow-up generators, and stage tracking across every thread in parallel. Speed is the message.</p></div>
+        <div class="scard"><div class="cmdname">data-room</div><div class="role">Diligence Anticipator</div><h4>Answers before they're asked</h4><p>The full index, a claim-to-proof map, a ranked gap list, and staged access. Ready the moment a partner asks — which is itself the signal.</p></div>
       </div>
     </div>
 
     <div class="skill-group">
       <div class="sg-head"><h3>Sustain &amp; Close</h3><span class="meta">Phase 04 · warmth, tempo &amp; the wire</span></div>
       <div class="skills">
-        <div class="scard"><div class="cmdname">/investor-comms</div><div class="role">Warmth Engine</div><h4>Two tracks — yes and no</h4><p>Monthly updates that show up like clockwork, with an honest challenges line. Out-execute the reason they passed, in writing, and the next round writes itself.</p></div>
-        <div class="scard"><div class="cmdname">/pace</div><div class="role">Chief of Staff</div><h4>Keeps the machine in sync</h4><p>Decides which skill runs next and why, keeps the plan, sheet, and pipeline files consistent with each other, and protects founder attention. The glue that orchestrates the whole raise.</p></div>
-        <div class="scard"><div class="cmdname">/closing</div><div class="role">Close Driver</div><h4>The terms that actually matter</h4><p>A plain-language term-sheet readout — pool placement, preference, board — negotiation prep, and a real close window. Clarifies so you decide; not legal advice.</p></div>
+        <div class="scard"><div class="cmdname">investor-comms</div><div class="role">Warmth Engine</div><h4>Two tracks — yes and no</h4><p>Monthly update drafts when you run the skill, with an honest challenges line. Out-execute the reason they passed, in writing, and the next round writes itself.</p></div>
+        <div class="scard"><div class="cmdname">pace</div><div class="role">Chief of Staff</div><h4>Keeps the machine in sync</h4><p>Decides which skill runs next and why, keeps the plan, sheet, and pipeline files consistent with each other, and protects founder attention. The glue that orchestrates the whole raise.</p></div>
+        <div class="scard"><div class="cmdname">closing</div><div class="role">Close Driver</div><h4>The terms that actually matter</h4><p>A plain-language term-sheet readout — pool placement, preference, board — negotiation prep, and a real close window. Clarifies so you decide; not legal advice.</p></div>
       </div>
     </div>
   </div>
@@ -381,7 +391,7 @@
   <div class="wrap">
     <div class="label">Operating rhythm</div>
     <h2 class="sec-h">Plan → Build → Reach → Manage → Sustain → <em>Close</em></h2>
-    <p class="sec-sub">The skills run at the cadence a live raise runs. Each feeds the next; the pipeline keeps every thread in sync.</p>
+    <p class="sec-sub">A suggested cadence for invoking the skills. Each uses your latest project files. For recurring runs, configure a scheduled task in your app; this package does not install one or connect your inbox.</p>
     <div class="rhythm">
       <table>
         <thead><tr><th>When</th><th>What runs</th></tr></thead>
@@ -419,23 +429,39 @@ before the momentum leaks.
 
 <section id="install">
   <div class="wrap">
-    <div class="label">Install</div>
-    <h2 class="sec-h">Running in 5 minutes. <em>No terminal needed.</em></h2>
-    <p class="sec-sub">Two ways in: as a Claude Code plugin, or dropped straight into a Claude project on the web.</p>
-    <div class="steps">
-      <div class="step"><div class="num"></div><div><h4>Download Claude Code Desktop</h4><pre>Go to <b>https://claude.com/code</b> · download for your OS
-Open it and sign in with your Claude account.</pre></div></div>
-      <div class="step"><div class="num"></div><div><h4>Open any folder as a project</h4><pre>File → Open Folder… · pick any folder, even an empty one.
-The skills write their sheets and drafts into it.</pre></div></div>
-      <div class="step"><div class="num"></div><div><h4>Install the plugin (two commands)</h4><pre><b>/plugin marketplace add kalibrio/fundraising-os</b>
-<b>/plugin install fundraising-os@fundraising-os</b></pre></div></div>
-      <div class="step"><div class="num"></div><div><h4>Confirm 13 skills are loaded</h4><pre>Type "/" then "raise" — you should see:
-  /raise-decision   /raise-context   /fundraising-plan ...</pre></div></div>
-      <div class="step"><div class="num"></div><div><h4>Run your first skill</h4><pre><b>/raise-decision</b>
-# Should you raise at all? It asks each founder
-# independently — and gives a verdict with teeth.</pre></div></div>
+    <div class="label">Install · v1.2.0</div>
+    <h2 class="sec-h">Choose your app. <em>Use the same skills.</em></h2>
+    <p class="sec-sub">Claude Code and Codex use the same thirteen skills and raise files. Pick one install method per app, open your raise folder, and start with the decision.</p>
+    <div class="install-options">
+      <article class="install-option" id="install-claude">
+        <div class="label">Claude Code · Plugin</div>
+        <h3>Install, then decide.</h3>
+        <p>In a current Claude Code terminal session, run these slash commands one at a time:</p>
+        <pre id="claude-install">/plugin marketplace add kalibrio/fundraising-os
+/plugin install fundraising-os@fundraising-os
+/reload-plugins</pre>
+        <button class="copy" data-copy="claude-install" aria-label="Copy Claude installation commands">Copy commands</button>
+        <p>Then run your first skill:</p>
+        <pre>/fundraising-os:raise-decision</pre>
+        <p>Plugin commands include <code>fundraising-os:</code>. In the Claude desktop app, use the <b>Code</b> tab with a Local project; the Plugins menu manages installed plugins.</p>
+        <a class="guide-link" href="https://github.com/Kalibrio/fundraising-os/blob/master/INSTALL.md#claude-code--plugin">Claude setup and troubleshooting →</a>
+      </article>
+      <article class="install-option" id="install-codex">
+        <div class="label">Codex · Project skills</div>
+        <h3>Ask Codex to set it up.</h3>
+        <p>Open your raise folder in Codex and paste this setup request:</p>
+        <pre id="codex-install">Install all 13 skills from https://github.com/Kalibrio/fundraising-os into this project's .agents/skills directory, including references. Use the repository's scripts/install.py --app codex --project with this project's absolute path. Preserve existing skills that differ.</pre>
+        <button class="copy" data-copy="codex-install" aria-label="Copy Codex setup request">Copy setup request</button>
+        <p>After installation, start a new conversation in that folder:</p>
+        <pre>$raise-decision</pre>
+        <p>Or <a class="guide-link" href="https://github.com/Kalibrio/fundraising-os/archive/refs/heads/master.zip">download and extract the repository</a>, then run this in a terminal from that directory (Python 3.9+):</p>
+        <pre>python3 scripts/install.py --app codex --project /path/to/my-raise</pre>
+        <a class="guide-link" href="https://github.com/Kalibrio/fundraising-os/blob/master/INSTALL.md#codex--project-skills">Codex setup and troubleshooting →</a>
+      </article>
     </div>
-    <div class="pathb"><b>Path B — Claude.ai web, nothing to install.</b> Create a Claude project, add the thirteen <span class="mono">SKILL.md</span> files and the <span class="mono">raise-context.md</span> template to its knowledge, and drive it phase by phase in chat. Same machine, no terminal.</div>
+    <div class="pathb"><b>Use both apps.</b> The installer’s <code>--app both</code> option installs standalone skills for Claude Code and Codex in one raise folder. Use <code>/raise-decision</code> for standalone Claude skills and <code>$raise-decision</code> for Codex. Finish one app’s file edits before switching to the other. <a class="guide-link" href="https://github.com/Kalibrio/fundraising-os/blob/master/INSTALL.md#one-project-both-apps">Shared-folder setup →</a></div>
+    <div class="pathb"><b>Claude.ai web.</b> Add the relevant skill files and the bundled raise-context template to a Claude project, then ask for a skill in plain language. Save the outputs and supply the latest files in later chats. This is guided chat, with file generation dependent on your chat tools. <a class="guide-link" href="https://github.com/Kalibrio/fundraising-os/blob/master/INSTALL.md#claudeai-web--guided-chat">Web instructions →</a></div>
+    <p class="install-note">The skills are free under MIT. Your AI app’s subscription or usage charges still apply. No email, CRM connection, or background schedule is installed.</p>
   </div>
 </section>
 
@@ -444,12 +470,15 @@ The skills write their sheets and drafts into it.</pre></div></div>
     <div class="label">FAQ</div>
     <h2 class="sec-h">Common questions</h2>
     <div class="faq">
+      <details class="qa"><summary>Does it work in both Claude and Codex? <span class="plus">+</span></summary><p>Yes. The same thirteen skills work in Claude Code and Codex. Claude plugin commands use <code>/fundraising-os:raise-decision</code>; standalone Claude skills use <code>/raise-decision</code>; Codex uses <code>$raise-decision</code>. Both local apps can read the same raise folder. Claude.ai web uses the instructions through guided chat.</p></details>
+      <details class="qa"><summary>Does it run automatically or send investor emails? <span class="plus">+</span></summary><p>The skills run when invoked. Daily, weekly and monthly cadences are recommendations; recurring runs need a separately configured scheduled task in your app. No email, calendar, CRM or Drive integration is bundled. The skills draft messages; sending or sharing requires your instruction and a connected tool. A draft does not count as a sent email.</p></details>
+      <details class="qa"><summary>Will I get a PowerPoint deck and an Excel model? <span class="plus">+</span></summary><p>When your app can generate files, the skills use its presentation, spreadsheet or code tools to produce them. They do not require a separately named “pptx” or “xlsx” skill. In a session without those capabilities, you get clearly labelled slide content or a text/CSV model with assumptions, rather than a claim that a finished file was created.</p></details>
       <details class="qa"><summary>What's the difference between passive and active fundraising? <span class="plus">+</span></summary><p>Passive is "always slightly raising": a rolling instrument kept quietly open, warm inbound only, founder stays building — lower intensity, no public in-market signal, but weaker competitive tension. Active is a structured, time-boxed process: full list, parallel conversations, an engineered close window — better terms and speed, but it consumes the founder and a stalled process is visible. Hybrid — passive posture with active bursts — is the most common reality. The <span class="mono">fundraising-plan</span> skill makes that call deliberately, and then configures every other skill to match the mode you chose.</p></details>
-      <details class="qa"><summary>Can it tell us NOT to raise? <span class="plus">+</span></summary><p>Yes — that's the point of <span class="mono">/raise-decision</span>. Its three outcomes are raise now, not yet (with the specific milestones that flip the answer and a revisit date), and don't raise (with what to do instead — revenue, angels, debt, or staying bootstrapped). No path silently defaults to "raise".</p></details>
-      <details class="qa"><summary>Does it work for a team of founders? <span class="plus">+</span></summary><p>Yes. <span class="mono">/raise-decision</span> collects each founder's position independently and puts your disagreements on the table before you commit. Downstream, the pipeline tracks an owner per thread and outreach drafts in the voice of whoever owns the relationship. Share one project folder (a repo or synced drive) so the whole team reads the same context, plan, and pipeline files.</p></details>
-      <details class="qa"><summary>Do I need to be technical to use this? <span class="plus">+</span></summary><p>No. The skills are markdown — run them as slash commands in Claude Code, or drop them into a Claude project and use them in web chat. If you can paste a command and answer questions, you can run the whole raise.</p></details>
+      <details class="qa"><summary>Can it tell us NOT to raise? <span class="plus">+</span></summary><p>Yes — that's the point of <span class="mono">raise-decision</span>. Its three outcomes are raise now, not yet (with the specific milestones that flip the answer and a revisit date), and don't raise (with what to do instead — revenue, angels, debt, or staying bootstrapped). No path silently defaults to "raise".</p></details>
+      <details class="qa"><summary>Does it work for a team of founders? <span class="plus">+</span></summary><p>Yes. <span class="mono">raise-decision</span> collects each founder's position independently and puts your disagreements on the table before you commit. Downstream, the pipeline tracks an owner per thread and outreach drafts in the voice of whoever owns the relationship. Share one project folder (a private repo or synced drive) so the team reads the same context, plan, and pipeline files. Coordinate edits; the package does not merge simultaneous changes.</p></details>
+      <details class="qa"><summary>Do I need to be technical to use this? <span class="plus">+</span></summary><p>You can ask Codex to install the project skills, use the Claude Code plugin, or try the instructions in a Claude.ai project. The setup guide shows the exact commands. You supply the company facts and make the decisions.</p></details>
       <details class="qa"><summary>Who is this for? <span class="plus">+</span></summary><p>Founders and small founding teams — deciding whether to raise, or running an early raise (pre-seed through Series A) — who can't rely on inbound and want the operational process handled with discipline — so their attention goes to the conversations, not the spreadsheet.</p></details>
-      <details class="qa"><summary>How does this relate to Atomic Scaling OS? <span class="plus">+</span></summary><p>It's the companion OS. <a href="https://os.atomicscaling.com">Atomic Scaling OS</a> runs your growth operating system on the 3P3R Method®; the Fundraising OS runs the raise. Same HAAO model — the skills do the work, you make the calls — same MIT license.</p></details>
+      <details class="qa"><summary>How does this relate to Atomic Scaling OS? <span class="plus">+</span></summary><p>It's the companion OS. <a href="https://os.atomicscaling.com">Atomic Scaling OS</a> runs your growth operating system on the 3P3R Method®; the Fundraising OS runs the raise. Both turn repeatable work into skills while you make the decisions, under the same MIT license.</p></details>
       <details class="qa"><summary>Is the closing skill giving me legal advice? <span class="plus">+</span></summary><p>No. It explains term-sheet clauses in plain language and flags what's standard vs. off-market so you can decide and brief your lawyer efficiently. It never tells you what to sign — anything non-standard goes to a real startup lawyer.</p></details>
       <details class="qa"><summary>Can I fork and adapt it? <span class="plus">+</span></summary><p>Yes — MIT license, fork freely. Adapt the skills to your stage, sector, and geography, change the scoring, add your own. Pull requests welcome.</p></details>
     </div>
@@ -485,13 +514,27 @@ The skills write their sheets and drafts into it.</pre></div></div>
 </footer>
 
 <script>
-  document.querySelectorAll('.copy').forEach(b=>{
-    b.addEventListener('click',()=>{
-      const t=document.getElementById(b.dataset.copy).textContent;
-      navigator.clipboard.writeText(t).then(()=>{const o=b.textContent;b.textContent='Copied ✓';setTimeout(()=>b.textContent=o,1400);});
+  document.querySelectorAll('[data-copy]').forEach(button => {
+    button.addEventListener('click', async () => {
+      const original = button.textContent;
+      try {
+        await navigator.clipboard.writeText(document.getElementById(button.dataset.copy).textContent);
+        button.textContent = 'Copied ✓';
+      } catch {
+        button.textContent = 'Select the text above to copy';
+      }
+      setTimeout(() => { button.textContent = original; }, 2400);
     });
   });
-  document.querySelectorAll('#nl a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nl').classList.remove('open')));
+  const menu = document.querySelector('.burger');
+  const nav = document.getElementById('nl');
+  menu.addEventListener('click', () => {
+    menu.setAttribute('aria-expanded', String(nav.classList.toggle('open')));
+  });
+  document.querySelectorAll('#nl a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    menu.setAttribute('aria-expanded', 'false');
+  }));
 </script>
 </body>
 </html>

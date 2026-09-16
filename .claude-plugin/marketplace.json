@@ -1,18 +1,18 @@
 {
-    "name": "fundraising-os",
-    "metadata": {
-        "description": "The Fundraising OS — Claude skills that run a startup raise as a system, from the whether/when decision to the close."
-    },
-    "owner": {
-        "name": "Ludovic Bodin",
-        "email": "lbodin@gmail.com",
-        "url": "https://atomicscaling.com"
-    },
-    "plugins": [
-        {
-            "name": "fundraising-os",
-            "source": "./",
-            "description": "Claude skills that run the operational side of a startup fundraise — from deciding whether to raise, to the target list, outreach, pipeline, and close. By Ludovic Bodin, author of Atomic Scaling."
-        }
-    ]
+  "name": "fundraising-os",
+  "metadata": {
+    "description": "The Fundraising OS — 13 skills for Claude Code and Codex."
+  },
+  "owner": {
+    "name": "Ludovic Bodin",
+    "email": "lbodin@gmail.com",
+    "url": "https://atomicscaling.com"
+  },
+  "plugins": [
+    {
+      "name": "fundraising-os",
+      "source": "./",
+      "description": "Decide, prepare and run a startup raise with 13 skills and shared project files. Runs on demand; integrations and scheduling are optional."
+    }
+  ]
 }

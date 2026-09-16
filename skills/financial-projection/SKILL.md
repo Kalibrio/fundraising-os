@@ -1,6 +1,6 @@
 ---
 name: financial-projection
-description: Build the fundraising financial projection — the operating model, the assumptions behind it, and the one-page assumptions memo that survives investor scrutiny. Use this skill whenever the user wants a financial model, projections, forecast, revenue model, burn/runway analysis, unit economics, or "the numbers" for a raise; when they ask what to put in the model tab of the data room; or when an investor has asked for financials. Build it early in the raise and update it with new traction. Produces the model structure and assumptions; hand off to the xlsx skill to render the actual spreadsheet.
+description: "Build the fundraising financial projection — the operating model, the assumptions behind it, and the one-page assumptions memo that survives investor scrutiny. Use this skill whenever the user wants a financial model, projections, forecast, revenue model, burn/runway analysis, unit economics, or \"the numbers\" for a raise; when they ask what to put in the model tab of the data room; or when an investor has asked for financials. Build it early in the raise and update it with new traction. Produces the model structure and assumptions; create a working spreadsheet using the available spreadsheet or code-execution capability."
 ---
 
 # Financial Projection
@@ -9,6 +9,11 @@ Investors don't believe your forecast — they believe (or don't) your assumptio
 The model's job is to show you think clearly about how the business compounds, and
 that the ask in the deck is the right size for the milestone it buys. Build the
 assumptions first; the spreadsheet is just their arithmetic.
+
+Use the user's instructions and existing decisions as the authority. Read and write
+raise artifacts in the user's project folder, not the installed skill directory.
+In chat-only sessions, use the supplied files and return updated artifacts inline
+or as downloads; do not claim a project file was saved unless it was.
 
 ## Prerequisite
 
@@ -58,8 +63,18 @@ A seed model is driver-based and legible, not a 12-tab fortress. Build:
 - The base + downside case logic.
 - The one-page **assumptions memo**.
 
-Hand the structure to the **xlsx** skill to render the working spreadsheet — don't
-build the file by hand here.
+Save the assumptions memo as `financial-assumptions.md`. Use the spreadsheet
+skill or file-generation capability available in this environment to create
+`financial-model.xlsx`; do not assume a skill named `xlsx` exists. If no spreadsheet
+skill is available but code execution is, use an available library such as
+openpyxl or ExcelJS. Keep inputs separate from formulas and use cell references
+for revenue, expenses, cash and scenarios so changing an input updates the model.
+Verify the calculations against independently computed base and downside values,
+check opening cash + funding + net cash movement = closing cash, and recalculate
+with an available spreadsheet engine. If recalculation is unavailable, state that
+cached formula results are not verified and request recalculation on opening.
+If this session cannot create `.xlsx`, provide the model as CSV/TSV plus the
+formula map and memo, clearly labelled as a fallback rather than a working workbook.
 
 ## Principles
 

@@ -23,5 +23,20 @@
     "startup",
     "founder"
   ],
-  "skills": "./skills/"
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Fundraising OS",
+    "shortDescription": "Decide, prepare and run your raise.",
+    "longDescription": "13 fundraising skills for Claude Code and Codex: decide whether to raise, build the plan and materials, research investors, draft outreach, and maintain the pipeline. Runs on demand with shared project files.",
+    "developerName": "Ludovic Bodin",
+    "category": "Productivity",
+    "capabilities": [],
+    "websiteURL": "https://fundraising.atomicscaling.com",
+    "brandColor": "#3DD68C",
+    "defaultPrompt": [
+      "Help us decide whether and when to raise.",
+      "Set up our raise context.",
+      "Review our fundraising pipeline."
+    ]
+  }
 }

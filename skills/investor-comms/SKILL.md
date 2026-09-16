@@ -1,6 +1,6 @@
 ---
 name: investor-comms
-description: Keep every investor warm — including the ones who said no — through consistent monthly updates on two parallel communication tracks. Use this skill whenever the user wants to write an investor update or monthly update, keep investors warm, follow up with a fund that passed, or nurture their pipeline between milestones. Trigger it for monthly updates and any "stay in touch with investors who passed" request (it also points the way on announcing a closed raise). Consistency here — updating even when there's nothing dramatic to report — is what turns a "no" into a "yes" next round.
+description: "Keep every investor warm — including the ones who said no — through consistent monthly updates on two parallel communication tracks. Use this skill whenever the user wants to write an investor update or monthly update, keep investors warm, follow up with a fund that passed, or nurture their pipeline between milestones. Trigger it for monthly updates and any \"stay in touch with investors who passed\" request (it also points the way on announcing a closed raise). Consistency here — updating even when there's nothing dramatic to report — is what turns a \"no\" into a \"yes\" next round."
 ---
 
 # Investor Comms
@@ -12,14 +12,29 @@ charisma. This skill runs that consistency.
 
 Suggested cadence: monthly, to both tracks, same week every month.
 
+This skill runs when invoked. Its cadence is a recommendation, not an installed
+schedule. Use the project files and user-supplied updates; do not imply that email,
+calendar or CRM activity has been synced unless an available, authorized
+integration actually supplied it. Report the date and source of the latest data.
+
+Prepare drafts by default. Generating a draft does not mean it was sent and must
+not advance a thread to Contacted. Send or publish only when the user explicitly
+requests it and an appropriate integration is available; record a sent date only
+after confirmed delivery or a user-reported send.
+
+Use the user's instructions and existing decisions as the authority. Read and write
+raise artifacts in the user's project folder, not the installed skill directory.
+In chat-only sessions, use the supplied files and return updated artifacts inline
+or as downloads; do not claim a project file was saved unless it was.
+
 ## Prerequisites
 
 - Read `pipeline.md` from the project folder to know who's on which track
   (live/yes vs. passed) and who owns each relationship. If it's missing, run
-  `/pipeline` first — you can't segment tracks without the state.
+  `pipeline` first — you can't segment tracks without the state.
 - Read `fundraising-plan.md` for the mode — in passive mode this skill IS the
   raise (converting warmth over time); in active mode it's the between-milestones
-  layer. If missing, run `/fundraising-plan` first.
+  layer. If missing, run `fundraising-plan` first.
 - Read `raise-context.md` for the facts every update draws on.
 
 ## Two parallel tracks

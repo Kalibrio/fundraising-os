@@ -1,6 +1,6 @@
 ---
 name: fundraising-plan
-description: Plan the raise before running it — choose the fundraising MODE (passive vs. active vs. hybrid), set the timeline, intensity, and decision gates, and configure how hard every downstream skill should run. Use this skill whenever the user is deciding HOW to raise, asks "should I run a process", wants a fundraising plan or strategy, asks about passive vs. active fundraising, is weighing a structured raise against staying opportunistically open, or is unsure how aggressive to be. Trigger it after the raise decision and raise context exist and BEFORE building the investor list — the mode you choose changes the list size, the outreach intensity, the pipeline cadence, and the close mechanics. (Whether to raise at all is the raise-decision skill; this one plans a raise the team has already said yes to.)
+description: "Plan the raise before running it — choose the fundraising MODE (passive vs. active vs. hybrid), set the timeline, intensity, and decision gates, and configure how hard every downstream skill should run. Use this skill whenever the user is deciding HOW to raise, asks \"should I run a process\", wants a fundraising plan or strategy, asks about passive vs. active fundraising, is weighing a structured raise against staying opportunistically open, or is unsure how aggressive to be. Trigger it after the raise decision and raise context exist and BEFORE building the investor list — the mode you choose changes the list size, the outreach intensity, the pipeline cadence, and the close mechanics. (Whether to raise at all is the raise-decision skill; this one plans a raise the team has already said yes to.)"
 ---
 
 # Fundraising Plan
@@ -12,10 +12,15 @@ you run a sharp, time-boxed **active process** or stay in a low-intensity
 or leave leverage and valuation on the table. This skill makes that call
 deliberately and then configures the rest of the machine to match.
 
+Use the user's instructions and existing decisions as the authority. Read and write
+raise artifacts in the user's project folder, not the installed skill directory.
+In chat-only sessions, use the supplied files and return updated artifacts inline
+or as downloads; do not claim a project file was saved unless it was.
+
 ## Prerequisites
 
 1. Read `raise-decision.md` from the project folder. If it's missing, run
-   `/raise-decision` first — this skill plans a raise the team has already
+   `raise-decision` first — this skill plans a raise the team has already
    decided to make. If the verdict is **NOT YET** or **DON'T RAISE**, stop and
    say so: either the milestone gate has been hit (update the decision file
    first) or the team is overriding its own decision, which deserves a

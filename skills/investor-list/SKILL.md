@@ -1,6 +1,6 @@
 ---
 name: investor-list
-description: Build a researched, ranked target list of the investors actually worth your time for this raise — sized to the fundraising mode — written to investors.tsv and output as a tab-separated sheet ready to paste into Google Sheets. Use this skill whenever the user asks to build an investor list, find VCs/angels/funds to pitch, identify which funds or target funds fit their round, research investors, or expand/score their fundraising target set. Trigger it even for casual phrasings like "who should I raise from?" or "find me funds for a seed round". Prefers depth over volume — 40 right-fit targets beat 400 names.
+description: "Build a researched, ranked target list of the investors actually worth your time for this raise — sized to the fundraising mode — written to investors.tsv and output as a tab-separated sheet ready to paste into Google Sheets. Use this skill whenever the user asks to build an investor list, find VCs/angels/funds to pitch, identify which funds or target funds fit their round, research investors, or expand/score their fundraising target set. Trigger it even for casual phrasings like \"who should I raise from?\" or \"find me funds for a seed round\". Prefers depth over volume — 40 right-fit targets beat 400 names."
 ---
 
 # Investor List
@@ -10,6 +10,15 @@ stage, check size, and portfolio mean they will actually get what you're buildin
 Every target researched and scored, in a sheet you can run a pipeline against —
 sized to the mode, not to a default.
 
+Research with the web tools available in the host app. If browsing is unavailable,
+work from supplied sources and label unverified facts; do not claim fresh research
+or invent investor details, relationships, or citations.
+
+Use the user's instructions and existing decisions as the authority. Read and write
+raise artifacts in the user's project folder, not the installed skill directory.
+In chat-only sessions, use the supplied files and return updated artifacts inline
+or as downloads; do not claim a project file was saved unless it was.
+
 ## Prerequisites
 
 1. Read `fundraising-plan.md` from the project folder — the mode sizes this
@@ -17,7 +26,7 @@ sized to the mode, not to a default.
    curated set (~10), Circle 1–2 only — a passive raise doesn't need a gauntlet.
    **Hybrid:** build the curated set now, note the expansion to ~40 for when the
    flip trigger fires. If `fundraising-plan.md` is missing, run
-   `/fundraising-plan` first — you cannot size a list without a mode.
+   `fundraising-plan` first — you cannot size a list without a mode.
 2. Read `raise-context.md`, especially §2 (the raise), §5 (market),
    §10 (ideal investor profile), and §8 (competition → conflicts to exclude). If
    the ideal-investor profile is `TBD`, stop and run the `raise-context` skill
@@ -30,13 +39,13 @@ sized to the mode, not to a default.
    (funds holding a direct competitor) to exclude. Take the target count from
    the mode (see Prerequisites).
 
-2. **Source candidates.** Use `web_search` per thesis/geo bucket — search each
+2. **Source candidates.** Use the available web search tool per thesis/geo bucket — search each
    bucket separately rather than one broad query (e.g. "seed funds creator economy
    Europe", "AI infra pre-seed leads", then named-partner searches). Pull from:
    recent relevant rounds in your space (who led them), thesis blog posts, partner
    social activity, and the founders' networks in §11 (every founder's, not just
    the raise lead's). Do NOT
-   fetch LinkedIn directly (bot-blocked) — use web_search and the fund's own site.
+   fetch LinkedIn directly (bot-blocked) — use the available web search tool and the fund's own site.
 
 3. **Research each candidate** enough to score it. For the fund: stage, check
    size, lead vs. follow behaviour, recent activity (are they deploying now?),

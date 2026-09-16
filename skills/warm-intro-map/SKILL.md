@@ -32,6 +32,15 @@ or as downloads; do not claim a project file was saved unless it was.
   table, advisors, customers, where each network concentrates) and §1/§9 (the
   one-liner and spine, so the forwardable note is sharp).
 
+
+When selecting new outreach targets, honor `Eligibility` when present in
+`investors.tsv`: hold `blocked` and `research needed` rows out of recommended
+contact waves; explain the blocker or missing research. User-directed exceptions
+must remain visible. Legacy sheets without this column still work: use their
+conflict notes and available evidence, without inventing clearance. Preserve
+all existing/custom TSV columns when updating rows. Do not erase existing live
+threads or change their stage solely because a score changed.
+
 ## Procedure
 
 1. **Build the connector inventory** from §11 — across ALL founders' subsections,

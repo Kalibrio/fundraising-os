@@ -35,6 +35,15 @@ or as downloads; do not claim a project file was saved unless it was.
   which founder holds the path.
 - `raise-context.md` §1, §4, §9, §13 — one-liner, traction, spine, voice.
 
+
+When selecting new outreach targets, honor `Eligibility` when present in
+`investors.tsv`: hold `blocked` and `research needed` rows out of recommended
+contact waves; explain the blocker or missing research. User-directed exceptions
+must remain visible. Legacy sheets without this column still work: use their
+conflict notes and available evidence, without inventing clearance. Preserve
+all existing/custom TSV columns when updating rows. Do not erase existing live
+threads or change their stage solely because a score changed.
+
 ## Decide the sender and message type first
 
 **Sender:** each message goes out from one named founder — the one who owns the

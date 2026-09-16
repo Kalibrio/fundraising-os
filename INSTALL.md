@@ -1,6 +1,6 @@
 # Install Fundraising OS
 
-The same 13 skills work in **Claude Code** and **Codex**. Pick one installation
+The same 15 skills work in **Claude Code** and **Codex**. Pick one installation
 method per app to avoid duplicate skill names. The skills are free under MIT;
 your AI app's subscription or usage charges still apply.
 
@@ -27,6 +27,8 @@ Plugin skills use the `fundraising-os:` prefix. For example:
 /fundraising-os:raise-context
 /fundraising-os:fundraising-plan
 /fundraising-os:investor-list
+/fundraising-os:investor-brief
+/fundraising-os:pitch-rehearsal
 /fundraising-os:pipeline
 ```
 
@@ -43,7 +45,7 @@ claude plugin list
 claude plugin details fundraising-os@fundraising-os
 ```
 
-Expect version **1.2.0** and **13 skills**. If the skills are missing, reload
+Expect version **1.3.0** and **15 skills**. If the skills are missing, reload
 plugins or start a new session.
 
 ## Codex — project skills
@@ -65,7 +67,7 @@ python3 scripts/install.py --app codex --project /path/to/my-raise
 ```
 
 Replace `/path/to/my-raise` with your raise folder; quote paths containing spaces.
-The installer copies all 13 skill folders **and their reference files** into
+The installer copies all 15 skill folders **and their reference files** into
 `my-raise/.agents/skills/`. It does not change global app settings or create a
 schedule. Existing, different skills are protected; see Updating below.
 
@@ -87,8 +89,8 @@ $investor-list
 **Prefer asking Codex to install it?** Paste this into Codex in your raise folder:
 
 ```text
-Install all 13 skills from https://github.com/Kalibrio/fundraising-os into this
-project's .agents/skills directory, including the raise-context references.
+Install all 15 skills from https://github.com/Kalibrio/fundraising-os into this
+project's .agents/skills directory, including all bundled reference files.
 Use scripts/install.py --app codex --project with this project's absolute path
 from the downloaded repository. Preserve any existing skills that differ.
 Then tell me to start a new conversation and run $raise-decision.
@@ -124,7 +126,8 @@ This is a chat workflow, not a plugin installation or background agent.
 2. Create or open a Claude project.
 3. Add the relevant `skills/<name>/SKILL.md` files to project knowledge. If your
    upload flow requires unique names, rename local copies to `<name>-skill.md`.
-4. Include `skills/raise-context/references/raise-context-template.md`.
+4. Include the bundled references for the skills you use: the raise-context
+   template and, for investor scoring, `skills/investor-list/references/scoring.md`.
 5. Ask: **"Use the raise-decision skill to help us decide whether to raise."**
 6. Save generated artifacts and provide the latest versions in later chats.
 
@@ -135,7 +138,9 @@ does not create automatic synchronization with a local project or a CRM.
 ## What runs, and what does not
 
 - **On request:** decision interviews, research (with browsing), deck content,
-  financial models, outreach drafts, pipeline reviews and data-room checklists.
+  financial models, meeting briefs, pitch practice, outreach drafts, pipeline
+  reviews and data-room checklists. Investor scoring separates fit from evidence
+  coverage; no Apify, Exa or paid data-room account is required.
 - **Persistent state:** local apps read and update files in the raise folder.
   Chat-only sessions return inline content or downloadable files when supported.
 - **Decks and spreadsheets:** the skills use an available presentation or

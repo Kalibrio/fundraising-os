@@ -1,7 +1,7 @@
 {
   "name": "fundraising-os",
-  "description": "13 fundraising skills for Claude Code and Codex: decide whether to raise, build the plan and materials, research investors, draft outreach, and maintain the pipeline. Runs on demand with shared project files.",
-  "version": "1.2.0",
+  "description": "15 fundraising skills for Claude Code and Codex: decide whether to raise, build the plan and materials, research investors, draft outreach, and maintain the pipeline. Runs on demand with shared project files.",
+  "version": "1.3.0",
   "author": {
     "name": "Ludovic Bodin",
     "email": "lbodin@gmail.com",
@@ -27,7 +27,7 @@
   "interface": {
     "displayName": "Fundraising OS",
     "shortDescription": "Decide, prepare and run your raise.",
-    "longDescription": "13 fundraising skills for Claude Code and Codex: decide whether to raise, build the plan and materials, research investors, draft outreach, and maintain the pipeline. Runs on demand with shared project files.",
+    "longDescription": "15 fundraising skills for Claude Code and Codex: decide whether to raise, build the plan and materials, research investors, draft outreach, and maintain the pipeline. Runs on demand with shared project files.",
     "developerName": "Ludovic Bodin",
     "category": "Productivity",
     "capabilities": [],

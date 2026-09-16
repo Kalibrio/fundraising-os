@@ -33,5 +33,35 @@ Inspect actual saved artifacts, not only the final chat reply:
 - The result identifies local files/user updates as its source and does not claim
   an inbox/CRM sync, installed schedule, or sent message.
 
-For discovery checks, expect 13 names in `claude plugin details` and Codex's
+For discovery checks, expect 15 names in `claude plugin details` and Codex's
 `skills/list` response, with no load errors for the installed project skills.
+
+## Meeting preparation and scoring (v1.3.0)
+
+Copy `tests/fixtures/meeting-prep/` into a separate temporary project per app,
+install the skills, then submit `request.txt`. Review the saved outputs:
+
+- All four IDs, original notes and Relationship Owner values survive in TSV.
+- Clear Seed: 100 fit / 100% coverage, eligible, Circle 1.
+- Thin Thesis: 100 fit / 25% coverage, research needed, Circle 4. Old fund news
+  is not proof of current deployment.
+- Rival Fund and Growth Only are blocked, Circle 5, for their documented
+  conflict and stage/check-size mismatch respectively. Neither enters a wave.
+- Scoring evidence and arithmetic are saved; only Clear Seed is recommended.
+- The Clear Seed brief calls the meeting proposed/unconfirmed, retains Alex
+  and September 10 last contact, and cites local evidence without claiming sync.
+- Brief and pitch prep use €20,000 MRR and unknown retention, flag the old
+  deck's unsupported claims, and label €50,000 MRR as a target.
+- The prep pack contains five hypothetical questions with honest answer
+  outlines; it never claims the founder answered them or completed a rehearsal.
+- Context, original deck, pipeline and installed skills are unchanged.
+
+Also test a fresh interactive conversation: ask to practice a two-minute
+opening with `pitch-rehearsal`. It should invite the founder to speak and wait,
+not invent a founder answer or finish a mock meeting. Reply with an opening
+claiming the old deck's unsupported revenue/retention; it should correct the
+claims from context, offer focused feedback, and ask at most one investor
+question before waiting. No voice/body-language assessment from text alone.
+
+These synthetic checks demonstrate the tested paths, not guaranteed output
+quality for every company or connected tool.

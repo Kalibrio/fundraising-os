@@ -18,10 +18,12 @@ def files(folder):
 def install(project, app, replace=False):
     project = Path(project).expanduser().resolve()
     skills = sorted(p.parent for p in SOURCE.glob("*/SKILL.md"))
-    if len(skills) != 13:
-        raise ValueError(f"Expected 13 source skills; found {len(skills)}. Download the complete repository.")
-    if not (SOURCE / "raise-context/references/raise-context-template.md").is_file():
-        raise ValueError("The raise-context template is missing. Download the complete repository.")
+    if len(skills) != 15:
+        raise ValueError(f"Expected 15 source skills; found {len(skills)}. Download the complete repository.")
+    for reference in ("raise-context/references/raise-context-template.md",
+                      "investor-list/references/scoring.md"):
+        if not (SOURCE / reference).is_file():
+            raise ValueError(f"Missing {reference}. Download the complete repository.")
     apps = APP_DIRS if app == "both" else [app]
     changes = []
     # Check every destination before copying, including when installing into both apps.
@@ -68,7 +70,7 @@ def install(project, app, replace=False):
                 if old is not None and not dest.exists():
                     shutil.move(str(old), str(dest))
                 raise
-    print(f"Ready: 13 skills for {app} in {project} ({len(changes)} folders installed/updated).")
+    print(f"Ready: 15 skills for {app} in {project} ({len(changes)} folders installed/updated).")
     if backup:
         print(f"Previous versions saved in {backup}")
     print("Open this project in a new session. Codex: $raise-decision. Standalone Claude skills: /raise-decision.")

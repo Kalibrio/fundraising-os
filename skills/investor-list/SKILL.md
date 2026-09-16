@@ -52,13 +52,13 @@ or as downloads; do not claim a project file was saved unless it was.
    relevant portfolio. For the *partner* (target the human, not just the logo):
    what they've backed, what they write about, any public thesis you map to.
 
-4. **Score fit** on a 1–5 Circle:
-   - **Circle 1** — thesis bullseye, right stage/check, active, warm path likely.
-   - **Circle 2** — strong fit, maybe needs an intro.
-   - **Circle 3** — plausible, worth a personalised cold approach.
-   - **(4–5)** — backup / later. Don't pad the top tiers to feel busy.
-   Aim for the mode's target count, weighted toward Circles 1–2. Cut anyone you
-   wouldn't be genuinely glad to have on the cap table.
+4. **Score fit and evidence separately.** Read
+   [the scoring rubric](references/scoring.md) for weights, calculations,
+   eligibility gates and Circle assignment. Apply it to each candidate and
+   record the supporting facts, sources and dates in `investor-scoring.md`.
+   Missing evidence is unknown, not a positive match or a zero. Keep confirmed
+   mismatches and direct competitor conflicts out of active outreach, and
+   distinguish those from research gaps. A warm path affects access, not fit.
 
 5. **Sequence.** Mark a small first wave (3–6 "calibration" targets you like but
    aren't your dream lead) so you can learn from real conversations before
@@ -71,24 +71,32 @@ or as downloads; do not claim a project file was saved unless it was.
 
 ## Output format — paste-ready TSV
 
-One code block, tab-separated, with this header row exactly:
+One code block, tab-separated, with this base header below. Preserve these columns and existing IDs for downstream skills;
+append the scoring columns shown rather than renaming or removing old columns:
 
 ```
-#	Fund	Partner	Circle	Stage	Check Size	Thesis Fit (1 line)	Recent Relevant Deal	Lead/Follow	Warm Path?	Conflict?	Source	Notes
+#	Fund	Partner	Circle	Stage	Check Size	Thesis Fit (1 line)	Recent Relevant Deal	Lead/Follow	Warm Path?	Conflict?	Source	Notes	Fit Score	Evidence Coverage	Eligibility	As Of
 ```
 
 - **Warm Path?** = `yes` / `maybe` / `cold` (the `warm-intro-map` skill resolves these).
-- **Conflict?** = name any competing portfolio company, else `none`.
-- **Source** = where the fit evidence came from, so the user can verify.
-- Sort by Circle ascending, then by Warm Path (yes first).
+- **Conflict?** = name a direct competitor, `none found` with dated research,
+  or `unknown` when unchecked. Never treat missing research as clearance.
+- **Source** = links or supplied document locations; detailed dimension evidence
+  lives in `investor-scoring.md`. Distinguish evidence dates from review dates.
+- **Fit Score**, **Evidence Coverage**, **Eligibility**, **As Of** follow the
+  rubric. On updates preserve existing custom columns, relationship notes and
+  user decisions. Supplied lists may be scored at their existing size; do not
+  pad a requested review to the mode’s target count.
+- Sort by Circle ascending, then fit, coverage and warm path as in the rubric.
 - After the block, give a 3-line summary: how many in each Circle, the suggested
-  calibration wave, and the top 3 dream targets to save for last.
+  calibration wave, and up to 3 well-supported dream targets to save for last.
 
 ## Principles
 
 - **Target partners, not funds.** Deals are championed by one human. Every row's
   research should make the eventual outreach personal.
-- **Conflicts are disqualifiers, not footnotes.** A fund holding a direct
-  competitor sees your data and can't lead. Exclude or flag prominently.
+- **Conflicts are disqualifiers, not footnotes.** A direct competitor holding
+  creates a disclosure concern. Exclude from recommended outreach unless the user
+  explicitly accepts the conflict; preserve that exception visibly.
 - **No padding.** A clean 35 beats a bloated 80. Volume creates pipeline noise
   the `pipeline` skill then has to manage.

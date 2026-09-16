@@ -39,6 +39,15 @@ or as downloads; do not claim a project file was saved unless it was.
   clocks). If missing, run `fundraising-plan` first.
 - `raise-context.md` for the facts any follow-up will reference.
 
+
+When selecting new outreach targets, honor `Eligibility` when present in
+`investors.tsv`: hold `blocked` and `research needed` rows out of recommended
+contact waves; explain the blocker or missing research. User-directed exceptions
+must remain visible. Legacy sheets without this column still work: use their
+conflict notes and available evidence, without inventing clearance. Preserve
+all existing/custom TSV columns when updating rows. Do not erase existing live
+threads or change their stage solely because a score changed.
+
 ## The pipeline stages
 
 ```

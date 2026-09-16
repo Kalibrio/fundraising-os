@@ -1,11 +1,11 @@
 # Fundraising OS maintenance
 
-This repository contains 13 shared skills, Claude and Codex compatibility
+This repository contains 15 shared skills, Claude and Codex compatibility
 manifests, a project-local installer, and a static GitHub Pages site.
 
 ## Structure
 
-- `skills/<name>/SKILL.md`: one shared source for both apps. Keep the 13 stable
+- `skills/<name>/SKILL.md`: one shared source for both apps. Keep the existing stable
   names; bundled references must stay inside their owning skill directory.
 - `.claude-plugin/`: Claude plugin and marketplace manifests.
 - `.codex-plugin/plugin.json`: Codex compatibility manifest for packaging.

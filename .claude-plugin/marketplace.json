@@ -1,7 +1,7 @@
 {
   "name": "fundraising-os",
   "metadata": {
-    "description": "The Fundraising OS — 13 skills for Claude Code and Codex."
+    "description": "The Fundraising OS — 15 skills for Claude Code and Codex."
   },
   "owner": {
     "name": "Ludovic Bodin",
@@ -12,7 +12,7 @@
     {
       "name": "fundraising-os",
       "source": "./",
-      "description": "Decide, prepare and run a startup raise with 13 skills and shared project files. Runs on demand; integrations and scheduling are optional."
+      "description": "Decide, prepare and run a startup raise with 15 skills and shared project files. Runs on demand; integrations and scheduling are optional."
     }
   ]
 }

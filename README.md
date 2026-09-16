@@ -1,6 +1,6 @@
 # The Fundraising OS
 
-**13 skills for Claude Code and Codex to decide, prepare and run a startup raise.**
+**15 skills for Claude Code and Codex to decide, prepare and run a startup raise.**
 
 Decide whether and when to raise, build the target list, find warm paths, prepare
 the story and numbers, draft outreach, and keep every investor thread moving.
@@ -40,7 +40,7 @@ Open your raise folder in Codex, start a new conversation and run:
 $raise-decision
 ```
 
-The installer includes all 13 skills and their references in `.agents/skills/`.
+The installer includes all 15 skills and their references in `.agents/skills/`.
 Use `--app both` to also install standalone Claude skills in `.claude/skills/`.
 It protects existing skills; `--replace` backs up different versions before
 updating. [Details, updates and Claude.ai web instructions →](INSTALL.md)
@@ -57,23 +57,41 @@ updating. [Details, updates and Claude.ai web instructions →](INSTALL.md)
 Invoke by app: `/fundraising-os:<name>` for the Claude plugin,
 `/<name>` for standalone Claude skills, or `$<name>` for Codex.
 
-## The 13 skills
+## The 15 skills
 
 | Phase | Skill | Output or purpose |
 |---|---|---|
 | Decide | `raise-decision` | Team decision, dilution math, milestone gates → `raise-decision.md` |
 | Foundation | `raise-context` | Facts, narrative and founder networks → `raise-context.md` |
 | Foundation | `fundraising-plan` | Mode, timing, ownership and decision gates → `fundraising-plan.md` |
-| Build | `investor-list` | Researched, ranked partners sized to your mode → `investors.tsv` |
+| Build | `investor-list` | Evidence-scored partners, eligibility and research gaps → `investors.tsv`, `investor-scoring.md` |
 | Build | `warm-intro-map` | Verified or unverified introduction paths and forwardable drafts |
 | Build | `deck` | Narrative and slide content → `deck.md`; editable deck when tools permit |
 | Build | `financial-projection` | Driver-based model, downside case and assumptions memo |
+| Build | `pitch-rehearsal` | Interactive practice, tough questions and evidence-based answer feedback |
+| Run | `investor-brief` | Source-backed preparation for a specific investor meeting |
 | Run | `outreach` | Partner-specific email drafts in the relationship owner's voice |
 | Run | `pipeline` | Durable thread state → `pipeline.md`; brief and follow-up drafts |
 | Run | `data-room` | Diligence index, claim-to-proof map and ranked gaps |
 | Sustain | `investor-comms` | Updates for live investors and those who passed |
 | Sustain | `pace` | Next skill, artifact consistency and founder workload |
 | Close | `closing` | Term-sheet explanation, negotiation preparation and close checklist |
+
+## Prepare for the next investor meeting
+
+Ask for `investor-brief` with the fund/partner name and meeting details. It uses
+supplied notes or available research to prepare talking points, objections,
+questions and a proposed next step. Then use `pitch-rehearsal` for an interactive
+mock conversation, or request a one-shot preparation pack.
+
+| App | Meeting brief | Pitch practice |
+|---|---|---|
+| Claude plugin | `/fundraising-os:investor-brief` | `/fundraising-os:pitch-rehearsal` |
+| Codex | `$investor-brief` | `$pitch-rehearsal` |
+
+Investor scoring reports fit, evidence coverage and eligibility separately.
+A strong thesis match with missing stage/check-size evidence stays a research
+candidate. No Apify, Exa, CRM or paid data-room account is required.
 
 ## Shared files, on-demand work
 

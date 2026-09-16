@@ -42,7 +42,9 @@ artifact in the sequence is usually the next skill to run.
    → investor-list → warm-intro-map → data-room → outreach → pipeline (+
    investor-comms) → closing`. Decision before context, mode before targets,
    deck and model before serious meetings, data room ready before an active
-   launch. When a step is being skipped, say so and name the risk.
+   launch. Use `pitch-rehearsal` to practice the story and `investor-brief`
+   before a specific investor meeting; neither requires restarting the sequence.
+   When a step is being skipped, say so and name the risk.
 
 2. **Keep the artifacts in sync.** Check that the durable files agree with each
    other and with reality: the mode in `fundraising-plan.md` still matches the

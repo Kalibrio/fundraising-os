@@ -4,6 +4,8 @@ import importlib.util
 import json
 from pathlib import Path
 import tempfile
+import shutil
+from unittest.mock import patch
 import unittest
 
 import yaml
@@ -22,7 +24,7 @@ class DistributionTests(unittest.TestCase):
 
     def test_all_skills_have_portable_metadata(self):
         skills = list((ROOT / "skills").glob("*/SKILL.md"))
-        self.assertEqual(len(skills), 13)
+        self.assertEqual(len(skills), 15)
         for path in skills:
             with self.subTest(skill=path.parent.name):
                 _, frontmatter, body = path.read_text(encoding="utf-8").split("---", 2)
@@ -52,6 +54,15 @@ class DistributionTests(unittest.TestCase):
         for app in (".agents", ".claude"):
             self.assertEqual(installer.files(ROOT / "skills"), installer.files(self.project / app / "skills"))
         self.assertEqual(artifact.read_text(encoding="utf-8"), "Existing private company context")
+
+    def test_missing_scoring_reference_aborts_before_install(self):
+        source = Path(self.temp.name) / "incomplete-source"
+        shutil.copytree(ROOT / "skills", source)
+        (source / "investor-list/references/scoring.md").unlink()
+        with patch.object(installer, "SOURCE", source):
+            with self.assertRaisesRegex(ValueError, "Missing investor-list/references/scoring.md"):
+                installer.install(self.project, "both")
+        self.assertFalse(self.project.exists())
 
     def test_repeated_install_is_idempotent(self):
         installer.install(self.project, "codex")

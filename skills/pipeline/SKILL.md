@@ -77,6 +77,9 @@ Use the overdue threshold in `fundraising-plan.md`. If none is set, use more tha
 silently imposing the active cadence. Exclude Closed and Passed threads from
 live overdue alerts. Keep last-touch dates unchanged unless an actual interaction
 occurred; reading a thread or drafting a follow-up is not a touch.
+Preserve recorded next-action and chase dates unless the user supplies a change.
+The overdue threshold controls alerts; it is not permission to postpone a planned
+follow-up. Suggest any timing change separately instead of rewriting the date.
 
 ### Mode B — Post-meeting follow-up generator
 After a meeting, draft the follow-up within the same day. A good follow-up:

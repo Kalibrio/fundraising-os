@@ -116,7 +116,8 @@ claude plugin validate .claude-plugin/marketplace.json
 claude plugin validate skills
 ```
 
-See [AGENTS.md](AGENTS.md) for maintainer and deployment instructions.
+Use the [synthetic runtime fixture](tests/SMOKE.md) to check actual behavior in
+both apps. See [AGENTS.md](AGENTS.md) for maintainer and deployment instructions.
 
 ## License
 

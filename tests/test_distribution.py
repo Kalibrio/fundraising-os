@@ -25,7 +25,7 @@ class DistributionTests(unittest.TestCase):
         self.assertEqual(len(skills), 13)
         for path in skills:
             with self.subTest(skill=path.parent.name):
-                _, frontmatter, body = path.read_text().split("---", 2)
+                _, frontmatter, body = path.read_text(encoding="utf-8").split("---", 2)
                 data = yaml.safe_load(frontmatter)
                 self.assertEqual(data["name"], path.parent.name)
                 self.assertIsInstance(data["description"], str)
@@ -34,12 +34,12 @@ class DistributionTests(unittest.TestCase):
                 self.assertTrue(body.strip())
 
     def test_manifests_share_the_same_version_and_skill_source(self):
-        claude = json.loads((ROOT / ".claude-plugin/plugin.json").read_text())
-        codex = json.loads((ROOT / ".codex-plugin/plugin.json").read_text())
+        claude = json.loads((ROOT / ".claude-plugin/plugin.json").read_text(encoding="utf-8"))
+        codex = json.loads((ROOT / ".codex-plugin/plugin.json").read_text(encoding="utf-8"))
         for key in ("name", "version", "skills"):
             self.assertEqual(claude[key], codex[key])
         self.assertEqual((ROOT / codex["skills"]).resolve(), ROOT / "skills")
-        marketplace = json.loads((ROOT / ".claude-plugin/marketplace.json").read_text())
+        marketplace = json.loads((ROOT / ".claude-plugin/marketplace.json").read_text(encoding="utf-8"))
         entry = marketplace["plugins"][0]
         self.assertEqual(entry["name"], claude["name"])
         self.assertEqual((ROOT / entry["source"]).resolve(), ROOT)
@@ -51,7 +51,7 @@ class DistributionTests(unittest.TestCase):
         installer.install(self.project, "both")
         for app in (".agents", ".claude"):
             self.assertEqual(installer.files(ROOT / "skills"), installer.files(self.project / app / "skills"))
-        self.assertEqual(artifact.read_text(), "Existing private company context")
+        self.assertEqual(artifact.read_text(encoding="utf-8"), "Existing private company context")
 
     def test_repeated_install_is_idempotent(self):
         installer.install(self.project, "codex")
@@ -67,7 +67,7 @@ class DistributionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Existing skill differs"):
             installer.install(self.project, "both")
         self.assertFalse((self.project / ".agents").exists())
-        self.assertEqual((dest / "SKILL.md").read_text(), "My custom skill")
+        self.assertEqual((dest / "SKILL.md").read_text(encoding="utf-8"), "My custom skill")
 
     def test_replacement_backs_up_customizations_and_preserves_unrelated_skills(self):
         installer.install(self.project, "codex")
@@ -80,9 +80,9 @@ class DistributionTests(unittest.TestCase):
         installer.install(self.project, "codex", replace=True)
         self.assertEqual(installer.files(dest), installer.files(ROOT / "skills/raise-context"))
         backup = next((self.project / ".fundraising-os-backups").glob("*/codex/raise-context"))
-        self.assertEqual((backup / "SKILL.md").read_text(), "Custom context skill")
-        self.assertEqual((backup / "my-reference.md").read_text(), "Custom reference")
-        self.assertEqual((other / "SKILL.md").read_text(), "Unrelated skill")
+        self.assertEqual((backup / "SKILL.md").read_text(encoding="utf-8"), "Custom context skill")
+        self.assertEqual((backup / "my-reference.md").read_text(encoding="utf-8"), "Custom reference")
+        self.assertEqual((other / "SKILL.md").read_text(encoding="utf-8"), "Unrelated skill")
 
     def test_symlink_destination_is_not_followed(self):
         external = Path(self.temp.name) / "external"

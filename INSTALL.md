@@ -1,118 +1,195 @@
-# Install The Fundraising OS
+# Install Fundraising OS
 
-Two ways to use the 13 skills. The first (Claude Code Desktop) is the recommended setup — it's what the skills are designed for, and it works without ever touching a terminal.
+The same 13 skills work in **Claude Code** and **Codex**. Pick one installation
+method per app to avoid duplicate skill names. The skills are free under MIT;
+your AI app's subscription or usage charges still apply.
 
-| You want to… | Use |
-|---|---|
-| Run the skills on your Mac/PC with file output (sheets, drafts, the data-room index written into your project folder) and one-click updates from GitHub | **[Path A — Claude Code Desktop](#path-a--claude-code-desktop-recommended-5-minutes)** |
-| Run a skill in your browser at claude.ai with no install (slower, no file output) | **[Path B — Claude.ai web chat](#path-b--claudeai-web-chat)** |
+## Claude Code — plugin
 
----
+Use a current Claude Code release with plugin support and Git installed. In a
+Claude Code terminal session, run these slash commands one at a time:
 
-## Path A — Claude Code Desktop (recommended, 5 minutes)
-
-If you've never used Claude Code before, follow these exact steps. No terminal needed.
-
-### Step 1 — Download Claude Code Desktop
-
-1. Open your browser and go to **https://claude.com/code**
-2. Click **"Download for Mac"** (or Windows / Linux — the page auto-detects your OS).
-3. Open the downloaded file and install the app.
-4. Open **Claude Code** and sign in with the same Claude account you use on claude.ai.
-
-You should now see a Claude Code window — a chat with a text box at the bottom and a sidebar showing your project folder.
-
-### Step 2 — Open any folder as a project
-
-Claude Code needs a "project folder" — it can be anything, even an empty one. The skills write their outputs (your `raise-context.md`, investor sheet, outreach drafts, data-room index) into this folder.
-
-1. In Claude Code: **File menu → Open Folder…**
-2. Pick any folder. If you don't have one ready, create a folder on your Desktop called `my-raise` and pick that.
-
-### Step 3 — Install the Fundraising OS plugin
-
-Type these into the chat box at the bottom of the Claude Code window — the same place you'd type a message.
-
-**Type this and press Enter:**
-
-```
+```text
 /plugin marketplace add kalibrio/fundraising-os
-```
-
-Claude Code confirms it added the repo as a marketplace. Takes 1–2 seconds.
-
-**Then type this and press Enter:**
-
-```
 /plugin install fundraising-os@fundraising-os
+/reload-plugins
 ```
 
-Claude Code confirms the plugin is installed and 13 skills are now available.
+Start with:
 
-### Step 4 — Test that it worked
-
-In the chat box, type a `/` (forward slash). A menu pops up showing available commands. Start typing `raise` — you should see:
-
-```
-/raise-context
+```text
+/fundraising-os:raise-decision
 ```
 
-If you see it, you're done installing.
+Plugin skills use the `fundraising-os:` prefix. For example:
 
-### Step 5 — Run your first skill
-
-```
-/raise-decision
-```
-
-Should you raise at all, and now? Each founder answers a short questionnaire independently; the skill surfaces where you disagree, runs the dilution math, and returns a verdict — raise now, not yet, or don't raise. If the verdict is raise:
-
-```
-/raise-context        → build your source-of-truth file
-/fundraising-plan     → decide passive vs. active vs. hybrid, set the intensity
-/investor-list        → the target list sized to your mode, written to investors.tsv
-/warm-intro-map       → the best path to each partner
+```text
+/fundraising-os:raise-context
+/fundraising-os:fundraising-plan
+/fundraising-os:investor-list
+/fundraising-os:pipeline
 ```
 
-### Updating
+**Desktop:** use the Code tab in the Claude desktop app, choose a **Local**
+session and select your raise folder. The `+` menu → **Plugins** manages desktop
+plugins. If the marketplace command is unavailable there, use the Claude Code
+CLI commands above, or the standalone installer below. Do not paste terminal
+commands into ordinary Claude.ai chat.
 
-When the OS is updated on GitHub, refresh in Claude Code:
+To verify from a terminal:
 
+```sh
+claude plugin list
+claude plugin details fundraising-os@fundraising-os
 ```
-/plugin marketplace update kalibrio/fundraising-os
+
+Expect version **1.2.0** and **13 skills**. If the skills are missing, reload
+plugins or start a new session.
+
+## Codex — project skills
+
+Use a current Codex app, CLI or IDE extension with local skills support.
+Download the [repository ZIP](https://github.com/Kalibrio/fundraising-os/archive/refs/heads/master.zip)
+and extract it, or clone the repository if you do not already have a checkout:
+
+```sh
+git clone https://github.com/Kalibrio/fundraising-os.git
+cd fundraising-os
 ```
 
----
+From the extracted repository or existing checkout, run this in a **terminal**
+(Python 3.9 or newer; Windows can use `py -3` instead of `python3`):
 
-## Path B — Claude.ai web chat
+```sh
+python3 scripts/install.py --app codex --project /path/to/my-raise
+```
 
-No install, runs in your browser. Slower and no file output, but good for trying a single skill.
+Replace `/path/to/my-raise` with your raise folder; quote paths containing spaces.
+The installer copies all 13 skill folders **and their reference files** into
+`my-raise/.agents/skills/`. It does not change global app settings or create a
+schedule. Existing, different skills are protected; see Updating below.
 
-1. Go to **https://claude.ai** and create a new **Project** (or open an existing one).
-2. Add the skill files to the project's knowledge: from this repo, upload the `SKILL.md` files from `skills/` for the skills you want, plus `skills/raise-context/references/raise-context-template.md`.
-3. In the project chat, describe what you need in plain language — e.g. *"set up my raise context"* or *"build my investor list"* — and Claude will follow the matching skill.
+Open **that raise folder** in Codex and start a new conversation. Type `$` to find
+the skills, or invoke one directly:
 
-Because there's no project folder on the web, Claude returns the outputs inline (sheets as pasteable text, drafts as text). Copy them into your own Drive / data room.
+```text
+$raise-decision
+```
 
----
+Then, if the team chooses to raise:
+
+```text
+$raise-context
+$fundraising-plan
+$investor-list
+```
+
+**Prefer asking Codex to install it?** Paste this into Codex in your raise folder:
+
+```text
+Install all 13 skills from https://github.com/Kalibrio/fundraising-os into this
+project's .agents/skills directory, including the raise-context references.
+Use scripts/install.py --app codex --project with this project's absolute path
+from the downloaded repository. Preserve any existing skills that differ.
+Then tell me to start a new conversation and run $raise-decision.
+```
+
+The repository also includes a `.codex-plugin/plugin.json` compatibility manifest
+for plugin packagers. The supported public Codex install path here is the project
+skills installer; Claude's `/plugin` commands are not Codex commands.
+
+## One project, both apps
+
+From the downloaded repository, install both sets of project skills:
+
+```sh
+python3 scripts/install.py --app both --project /path/to/my-raise
+```
+
+This creates `.agents/skills/` for Codex and `.claude/skills/` for Claude Code.
+With **standalone Claude skills**, use `/raise-decision`; with **Codex**, use
+`$raise-decision`. Do not also install the Claude plugin for the same workflow
+unless you intentionally want both namespaced and standalone copies.
+
+Open the same raise folder in either app. They read the same `raise-decision.md`,
+`raise-context.md`, `fundraising-plan.md`, `investors.tsv` and `pipeline.md`.
+Finish one app's edits before starting the other on those files; this package
+does not provide concurrent editing or conflict resolution.
+
+## Claude.ai web — guided chat
+
+This is a chat workflow, not a plugin installation or background agent.
+
+1. Download and extract the repository ZIP linked above.
+2. Create or open a Claude project.
+3. Add the relevant `skills/<name>/SKILL.md` files to project knowledge. If your
+   upload flow requires unique names, rename local copies to `<name>-skill.md`.
+4. Include `skills/raise-context/references/raise-context-template.md`.
+5. Ask: **"Use the raise-decision skill to help us decide whether to raise."**
+6. Save generated artifacts and provide the latest versions in later chats.
+
+Use ordinary language here, not Claude Code slash commands. File generation and
+web research depend on the tools enabled in your chat. Uploading instructions
+does not create automatic synchronization with a local project or a CRM.
+
+## What runs, and what does not
+
+- **On request:** decision interviews, research (with browsing), deck content,
+  financial models, outreach drafts, pipeline reviews and data-room checklists.
+- **Persistent state:** local apps read and update files in the raise folder.
+  Chat-only sessions return inline content or downloadable files when supported.
+- **Decks and spreadsheets:** the skills use an available presentation or
+  spreadsheet capability, or code libraries when available. There is no required
+  skill named `pptx` or `xlsx`. Without file-generation tools, they return a
+  clearly labelled text/CSV fallback instead of claiming a finished file.
+- **Scheduling:** daily, weekly and monthly cadences are recommendations. Set up
+  a scheduled task in your host app separately if you want recurring runs. Give
+  it the correct project and sources; use a prompt such as "Use the pipeline
+  skill to review overdue threads, save a brief, and draft follow-ups."
+- **Integrations:** no email, calendar, CRM or Drive connection is bundled.
+  Supply updates yourself or configure an appropriate integration separately.
+  Research without browsing is labelled unverified.
+- **External actions:** drafts are not sent automatically. Sending, sharing or
+  publishing requires your instruction and an available integration. Drafting
+  does not change a thread's last-contact date.
+
+## Updating
+
+**Claude plugin:**
+
+```text
+/plugin marketplace update fundraising-os
+/plugin update fundraising-os@fundraising-os
+/reload-plugins
+```
+
+**Project skills:** download the latest ZIP, or run `git pull --ff-only` in a
+clean existing checkout. Re-run the installer with the original app/project
+arguments. Identical skills are left alone. If it reports differences, review
+those folders and use `--replace` to install the new version while preserving
+previous versions under the raise folder's `.fundraising-os-backups/`:
+
+```sh
+python3 scripts/install.py --app both --project /path/to/my-raise --replace
+```
+
+Your raise artifacts and unrelated skills are not replaced. Start a new session
+after updating. Backups are local files, so do not publish them if they contain
+private customizations.
 
 ## Troubleshooting
 
-**`/plugin` command not found** — Update Claude Code to v1.0.33 or later, then restart it.
+- **Claude reports an unknown skill:** plugin install uses
+  `/fundraising-os:raise-decision`; standalone install uses `/raise-decision`.
+- **Codex cannot find a skill:** open the folder passed to `--project`, check
+  `.agents/skills/raise-decision/SKILL.md`, and start a new conversation.
+- **Installer reports a conflict:** it protects existing skills. Review the
+  conflict before using `--replace`, which saves the previous version.
+- **A skill needs missing context:** provide facts or run `raise-context`.
+  Unknowns stay `TBD`; a missing number is not permission to invent it.
+- **The app cannot browse or create files:** enable the appropriate host
+  capability or use supplied sources and the documented fallback.
 
-**Skills don't appear after install** — Run `/reload-plugins`, or quit and reopen Claude Code. Confirm with `/plugin list`.
-
-**A skill asks for context it doesn't have** — Run `/raise-context` first. Every skill reads from `raise-context.md`; if a field is missing, the skill will flag it rather than invent a number.
-
-**Manual install (corporate firewall, etc.)**
-
-```bash
-git clone https://github.com/kalibrio/fundraising-os.git
-cp -R fundraising-os/skills/* ~/.claude/skills/
-```
-
-Then restart Claude Code (or start a new session) — the skills load from `~/.claude/skills/`.
-
----
-
-Built by [Ludovic Bodin](https://atomicscaling.com). MIT license. Questions or improvements → open an issue or PR on [GitHub](https://github.com/kalibrio/fundraising-os).
+Official references: [Claude plugins](https://code.claude.com/docs/en/plugins),
+[Claude desktop](https://code.claude.com/docs/en/desktop),
+[Codex skills](https://learn.chatgpt.com/docs/build-skills).

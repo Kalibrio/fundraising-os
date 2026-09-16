@@ -1,6 +1,6 @@
 ---
 name: deck
-description: Build the fundraising pitch deck — narrative arc, slide-by-slide structure, and the actual copy for each slide — derived from the raise context. Use this skill whenever the user wants to build, write, revise, or pressure-test a pitch deck, investor deck, or slide story for a raise; when they ask "help me with my deck", "what slides do I need", or want to sharpen the narrative. Trigger early in the raise — the deck forces the narrative that outreach, data room, and meetings all inherit — and revise it on narrative shifts. Produces the structure and copy; hand off to the pptx skill to render an actual .pptx if the user wants the file.
+description: "Build the fundraising pitch deck — narrative arc, slide-by-slide structure, and the actual copy for each slide — derived from the raise context. Use this skill whenever the user wants to build, write, revise, or pressure-test a pitch deck, investor deck, or slide story for a raise; when they ask \"help me with my deck\", \"what slides do I need\", or want to sharpen the narrative. Trigger early in the raise — the deck forces the narrative that outreach, data room, and meetings all inherit — and revise it on narrative shifts. Produces the structure and copy; create an actual .pptx with an available presentation capability when requested."
 ---
 
 # Deck
@@ -8,6 +8,11 @@ description: Build the fundraising pitch deck — narrative arc, slide-by-slide 
 The deck is where the narrative gets forced into its sharpest form. Build the
 story first, slides second. A deck is not a document — it's the spine of §9 told
 in a sequence a partner can re-tell to their Monday meeting from memory.
+
+Use the user's instructions and existing decisions as the authority. Read and write
+raise artifacts in the user's project folder, not the installed skill directory.
+In chat-only sessions, use the supplied files and return updated artifacts inline
+or as downloads; do not claim a project file was saved unless it was.
 
 ## Prerequisite
 
@@ -58,8 +63,15 @@ Cut ruthlessly. A seed deck is ~12 slides. Appendix holds the depth.
 - A "cut list" of slides or claims that weaken the story.
 - An appendix list (deep-dive slides to hold in reserve for diligence).
 
-If the user wants the rendered file, hand the structure to the **pptx** skill to
-produce the .pptx — do not hand-build slides here.
+Save the narrative and slide content as `deck.md` in the project folder.
+If the user requests a rendered deck, use the presentation skill or file-generation
+capability available in this environment. Do not assume a skill named `pptx`
+exists. If no presentation skill is available but code execution is, generate
+an editable `.pptx` using an available library such as python-pptx or PptxGenJS.
+Reopen the file to check slide count and content; render and inspect it when a
+renderer is available. Report any missing visual verification. If this session
+cannot create a PowerPoint file, deliver `deck.md` (or inline slide content),
+explain that limit, and do not describe the outline as a finished PowerPoint.
 
 ## Principles
 

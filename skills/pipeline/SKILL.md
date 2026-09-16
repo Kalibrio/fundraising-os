@@ -1,6 +1,6 @@
 ---
 name: pipeline
-description: Run the fundraising pipeline so no thread drops — maintains the durable pipeline.md state file, produces the weekly Monday brief of what needs action (grouped by which founder owns it), and generates same-day post-meeting follow-ups across every investor conversation in parallel. Use this skill whenever the user wants to track their raise, asks "where are we with investors", asks what to do next or what should I do next on the raise, wants a weekly fundraising update or brief, needs to follow up after an investor meeting, or is managing multiple VC conversations at once. Trigger it for any pipeline, cadence, follow-up, or "what's the status" request during a live raise. Operational signals — follow-up speed especially — are read by investors as how you'll run the company, so this skill optimises responsiveness, not just record-keeping.
+description: "Run the fundraising pipeline so no thread drops — maintains the durable pipeline.md state file, produces the weekly Monday brief of what needs action (grouped by which founder owns it), and generates same-day post-meeting follow-ups across every investor conversation in parallel. Use this skill whenever the user wants to track their raise, asks \"where are we with investors\", asks what to do next or what should I do next on the raise, wants a weekly fundraising update or brief, needs to follow up after an investor meeting, or is managing multiple VC conversations at once. Trigger it for any pipeline, cadence, follow-up, or \"what's the status\" request during a live raise. Operational signals — follow-up speed especially — are read by investors as how you'll run the company, so this skill optimises responsiveness, not just record-keeping."
 ---
 
 # Pipeline
@@ -13,15 +13,30 @@ how quickly and specifically you follow up is itself evidence to the investor.
 Suggested cadence: the Monday brief weekly; the follow-up generator same-day
 after every meeting.
 
+This skill runs when invoked. Its cadence is a recommendation, not an installed
+schedule. Use the project files and user-supplied updates; do not imply that email,
+calendar or CRM activity has been synced unless an available, authorized
+integration actually supplied it. Report the date and source of the latest data.
+
+Prepare drafts by default. Generating a draft does not mean it was sent and must
+not advance a thread to Contacted. Send or publish only when the user explicitly
+requests it and an appropriate integration is available; record a sent date only
+after confirmed delivery or a user-reported send.
+
+Use the user's instructions and existing decisions as the authority. Read and write
+raise artifacts in the user's project folder, not the installed skill directory.
+In chat-only sessions, use the supplied files and return updated artifacts inline
+or as downloads; do not claim a project file was saved unless it was.
+
 ## Prerequisites
 
 - `pipeline.md` from the project folder — the durable state. **Read it first,
   every run**; this is what makes "nothing drops" survive across sessions. If it
   doesn't exist yet, create it from `investors.tsv` (every target starts at
-  `Sourced`). If `investors.tsv` is also missing, run `/investor-list` first.
+  `Sourced`). If `investors.tsv` is also missing, run `investor-list` first.
 - `fundraising-plan.md` — the mode sets the tempo (active: weekly-sprint
   cadence, 5-day overdue threshold; passive: relationship-tracking, gentler
-  clocks). If missing, run `/fundraising-plan` first.
+  clocks). If missing, run `fundraising-plan` first.
 - `raise-context.md` for the facts any follow-up will reference.
 
 ## The pipeline stages
@@ -57,8 +72,11 @@ FUNDRAISE — WEEK OF [date]
 This week's one priority: [single most important move — and whose it is]
 ```
 
-Flag any live thread untouched for >5 business days as overdue — that's the signal
-investors notice.
+Use the overdue threshold in `fundraising-plan.md`. If none is set, use more than
+5 business days for active mode; ask for the passive/hybrid threshold instead of
+silently imposing the active cadence. Exclude Closed and Passed threads from
+live overdue alerts. Keep last-touch dates unchanged unless an actual interaction
+occurred; reading a thread or drafting a follow-up is not a touch.
 
 ### Mode B — Post-meeting follow-up generator
 After a meeting, draft the follow-up within the same day. A good follow-up:
@@ -89,7 +107,11 @@ To add to data room: [any artefact they asked for that doesn't exist yet]
    touch, days-since-touch, next action, and owner. This happens every run, not
    just when asked; `investor-comms`, `pace`, and `closing` all read this file
    and it must never be stale.
-5. Always end with the single highest-leverage next action and its owner.
+5. Report only recorded amounts. Keep soft-circled interest, signed commitments
+   and wired cash separate. If an amount is absent, mark it `unknown` or `TBD`;
+   absence of a record is not evidence of $0. Do not infer commitment amounts from
+   a pipeline stage or include passed investors in live totals.
+6. Always end with the single highest-leverage next action and its owner.
 
 ## Principles
 

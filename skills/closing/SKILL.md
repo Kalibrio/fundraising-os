@@ -1,6 +1,6 @@
 ---
 name: closing
-description: Run the close — read and explain a term sheet in plain language, flag the terms that actually matter, prepare the negotiation, build the closing checklist, and create the urgency window that gets a round to a clean finish. Use this skill whenever the user receives a term sheet, asks what terms mean, needs to compare offers, wants to negotiate or close the round, is trying to create a close window, or asks "how do I close this". Trigger it for any term-sheet, valuation, dilution, SAFE/equity-terms, or "how do I get them to commit" request, from receipt of a term sheet through to the wire. Explains terms and trade-offs so the founders decide — never gives legal advice or tells them what to sign.
+description: "Run the close — read and explain a term sheet in plain language, flag the terms that actually matter, prepare the negotiation, build the closing checklist, and create the urgency window that gets a round to a clean finish. Use this skill whenever the user receives a term sheet, asks what terms mean, needs to compare offers, wants to negotiate or close the round, is trying to create a close window, or asks \"how do I close this\". Trigger it for any term-sheet, valuation, dilution, SAFE/equity-terms, or \"how do I get them to commit\" request, from receipt of a term sheet through to the wire. Explains terms and trade-offs so the founders decide — never gives legal advice or tells them what to sign."
 ---
 
 # Closing
@@ -10,15 +10,20 @@ window where saying yes now is the obvious move. This skill helps you read the
 terms that matter, run the negotiation, and drive to a clean, fast finish without
 losing leverage or goodwill.
 
+Use the user's instructions and existing decisions as the authority. Read and write
+raise artifacts in the user's project folder, not the installed skill directory.
+In chat-only sessions, use the supplied files and return updated artifacts inline
+or as downloads; do not claim a project file was saved unless it was.
+
 ## Prerequisites
 
 - Read `raise-context.md` §2 (your target terms).
 - Read `pipeline.md` from the project folder (who's live, who's close — your
-  leverage map). If it's missing, run `/pipeline` first — you cannot map
+  leverage map). If it's missing, run `pipeline` first — you cannot map
   leverage without the pipeline state.
 - Read `fundraising-plan.md` for the close mechanics the mode implies (active:
   engineer the window; passive: take commitments as they come). If missing, run
-  `/fundraising-plan` first.
+  `fundraising-plan` first.
 
 > **Not legal advice.** This skill explains terms and trade-offs so you can decide
 > and brief your lawyer efficiently. It never tells you what to sign. Anything

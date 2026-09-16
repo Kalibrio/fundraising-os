@@ -1,6 +1,6 @@
 ---
 name: warm-intro-map
-description: Map the best possible warm-introduction path to each investor target before any cold email is sent, and draft the forwardable intro-request notes that mobilise the founders' networks. Use this skill whenever the user asks how to get introduced to a VC/fund/partner, wants to map their network to investors, asks "who can intro me to X", wants to find warm paths or an intro path, or is about to start outreach. Trigger it right after the investor list is built and before outreach — a warm path changes everything about how the first email should read.
+description: "Map the best possible warm-introduction path to each investor target before any cold email is sent, and draft the forwardable intro-request notes that mobilise the founders' networks. Use this skill whenever the user asks how to get introduced to a VC/fund/partner, wants to map their network to investors, asks \"who can intro me to X\", wants to find warm paths or an intro path, or is about to start outreach. Trigger it right after the investor list is built and before outreach — a warm path changes everything about how the first email should read."
 ---
 
 # Warm Intro Map
@@ -10,10 +10,24 @@ emails. Before sending anything, find the strongest path to each target — thro
 whichever founder actually holds the relationship — and arm your connectors with
 a note they can forward without thinking.
 
+Prepare drafts by default. Generating a draft does not mean it was sent and must
+not advance a thread to Contacted. Send or publish only when the user explicitly
+requests it and an appropriate integration is available; record a sent date only
+after confirmed delivery or a user-reported send.
+
+Research with the web tools available in the host app. If browsing is unavailable,
+work from supplied sources and label unverified facts; do not claim fresh research
+or invent investor details, relationships, or citations.
+
+Use the user's instructions and existing decisions as the authority. Read and write
+raise artifacts in the user's project folder, not the installed skill directory.
+In chat-only sessions, use the supplied files and return updated artifacts inline
+or as downloads; do not claim a project file was saved unless it was.
+
 ## Prerequisites
 
 - `investors.tsv` from the project folder (the partners to reach, written by
-  `investor-list`). If it's missing, run `/investor-list` first.
+  `investor-list`). If it's missing, run `investor-list` first.
 - `raise-context.md` §11 (founder networks — one subsection per founder: cap
   table, advisors, customers, where each network concentrates) and §1/§9 (the
   one-liner and spine, so the forwardable note is sharp).
@@ -35,7 +49,7 @@ a note they can forward without thinking.
    - **Tier B** — an advisor/operator with a real relationship to the partner.
    - **Tier C** — a shared strong node (same firm alumni, mutual close contact).
    - **Cold** — no path; route to personalised cold outreach in `outreach`.
-   Use `web_search` to check portfolio overlaps and co-investment patterns; do not
+   Use the available web search tool to check portfolio overlaps and co-investment patterns; do not
    fetch LinkedIn directly. Where you can only infer a path, mark it `unverified`
    and tell the user to confirm the relationship is real before using it.
 

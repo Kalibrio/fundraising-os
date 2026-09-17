@@ -157,6 +157,11 @@
   .scard .role{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-muted);margin-bottom:.9rem}
   .scard h4{font-family:var(--serif);font-weight:600;font-size:1.3rem;margin:0 0 .5rem;line-height:1.15}
   .scard p{color:var(--cream-dim);font-weight:300;font-size:.9rem;margin:0;line-height:1.65}
+  .skill-prompt-help{color:var(--cream-dim);font-size:.9rem;margin:1rem 0 0;max-width:760px;line-height:1.7}
+  .skill-prompt-help a,.skill-actions a{color:var(--green)}
+  .skill-actions{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem 1rem;margin-top:1.3rem;font-size:.8rem}
+  .skill-actions .copy{background:transparent;border:1px solid var(--green-border);color:var(--green);padding:.65rem .9rem;font:inherit;cursor:pointer;border-radius:2px}
+  .skill-actions .copy:hover{background:var(--green-dim)}
 
   /* rhythm */
   .rhythm{display:grid;grid-template-columns:1fr 1fr;gap:2.6rem;align-items:start;margin-top:3rem}
@@ -390,49 +395,50 @@
     <div class="label">The 15 skills</div>
     <h2 class="sec-h">Fifteen specialists. One source of truth. <em>All free.</em></h2>
     <p class="sec-sub">An on-demand workflow for your raise: invoke a skill in Claude Code or Codex to prepare materials, update the project files, and surface the decisions that need you. Scheduling and external integrations are configured separately.</p>
+    <p class="skill-prompt-help">Prefer ordinary Claude chat? <strong>Copy Prompts</strong> copies the chat setup and that skill's prompt together. Paste into Claude, fill in the placeholders, and supply your context. Choose <strong>View prompts</strong> to read them first or copy just the skill prompt. See the <a href="#claude-prompts">full prompt sequence</a>.</p>
 
     <div class="skill-group">
       <div class="sg-head"><h3>Decide</h3><span class="meta">Phase 00 · whether &amp; when</span></div>
       <div class="skills">
-        <div class="scard"><div class="cmdname">raise-decision</div><div class="role">Decision Engine</div><h4>Should you raise at all?</h4><p>Each founder answers a short questionnaire independently — readiness, dilution tolerance, time appetite. It surfaces where you disagree, runs the dilution math and the alternatives, and returns a verdict with teeth: raise now, not yet (with the milestone that flips it), or don't raise.</p></div>
+        <div class="scard"><div class="cmdname">raise-decision</div><div class="role">Decision Engine</div><h4>Should you raise at all?</h4><p>Each founder answers a short questionnaire independently — readiness, dilution tolerance, time appetite. It surfaces where you disagree, runs the dilution math and the alternatives, and returns a verdict with teeth: raise now, not yet (with the milestone that flips it), or don't raise.</p><div class="skill-actions"><button type="button" class="copy" data-copy="prompt-chat-setup-text prompt-raise-decision-text" data-prompt-link="prompt-raise-decision" aria-label="Copy setup and raise-decision prompts">Copy Prompts</button><a href="#prompt-raise-decision" aria-label="View raise-decision prompts">View prompts</a></div></div>
       </div>
     </div>
 
     <div class="skill-group">
       <div class="sg-head"><h3>Foundation</h3><span class="meta">Phase 01 · context &amp; strategy</span></div>
       <div class="skills">
-        <div class="scard"><div class="cmdname">raise-context</div><div class="role">Context Engine</div><h4>The single source of truth</h4><p>Interviews you, pressure-tests every claim, and flags what's missing or weak before it ever reaches an investor. Everything downstream inherits this file.</p></div>
-        <div class="scard"><div class="cmdname">fundraising-plan</div><div class="role">Raise Strategist</div><h4>Passive vs. active vs. hybrid</h4><p>Picks up the verdict from raise-decision and sets the mode — a quiet "always slightly raising" or a sharp, time-boxed process — writing the intensity into a plan file every downstream skill reads.</p></div>
+        <div class="scard"><div class="cmdname">raise-context</div><div class="role">Context Engine</div><h4>The single source of truth</h4><p>Interviews you, pressure-tests every claim, and flags what's missing or weak before it ever reaches an investor. Everything downstream inherits this file.</p><div class="skill-actions"><button type="button" class="copy" data-copy="prompt-chat-setup-text prompt-raise-context-text" data-prompt-link="prompt-raise-context" aria-label="Copy setup and raise-context prompts">Copy Prompts</button><a href="#prompt-raise-context" aria-label="View raise-context prompts">View prompts</a></div></div>
+        <div class="scard"><div class="cmdname">fundraising-plan</div><div class="role">Raise Strategist</div><h4>Passive vs. active vs. hybrid</h4><p>Picks up the verdict from raise-decision and sets the mode — a quiet "always slightly raising" or a sharp, time-boxed process — writing the intensity into a plan file every downstream skill reads.</p><div class="skill-actions"><button type="button" class="copy" data-copy="prompt-chat-setup-text prompt-fundraising-plan-text" data-prompt-link="prompt-fundraising-plan" aria-label="Copy setup and fundraising-plan prompts">Copy Prompts</button><a href="#prompt-fundraising-plan" aria-label="View fundraising-plan prompts">View prompts</a></div></div>
       </div>
     </div>
 
     <div class="skill-group">
       <div class="sg-head"><h3>Build</h3><span class="meta">Phase 02 · list, paths, story, model</span></div>
       <div class="skills">
-        <div class="scard"><div class="cmdname">investor-list</div><div class="role">Target Builder</div><h4>The 40 funds worth your time</h4><p>Ranked by fit, with evidence coverage and eligibility shown separately. See which partners match, which need more research, and which conflicts rule out outreach.</p></div>
-        <div class="scard"><div class="cmdname">warm-intro-map</div><div class="role">Path Finder</div><h4>The best path to each partner</h4><p>Maps the strongest warm intro through your network and drafts the forwardable note your connector can send in fifteen seconds.</p></div>
-        <div class="scard"><div class="cmdname">deck</div><div class="role">Narrative Architect</div><h4>Story first, slides second</h4><p>Headlines that are claims, not labels. A traction page partners screenshot. Creates a deck with your app’s available tools, or returns clearly labelled slide content.</p></div>
-        <div class="scard"><div class="cmdname">financial-projection</div><div class="role">Model Builder</div><h4>Defensible, not fantastical</h4><p>A driver-based model plus the one-page assumptions memo you actually defend. Runway and ask reconcile exactly with the deck.</p></div>
-        <div class="scard"><div class="cmdname">pitch-rehearsal</div><div class="role">Pitch Coach</div><h4>Practice the hard questions</h4><p>Rehearse your opening, face skeptical investor questions one at a time, and tighten answers around evidence. Unknowns become preparation tasks.</p></div>
+        <div class="scard"><div class="cmdname">investor-list</div><div class="role">Target Builder</div><h4>The 40 funds worth your time</h4><p>Ranked by fit, with evidence coverage and eligibility shown separately. See which partners match, which need more research, and which conflicts rule out outreach.</p><div class="skill-actions"><button type="button" class="copy" data-copy="prompt-chat-setup-text prompt-investor-list-text" data-prompt-link="prompt-investor-list" aria-label="Copy setup and investor-list prompts">Copy Prompts</button><a href="#prompt-investor-list" aria-label="View investor-list prompts">View prompts</a></div></div>
+        <div class="scard"><div class="cmdname">warm-intro-map</div><div class="role">Path Finder</div><h4>The best path to each partner</h4><p>Maps the strongest warm intro through your network and drafts the forwardable note your connector can send in fifteen seconds.</p><div class="skill-actions"><button type="button" class="copy" data-copy="prompt-chat-setup-text prompt-warm-intro-map-text" data-prompt-link="prompt-warm-intro-map" aria-label="Copy setup and warm-intro-map prompts">Copy Prompts</button><a href="#prompt-warm-intro-map" aria-label="View warm-intro-map prompts">View prompts</a></div></div>
+        <div class="scard"><div class="cmdname">deck</div><div class="role">Narrative Architect</div><h4>Story first, slides second</h4><p>Headlines that are claims, not labels. A traction page partners screenshot. Creates a deck with your app’s available tools, or returns clearly labelled slide content.</p><div class="skill-actions"><button type="button" class="copy" data-copy="prompt-chat-setup-text prompt-deck-text" data-prompt-link="prompt-deck" aria-label="Copy setup and deck prompts">Copy Prompts</button><a href="#prompt-deck" aria-label="View deck prompts">View prompts</a></div></div>
+        <div class="scard"><div class="cmdname">financial-projection</div><div class="role">Model Builder</div><h4>Defensible, not fantastical</h4><p>A driver-based model plus the one-page assumptions memo you actually defend. Runway and ask reconcile exactly with the deck.</p><div class="skill-actions"><button type="button" class="copy" data-copy="prompt-chat-setup-text prompt-financial-projection-text" data-prompt-link="prompt-financial-projection" aria-label="Copy setup and financial-projection prompts">Copy Prompts</button><a href="#prompt-financial-projection" aria-label="View financial-projection prompts">View prompts</a></div></div>
+        <div class="scard"><div class="cmdname">pitch-rehearsal</div><div class="role">Pitch Coach</div><h4>Practice the hard questions</h4><p>Rehearse your opening, face skeptical investor questions one at a time, and tighten answers around evidence. Unknowns become preparation tasks.</p><div class="skill-actions"><button type="button" class="copy" data-copy="prompt-chat-setup-text prompt-pitch-rehearsal-text" data-prompt-link="prompt-pitch-rehearsal" aria-label="Copy setup and pitch-rehearsal prompts">Copy Prompts</button><a href="#prompt-pitch-rehearsal" aria-label="View pitch-rehearsal prompts">View prompts</a></div></div>
       </div>
     </div>
 
     <div class="skill-group">
       <div class="sg-head"><h3>Run</h3><span class="meta">Phase 03 · reach, manage, anticipate</span></div>
       <div class="skills">
-        <div class="scard"><div class="cmdname">investor-brief</div><div class="role">Meeting Preparation</div><h4>Walk in prepared</h4><p>A sourced brief on the fund, partner and relationship, with tailored talking points, likely objections, questions to ask and a proposed next step.</p></div>
-        <div class="scard"><div class="cmdname">outreach</div><div class="role">Message Writer</div><h4>Written for one partner</h4><p>A researched hook, one proof point, a small specific ask — never the same body with the name swapped. Warm and cold variants per target.</p></div>
-        <div class="scard"><div class="cmdname">pipeline</div><div class="role">Process Manager</div><h4>Nothing drops</h4><p>A weekly Monday brief of what needs action, same-day follow-up generators, and stage tracking across every thread in parallel. Speed is the message.</p></div>
-        <div class="scard"><div class="cmdname">data-room</div><div class="role">Diligence Anticipator</div><h4>Answers before they're asked</h4><p>The full index, a claim-to-proof map, a ranked gap list, and staged access. Ready the moment a partner asks — which is itself the signal.</p></div>
+        <div class="scard"><div class="cmdname">investor-brief</div><div class="role">Meeting Preparation</div><h4>Walk in prepared</h4><p>A sourced brief on the fund, partner and relationship, with tailored talking points, likely objections, questions to ask and a proposed next step.</p><div class="skill-actions"><button type="button" class="copy" data-copy="prompt-chat-setup-text prompt-investor-brief-text" data-prompt-link="prompt-investor-brief" aria-label="Copy setup and investor-brief prompts">Copy Prompts</button><a href="#prompt-investor-brief" aria-label="View investor-brief prompts">View prompts</a></div></div>
+        <div class="scard"><div class="cmdname">outreach</div><div class="role">Message Writer</div><h4>Written for one partner</h4><p>A researched hook, one proof point, a small specific ask — never the same body with the name swapped. Warm and cold variants per target.</p><div class="skill-actions"><button type="button" class="copy" data-copy="prompt-chat-setup-text prompt-outreach-text" data-prompt-link="prompt-outreach" aria-label="Copy setup and outreach prompts">Copy Prompts</button><a href="#prompt-outreach" aria-label="View outreach prompts">View prompts</a></div></div>
+        <div class="scard"><div class="cmdname">pipeline</div><div class="role">Process Manager</div><h4>Nothing drops</h4><p>A weekly Monday brief of what needs action, same-day follow-up generators, and stage tracking across every thread in parallel. Speed is the message.</p><div class="skill-actions"><button type="button" class="copy" data-copy="prompt-chat-setup-text prompt-pipeline-text" data-prompt-link="prompt-pipeline" aria-label="Copy setup and pipeline prompts">Copy Prompts</button><a href="#prompt-pipeline" aria-label="View pipeline prompts">View prompts</a></div></div>
+        <div class="scard"><div class="cmdname">data-room</div><div class="role">Diligence Anticipator</div><h4>Answers before they're asked</h4><p>The full index, a claim-to-proof map, a ranked gap list, and staged access. Ready the moment a partner asks — which is itself the signal.</p><div class="skill-actions"><button type="button" class="copy" data-copy="prompt-chat-setup-text prompt-data-room-text" data-prompt-link="prompt-data-room" aria-label="Copy setup and data-room prompts">Copy Prompts</button><a href="#prompt-data-room" aria-label="View data-room prompts">View prompts</a></div></div>
       </div>
     </div>
 
     <div class="skill-group">
       <div class="sg-head"><h3>Sustain &amp; Close</h3><span class="meta">Phase 04 · warmth, tempo &amp; the wire</span></div>
       <div class="skills">
-        <div class="scard"><div class="cmdname">investor-comms</div><div class="role">Warmth Engine</div><h4>Two tracks — yes and no</h4><p>Monthly update drafts when you run the skill, with an honest challenges line. Out-execute the reason they passed, in writing, and the next round writes itself.</p></div>
-        <div class="scard"><div class="cmdname">pace</div><div class="role">Chief of Staff</div><h4>Keeps the machine in sync</h4><p>Decides which skill runs next and why, keeps the plan, sheet, and pipeline files consistent with each other, and protects founder attention. The glue that orchestrates the whole raise.</p></div>
-        <div class="scard"><div class="cmdname">closing</div><div class="role">Close Driver</div><h4>The terms that actually matter</h4><p>A plain-language term-sheet readout — pool placement, preference, board — negotiation prep, and a real close window. Clarifies so you decide; not legal advice.</p></div>
+        <div class="scard"><div class="cmdname">investor-comms</div><div class="role">Warmth Engine</div><h4>Two tracks — yes and no</h4><p>Monthly update drafts when you run the skill, with an honest challenges line. Out-execute the reason they passed, in writing, and the next round writes itself.</p><div class="skill-actions"><button type="button" class="copy" data-copy="prompt-chat-setup-text prompt-investor-comms-text" data-prompt-link="prompt-investor-comms" aria-label="Copy setup and investor-comms prompts">Copy Prompts</button><a href="#prompt-investor-comms" aria-label="View investor-comms prompts">View prompts</a></div></div>
+        <div class="scard"><div class="cmdname">pace</div><div class="role">Chief of Staff</div><h4>Keeps the machine in sync</h4><p>Decides which skill runs next and why, keeps the plan, sheet, and pipeline files consistent with each other, and protects founder attention. The glue that orchestrates the whole raise.</p><div class="skill-actions"><button type="button" class="copy" data-copy="prompt-chat-setup-text prompt-pace-text" data-prompt-link="prompt-pace" aria-label="Copy setup and pace prompts">Copy Prompts</button><a href="#prompt-pace" aria-label="View pace prompts">View prompts</a></div></div>
+        <div class="scard"><div class="cmdname">closing</div><div class="role">Close Driver</div><h4>The terms that actually matter</h4><p>A plain-language term-sheet readout — pool placement, preference, board — negotiation prep, and a real close window. Clarifies so you decide; not legal advice.</p><div class="skill-actions"><button type="button" class="copy" data-copy="prompt-chat-setup-text prompt-closing-text" data-prompt-link="prompt-closing" aria-label="Copy setup and closing prompts">Copy Prompts</button><a href="#prompt-closing" aria-label="View closing prompts">View prompts</a></div></div>
       </div>
     </div>
   </div>
@@ -939,10 +945,15 @@ Recommend continue, adjust or re-plan; explain why. Give next week's three prior
     button.addEventListener('click', async () => {
       const original = button.textContent;
       try {
-        await navigator.clipboard.writeText(document.getElementById(button.dataset.copy).textContent);
+        const prompts = button.dataset.copy.split(/\s+/).map(id => document.getElementById(id).textContent);
+        await navigator.clipboard.writeText(prompts.join('\n\n---\n\n'));
         button.textContent = 'Copied ✓';
       } catch {
-        button.textContent = 'Select the text above to copy';
+        if (button.dataset.promptLink) {
+          location.hash = button.dataset.promptLink;
+          openLinkedQuestion();
+        }
+        button.textContent = button.dataset.promptLink ? 'View prompt to copy manually' : 'Select the text above to copy';
       }
       setTimeout(() => { button.textContent = original; }, 2400);
     });

@@ -195,6 +195,16 @@
   .qa[open] summary .plus{transform:rotate(45deg)}
   .qa p{color:var(--cream-dim);font-weight:300;margin:0 0 1.5rem;max-width:760px;line-height:1.8}
   .qa a{color:var(--green)}
+  .qa{scroll-margin-top:88px}
+  .qa-body{max-width:850px;padding-bottom:1rem;overflow-wrap:anywhere}
+  .qa-body h4{font-family:var(--serif);font-size:1.3rem;color:var(--cream);margin:1.8rem 0 .8rem}
+  .qa-body ol,.qa-body ul{padding-left:1.4rem;margin:0 0 1.5rem;color:var(--cream-dim);font-weight:300;line-height:1.8}
+  .qa-body li{margin-bottom:.75rem}
+  .qa-body strong{color:var(--cream);font-weight:500}
+  .qa-body code{color:var(--green);font-size:.86em;overflow-wrap:anywhere}
+  .qa-body pre{background:#060606;border:1px solid var(--border-2);padding:1rem;white-space:pre-wrap;overflow-wrap:anywhere;font-family:var(--mono);font-size:.78rem;line-height:1.7;color:var(--cream);margin:1rem 0}
+  .qa-body .copy{background:transparent;border:1px solid var(--green-border);color:var(--green);padding:.6rem .85rem;font:inherit;font-size:.8rem;cursor:pointer;border-radius:2px;margin:0 0 1.5rem}
+
 
   /* creator */
   .creator{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;margin-top:3rem;
@@ -471,7 +481,132 @@ before the momentum leaks.
   <div class="wrap">
     <div class="label">FAQ</div>
     <h2 class="sec-h">Common questions</h2>
+    <p class="sec-sub">Starting a raise? Follow the <a href="#six-week-plan">six-week plan</a>, then use the <a href="#fundraising-pace">daily and weekly check-ins</a> to keep moving.</p>
     <div class="faq">
+      <details class="qa" id="six-week-plan">
+        <summary>I want to close in six weeks. What should I do each week? <span class="plus">+</span></summary>
+        <div class="qa-body">
+          <p><strong>Treat six weeks as a target to test against evidence.</strong> This is a suggested operating plan for a prepared early-stage raise, not a promise or an industry conversion benchmark. Warm relationships, investor decision calendars, your instrument and legal readiness determine what fits. If you are starting cold or need an institutional lead, the date may need to move. Use existing work and enter at your actual stage.</p>
+          <p><strong>Define the finish line first:</strong> the full target amount received, or an explicitly agreed first close with its own amount. A positive meeting, verbal interest, term sheet and signed investment documents are different milestones; none should be reported as cash received. Put a real start date, target funding date, amount, currency, raise lead and company jurisdiction in <code>fundraising-plan.md</code>. Ask counsel and prospective investors early whether the timetable is workable.</p>
+
+          <p>Begin with the <a href="#fundraising-start">copyable kickoff request</a>, then use the <a href="#fundraising-pace">daily and weekly pacing prompts</a> throughout the six weeks.</p>
+
+          <h4>Week 1 — Get ready and open the first conversations</h4>
+          <ol>
+            <li><strong>Days 1–2:</strong> use <code>raise-decision</code> to record or confirm the team's decision, <code>raise-context</code> to reconcile facts, and <code>fundraising-plan</code> to set the active process, dates, ownership and fallback. Define the milestone the money funds and who protects company operations.</li>
+            <li><strong>Days 2–4:</strong> use <code>deck</code> and <code>financial-projection</code> for a defensible story, ask and cash plan. Use <code>data-room</code> to identify the essential evidence and assign missing items. Get counsel started on corporate, cap-table and instrument readiness now.</li>
+            <li><strong>Days 3–5:</strong> use <code>investor-list</code> and <code>warm-intro-map</code> to research a manageable target set. Around 30–40 qualified candidates is a planning starting point for an active process, not a quota. Separate likely leads from followers; exclude blocked targets and finish research before treating uncertain fit as qualified.</li>
+            <li>Practice with <code>pitch-rehearsal</code>. Once the essential materials are credible, use <code>outreach</code> to draft a small first wave, for example 3–6 suitable investors. Review and send through your normal channel, then record actual sends in <code>pipeline</code>. Avoid spending a whole week polishing cosmetics.</li>
+          </ol>
+          <p><strong>Friday checkpoint:</strong> consistent context, usable deck/model, core diligence evidence, a researched first wave and named owners. Some introductions or meetings should be in motion; if key facts or documents are missing, name the blocker and revise launch dates.</p>
+
+          <h4>Week 2 — Run parallel first meetings</h4>
+          <p>Refine the story from the first conversations, then approach the strongest qualified targets promptly. Use a short calibration wave to learn; do not hold your best investors back until the final weeks. Batch meeting slots to protect preparation and company work. Before each meeting run <code>investor-brief</code>; rehearse the hardest objection with <code>pitch-rehearsal</code>. Ask who decides, whether they can lead, their likely ticket, what evidence they need and their actual decision timetable.</p>
+          <p>After every meeting, supply factual notes to <code>pipeline</code>, draft the promised follow-up and send it when ready. Record the next step, owner and date, distinguishing a proposal from an investor-confirmed commitment. Follow agreed dates; do not send daily reminders merely because you check the pipeline daily.</p>
+          <p><strong>Friday checkpoint:</strong> track substantive replies, completed meetings and dated next steps. Have second meetings or specific requests emerged? If meetings are not materializing, fix targeting, introduction paths or the message before expanding volume.</p>
+
+          <h4>Week 3 — Turn interest into diligence and a decision path</h4>
+          <p>Prioritize investors taking concrete next steps: bringing another decision-maker, requesting relevant diligence, or agreeing a decision meeting. Use <code>data-room</code> to close evidence gaps and prepare appropriate access; you still control actual sharing. Reconcile every answer with <code>raise-context</code> and the model. Keep additional qualified conversations moving while the strongest prospects evaluate.</p>
+          <p>For a lead-dependent round, identify at least one plausible lead with an explicit process and dates. For a round that does not require a lead, track investor-by-investor decision and funding dates instead. Use <code>closing</code> to prepare questions and a checklist as terms emerge; use <code>investor-comms</code> for useful, factual updates to active investors when there is real news.</p>
+          <p><strong>Friday checkpoint:</strong> a credible path to decisions should exist. No follow-on meetings, diligence or named decision timetable means the six-week target is at risk. Run <code>pace</code> and re-plan now, not in week 6.</p>
+
+          <h4>Week 4 — Seek decisions and align the closing timetable</h4>
+          <p>Ask advanced investors what remains for a decision and arrange the relevant partner or decision-maker conversations. Use <code>closing</code> to compare proposed terms and prepare negotiations with counsel. Confirm amounts, conditions and each investor's process. Keep verbal interest, written indications and signed documents separate.</p>
+          <p>For a priced, lead-dependent round, use this week as a planning checkpoint for lead/terms progress and an agreed diligence/legal timetable. Counsel may require more time; this is not a universal two-week closing rule. For rolling investments, process each eligible close on the applicable documents and conditions. Respect any agreed exclusivity or other obligations.</p>
+          <p><strong>Friday checkpoint:</strong> there should be a specific route from the current status to funding: outstanding decisions, diligence items, documents, approvals, owners and dates. Without that route, mark the deadline red and decide whether to extend it or pursue a feasible first close.</p>
+
+          <h4>Week 5 — Resolve the remaining conditions</h4>
+          <p>Run <code>closing</code> with the current documents and counsel's updates. Maintain an investor-by-investor checklist for remaining diligence, allocations, approvals, legal documents, signatures and expected funding dates. Resolve critical questions promptly; agree a delivery date when an answer needs work. Follow up with interested participants using real progress and genuine deadlines.</p>
+          <p>Keep a short daily blocker review with the responsible people. Confirm the administrative steps with counsel, investors and your finance owner. A spreadsheet of hoped-for checks is not a funded round.</p>
+          <p><strong>Friday checkpoint:</strong> every amount needed for the planned close has a documented status, owner and expected funding date. Identify any gap explicitly; do not count unsigned or conditional amounts as received.</p>
+
+          <h4>Week 6 — Complete the close and reconcile the money</h4>
+          <p>Work through the remaining approvals, documents, signatures and funding conditions with counsel. Track expected transfers and verify actual receipts against the company account with your finance owner. Use <code>pipeline</code> to keep signed and received amounts distinct. Close out the cap-table and document records with the responsible professionals, then use <code>investor-comms</code> to draft the appropriate investor update.</p>
+          <p><strong>Finish-line checkpoint:</strong> report the amount actually received versus the original target, remaining commitments and conditions, and the resulting cash plan. If only a first close is complete, call it a first close and set the next milestone. Do not silently redefine a partially funded round as the full target achieved.</p>
+          <p>The week labels above are our planning recommendation. Background reading: <a href="https://www.ycombinator.com/blog/aaron-harris-on-fundraising-and-meeting-with-investors">YC on parallel investor conversations</a> and <a href="https://www.ycombinator.com/blog/how-to-raise-a-seed-round">YC's seed fundraising guide</a>. Instrument and closing mechanics should be confirmed for your company with counsel.</p>
+        </div>
+      </details>
+
+      <details class="qa" id="fundraising-start">
+        <summary>What exactly should I paste into Claude or Codex to start? <span class="plus">+</span></summary>
+        <div class="qa-body">
+          <p>Install the skills and open a private raise folder. Supply your latest deck, metrics, cash/runway, cap table and existing investor notes. Start with the request below; replace the brackets with real facts. Do not upload private company information to this public website.</p>
+          <pre id="six-week-kickoff">Use the Fundraising OS skills to plan my six-week raise.
+Company: [name]. Stage and jurisdiction: [details].
+Target: [amount and currency]. Start: [date]. Funding deadline: [date].
+Close means: [full round received / first close of amount].
+Current cash and runway: [facts or unknown]. Existing investor conversations and potential lead: [details].
+Raise lead and available weekly time: [name, hours].
+Review the files in this project. Confirm the raise decision, reconcile context, then use fundraising-plan to assess whether this deadline is credible.
+Save the dated weekly milestones, owners, readiness gaps and fallback decisions in fundraising-plan.md. Use pipeline for investor threads. Set up a pacing-log.md for our check-ins and keep the plan as the source for milestone dates.
+Give me the first three actions. Ask for missing facts; never invent them. Draft messages only. Do not claim that reminders or integrations are enabled.</pre>
+          <button class="copy" data-copy="six-week-kickoff" aria-label="Copy six-week kickoff prompt">Copy kickoff prompt</button>
+          <p>For a specific skill, Claude plugin commands use <code>/fundraising-os:pace</code>, standalone Claude uses <code>/pace</code>, and Codex uses <code>$pace</code>. Substitute the relevant skill name. Natural-language requests can also name the skills. The pacing log is a project note you ask the assistant to maintain, not a separate installed service.</p>
+        </div>
+      </details>
+
+      <details class="qa" id="fundraising-pace">
+        <summary>How do I keep pace every day and every week? <span class="plus">+</span></summary>
+        <div class="qa-body">
+          <p><strong>Use one owner, one plan and one pipeline.</strong> The raise lead owns the process. Every investor thread has a named relationship owner. Keep using the same project files in either app and finish one app's edits before switching.</p>
+          <ul>
+            <li><strong>Each morning — 15 minutes:</strong> provide yesterday's real interactions and use <code>pipeline</code> for today's due actions, investor promises and overdue threads. Choose three actions that advance decisions. Respect existing follow-up dates.</li>
+            <li><strong>Before each meeting — 15–20 minutes:</strong> use <code>investor-brief</code>, then rehearse one difficult question. Know the next step you want to agree.</li>
+            <li><strong>After each meeting — 10 minutes:</strong> record questions, objections, requested material, actual contact date and proposed/agreed next step. Review the follow-up draft and send through an authorized channel.</li>
+            <li><strong>Monday — 30 minutes:</strong> use <code>pace</code> to compare this week's milestone with the evidence, choose the next skills, assign owners and protect time for running the company.</li>
+            <li><strong>Wednesday — 20 minutes:</strong> unblock the most important stalled decision or missing diligence item. Escalate to the person who can resolve it.</li>
+            <li><strong>Friday — 30 minutes:</strong> compare plan versus actual, review the next two weeks, and choose: continue, change the approach, or re-plan the deadline. Save the decision and reason.</li>
+          </ul>
+          <p>These are suggested review slots, in addition to research, meetings and follow-through. Choose times that fit your workload; scheduling a review does not make the underlying work disappear.</p>
+          <pre id="six-week-daily">Use pipeline for today's triage, then pace to assess our six-week plan.
+Today: [date]. Since the last check-in: [actual meetings, sent messages, replies, decisions, documents and money received].
+Read fundraising-plan.md and pipeline.md. Preserve prior facts and agreed follow-up dates. Mark missing updates as unknown; a draft is not a sent message.
+Give me the three highest-priority actions, each with owner and due date; the biggest blocker; days left; and whether the funding deadline is on track, at risk, off track or unknown, with evidence.
+Append a dated check-in to pacing-log.md. Propose milestone changes explicitly rather than silently moving the deadline. Draft only; do not send messages.</pre>
+          <button class="copy" data-copy="six-week-daily" aria-label="Copy daily fundraising check-in prompt">Copy daily check-in</button>
+          <pre id="six-week-review">Use pace for our weekly fundraising review, with pipeline supplying thread status.
+Compare this week's dated milestone with actual evidence. Show changes since the last review, stage movements, overdue promises, missing evidence and the next two weeks' critical dependencies.
+Keep verbal interest, written indications, signed amounts and received cash separate. Show the funding gap without guessing unknown amounts.
+Recommend continue, adjust or re-plan; explain why. Give next week's three priorities, owners and dates. Append the review to pacing-log.md and record any explicitly agreed plan changes in fundraising-plan.md.</pre>
+          <button class="copy" data-copy="six-week-review" aria-label="Copy weekly fundraising review prompt">Copy weekly review</button>
+        </div>
+      </details>
+
+      <details class="qa" id="fundraising-scorecard">
+        <summary>Which numbers tell me whether the six-week close is on track? <span class="plus">+</span></summary>
+        <div class="qa-body">
+          <p>Use a small scorecard with <strong>this week's plan, actual, change since last review, owner and next date</strong>. Count unique investor firms consistently and separate lead-capable firms from followers. Track:</p>
+          <ul>
+            <li>Qualified targets, actual approaches sent, substantive replies and first meetings completed.</li>
+            <li>Second/partner meetings, active diligence and explicit decision dates. A booked meeting is not a completed meeting.</li>
+            <li>Open investor requests and founder promises, their due dates and blockers.</li>
+            <li>Amounts at each distinct status: verbal interest, written indication/term sheet, signed investment documents, and cash received. Do not sum these statuses as if they were separate checks; track each investor's amount once per status view.</li>
+            <li>Cash received against the close target, unfunded gap, current runway and remaining time. Unknown amounts stay unknown. Use consistent currencies or explicit dated exchange assumptions.</li>
+          </ul>
+          <p><strong>Green:</strong> milestone evidence exists and the remaining decisions, documents and funding steps fit the confirmed timetable. <strong>Amber:</strong> an important step slipped or timing depends on an unconfirmed decision. <strong>Red:</strong> the required decision path is absent or a critical step cannot fit the remaining time. <strong>Unknown:</strong> updates are too stale or incomplete to assess. These are working assessments, not probabilities of success.</p>
+          <p>Agree activity targets from your actual starting pipeline and founder capacity. Review conversion using observed counts and comparable periods; do not treat a tiny sample as a forecast or assume a fixed number of emails guarantees funding. A week full of meetings without agreed next steps can still be off track.</p>
+        </div>
+      </details>
+
+      <details class="qa" id="fundraising-off-track">
+        <summary>What if I am behind in week 3 or still have no lead in week 4? <span class="plus">+</span></summary>
+        <div class="qa-body">
+          <p>Run <code>pace</code> immediately with the latest facts. Diagnose where progress stops: no replies suggests a targeting, access or message problem; first meetings with no next step suggest an unresolved fit or evidence issue; diligence without decisions calls for a clearer process, owner and date. Ask investors for specific feedback instead of guessing their motives.</p>
+          <p>If your round requires a lead and none has a credible decision path by week 3, mark the deadline at risk. If week 4 ends without actionable terms progress and a workable legal/funding timetable, treat a full close by week 6 as off track unless concrete evidence supports an exception. Those are planning escalation points, not universal fundraising laws.</p>
+          <p>Use <code>fundraising-plan</code> to compare an extended process, a feasible first close, a revised scope or a pause to improve evidence. Discuss financing changes with counsel and revisit the cash plan using actual runway. A smaller first close only helps if it funds a useful next milestone; it must not quietly replace the original target. If the round does not need a lead, assess signed participation and funding dates instead.</p>
+          <p>Record the decision, owner and revisit date. Do not manufacture competing offers, claim signatures you do not have, or impose a fictional investor deadline to rescue the calendar.</p>
+        </div>
+      </details>
+
+      <details class="qa" id="fundraising-reminders">
+        <summary>Will it remind me automatically and keep me accountable for six weeks? <span class="plus">+</span></summary>
+        <div class="qa-body">
+          <p><strong>The skills run when you invoke them.</strong> For the manual version, put a short weekday check-in and Monday/Friday reviews in your calendar, open the same raise folder, supply the latest changes and use the prompts above. The saved plan and pacing log let the next session compare commitments with what happened.</p>
+          <p>If your host app supports scheduled tasks with access to this project, configure them separately using the daily or weekly prompt. Specify the timezone, review times, project path, start/end dates and where the result should appear. Verify that the task exists and can read the files; run a test and inspect its output. A normal calendar reminder can simply ask you to open the project when automated access is unavailable.</p>
+          <p>A scheduled review still needs current facts. Without connected, authorized inbox/CRM sources, you must supply updates. Missing updates should produce a stale-data warning, not invented progress. Creating a prompt does not create a reminder, send an investor email or sync an account. Stop or revise the schedule when the raise ends or the plan changes.</p>
+        </div>
+      </details>
+
       <details class="qa"><summary>Does it work in both Claude and Codex? <span class="plus">+</span></summary><p>Yes. The same fifteen skills work in Claude Code and Codex. Claude plugin commands use <code>/fundraising-os:raise-decision</code>; standalone Claude skills use <code>/raise-decision</code>; Codex uses <code>$raise-decision</code>. Both local apps can read the same raise folder. Claude.ai web uses the instructions through guided chat.</p></details>
       <details class="qa"><summary>Does it run automatically or send investor emails? <span class="plus">+</span></summary><p>The skills run when invoked. Daily, weekly and monthly cadences are recommendations; recurring runs need a separately configured scheduled task in your app. No email, calendar, CRM or Drive integration is bundled. The skills draft messages; sending or sharing requires your instruction and a connected tool. A draft does not count as a sent email.</p></details>
       <details class="qa"><summary>Will I get a PowerPoint deck and an Excel model? <span class="plus">+</span></summary><p>When your app can generate files, the skills use its presentation, spreadsheet or code tools to produce them. They do not require a separately named “pptx” or “xlsx” skill. In a session without those capabilities, you get clearly labelled slide content or a text/CSV model with assumptions, rather than a claim that a finished file was created.</p></details>
@@ -528,6 +663,15 @@ before the momentum leaks.
       setTimeout(() => { button.textContent = original; }, 2400);
     });
   });
+  function openLinkedQuestion() {
+    const question = document.getElementById(location.hash.slice(1));
+    if (question && question.matches('details.qa')) {
+      question.open = true;
+      question.scrollIntoView({block: 'start'});
+    }
+  }
+  window.addEventListener('hashchange', openLinkedQuestion);
+  openLinkedQuestion();
   const menu = document.querySelector('.burger');
   const nav = document.getElementById('nl');
   menu.addEventListener('click', () => {

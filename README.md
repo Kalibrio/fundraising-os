@@ -8,7 +8,7 @@ The same Markdown skills work in both apps and share the same project files.
 Built by Ludovic Bodin, author of *Atomic Scaling*. Free under the MIT license;
 your AI app's subscription or usage charges still apply.
 
-[Website](https://fundraising.atomicscaling.com/) · [Full installation guide](INSTALL.md)
+[Website](https://fundraising.atomicscaling.com/) · [Six-week plan and pacing FAQ](https://fundraising.atomicscaling.com/#six-week-plan) · [Full installation guide](INSTALL.md)
 
 ## Start in Claude Code
 

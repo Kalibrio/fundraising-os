@@ -77,6 +77,13 @@ Invoke by app: `/fundraising-os:<name>` for the Claude plugin,
 | Sustain | `pace` | Next skill, artifact consistency and founder workload |
 | Close | `closing` | Term-sheet explanation, negotiation preparation and close checklist |
 
+## Prefer prompts in Claude chat?
+
+Use the [copyable 15-step prompt sequence](https://fundraising.atomicscaling.com/#claude-prompts).
+It includes a chat setup prompt, one prompt per skill, when to use it, and which
+outputs to carry forward. No plugin is required for these concise adaptations;
+keep the latest outputs and supply them when starting a new chat.
+
 ## Prepare for the next investor meeting
 
 Ask for `investor-brief` with the fund/partner name and meeting details. It uses

@@ -206,6 +206,14 @@
   .qa-body .copy{background:transparent;border:1px solid var(--green-border);color:var(--green);padding:.6rem .85rem;font:inherit;font-size:.8rem;cursor:pointer;border-radius:2px;margin:0 0 1.5rem}
 
 
+  .prompt-card{border:1px solid var(--border);padding:0 1rem;margin:0 0 1rem;scroll-margin-top:88px}
+  .qa .prompt-card summary{font-family:var(--mono);font-size:.88rem;line-height:1.6;padding:1rem 0;overflow-wrap:anywhere}
+  .prompt-card[open] summary .plus{transform:rotate(45deg)}
+  .prompt-card:not([open]) summary .plus{transform:none}
+  .prompt-index{columns:2;column-gap:2rem}
+  .prompt-index li{break-inside:avoid}
+  @media(max-width:600px){.prompt-index{columns:1}.prompt-card{padding:0 .75rem}}
+
   /* creator */
   .creator{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;margin-top:3rem;
     background:var(--bg-2);border:1px solid var(--border);border-radius:2px;padding:2.2rem}
@@ -481,7 +489,7 @@ before the momentum leaks.
   <div class="wrap">
     <div class="label">FAQ</div>
     <h2 class="sec-h">Common questions</h2>
-    <p class="sec-sub">Starting a raise? Follow the <a href="#six-week-plan">six-week plan</a>, then use the <a href="#fundraising-pace">daily and weekly check-ins</a> to keep moving.</p>
+    <p class="sec-sub">Starting a raise? Follow the <a href="#six-week-plan">six-week plan</a>, use the <a href="#fundraising-pace">daily and weekly check-ins</a>, or copy the <a href="#claude-prompts">Claude chat prompt sequence</a>.</p>
     <div class="faq">
       <details class="qa" id="six-week-plan">
         <summary>I want to close in six weeks. What should I do each week? <span class="plus">+</span></summary>
@@ -524,6 +532,130 @@ before the momentum leaks.
           <p>Work through the remaining approvals, documents, signatures and funding conditions with counsel. Track expected transfers and verify actual receipts against the company account with your finance owner. Use <code>pipeline</code> to keep signed and received amounts distinct. Close out the cap-table and document records with the responsible professionals, then use <code>investor-comms</code> to draft the appropriate investor update.</p>
           <p><strong>Finish-line checkpoint:</strong> report the amount actually received versus the original target, remaining commitments and conditions, and the resulting cash plan. If only a first close is complete, call it a first close and set the next milestone. Do not silently redefine a partially funded round as the full target achieved.</p>
           <p>The week labels above are our planning recommendation. Background reading: <a href="https://www.ycombinator.com/blog/aaron-harris-on-fundraising-and-meeting-with-investors">YC on parallel investor conversations</a> and <a href="https://www.ycombinator.com/blog/how-to-raise-a-seed-round">YC's seed fundraising guide</a>. Instrument and closing mechanics should be confirmed for your company with counsel.</p>
+        </div>
+      </details>
+
+      <details class="qa" id="claude-prompts">
+        <summary>I like the skills, but prefer prompts in Claude. Can I copy the full sequence? <span class="plus">+</span></summary>
+        <div class="qa-body">
+          <p><strong>Yes. Paste these prompts into an ordinary Claude chat; no plugin or slash commands are required.</strong> They are concise, self-contained adaptations of the 15 workflows. The full installed skills contain additional templates and detailed instructions. You can optionally attach a skill's <code>SKILL.md</code> and its bundled references for that fuller version.</p>
+          <p><strong>How to use the sequence:</strong> paste the setup once, then run one prompt at a time. Answer Claude's questions and review each output before proceeding. Replace bracketed placeholders. Keep the latest context, plan and investor table; attach or paste them when starting another chat. A filename below is a label for the output to save, not a claim that Claude can see or edit a file on your computer.</p>
+          <p><strong>Week 1:</strong> steps 1–9 prepare the raise; run the model and deck together and revisit the deck after the numbers reconcile. Start step 10 as soon as the essentials are ready. <strong>Weeks 2–6:</strong> repeat 11–13 around meetings and reviews; use 14 for relevant updates and 15 as terms emerge. Start the closing checklist early. If you already have a current, agreed output, provide it and skip repeating that step. Do not run all prompts in one message.</p>
+          <h4>Setup — paste once before the first prompt</h4>
+          <pre id="prompt-chat-setup-text">Help me run my fundraise in this Claude chat. Use only the latest company facts and outputs I supply here or attach; do not assume access to other chats, my computer, inbox or CRM.
+Company/stage/jurisdiction: [details]. Amount/currency: [target]. Start/deadline: [dates]. Close means: [first close amount / full round received]. Raise lead: [name].
+Ask for missing facts in small batches. Mark unknowns and distinguish evidence, assumptions and forecasts. If browsing is available and appropriate, cite sources and dates; otherwise say research is unverified.
+Treat messages as drafts. Do not send, share, book meetings or claim reminders are configured. Return each named output as copyable Markdown/TSV, or a downloadable file if available. Never claim it was saved locally unless that actually happened.
+At the end of each step, list the outputs I should keep, unresolved questions and the next prompt to run. I will provide the latest outputs when continuing in a new chat.</pre>
+          <button class="copy" data-copy="prompt-chat-setup-text" aria-label="Copy Claude chat setup prompt">Copy setup prompt</button>
+          <ol class="prompt-index">
+            <li><a href="#prompt-raise-decision">raise-decision</a> — Decide whether to raise</li>
+            <li><a href="#prompt-raise-context">raise-context</a> — Build the company context</li>
+            <li><a href="#prompt-fundraising-plan">fundraising-plan</a> — Set the six-week plan</li>
+            <li><a href="#prompt-deck">deck</a> — Prepare the investor story</li>
+            <li><a href="#prompt-financial-projection">financial-projection</a> — Build the financial case</li>
+            <li><a href="#prompt-investor-list">investor-list</a> — Research and rank investors</li>
+            <li><a href="#prompt-warm-intro-map">warm-intro-map</a> — Find introduction paths</li>
+            <li><a href="#prompt-data-room">data-room</a> — Prepare diligence evidence</li>
+            <li><a href="#prompt-pitch-rehearsal">pitch-rehearsal</a> — Practice the pitch</li>
+            <li><a href="#prompt-outreach">outreach</a> — Draft the first approach</li>
+            <li><a href="#prompt-investor-brief">investor-brief</a> — Prepare for a specific meeting</li>
+            <li><a href="#prompt-pipeline">pipeline</a> — Keep every investor thread current</li>
+            <li><a href="#prompt-pace">pace</a> — Keep the six-week process on track</li>
+            <li><a href="#prompt-investor-comms">investor-comms</a> — Keep investors informed</li>
+            <li><a href="#prompt-closing">closing</a> — Get from terms to funds received</li>
+          </ol>
+          <details class="prompt-card" id="prompt-raise-decision">
+            <summary>01 · raise-decision — Decide whether to raise <span class="plus">+</span></summary>
+            <p><strong>When:</strong> Week 1, or confirm an existing decision. <strong>Keep:</strong> raise-decision.md.</p>
+            <pre id="prompt-raise-decision-text">Help us decide whether to raise now, later, or not at all. Ask which founders are involved and collect each founder&#x27;s view on readiness, dilution, time commitment, what capital unlocks and the alternative without funding. Surface disagreements without inventing consensus. Use supplied cash, runway and traction; ask for missing facts. Compare relevant funding alternatives and show dilution calculations with explicit assumptions. Give a reasoned recommendation for us to decide, measurable readiness gates if needed, and a revisit date. Return a dated raise-decision.md draft.</pre>
+            <button class="copy" data-copy="prompt-raise-decision-text" aria-label="Copy raise-decision prompt">Copy raise-decision prompt</button>
+          </details>
+          <details class="prompt-card" id="prompt-raise-context">
+            <summary>02 · raise-context — Build the company context <span class="plus">+</span></summary>
+            <p><strong>When:</strong> Week 1; refresh when facts change. <strong>Keep:</strong> raise-context.md.</p>
+            <pre id="prompt-raise-context-text">Build our fundraising source of truth from the supplied files and answers. Interview me in batches of 3–5 questions about the company, founders, product, customer problem, traction and metric definitions, business model, market, competitors, differentiation, raise amount/instrument, use of funds, cash/runway, ideal investors, each founder&#x27;s network and communication style. Separate actuals, forecasts and assumptions. Flag contradictory figures and mark unknowns TBD. Return a dated raise-context.md draft plus green/yellow/red readiness gaps and the most important issue to fix before outreach.</pre>
+            <button class="copy" data-copy="prompt-raise-context-text" aria-label="Copy raise-context prompt">Copy raise-context prompt</button>
+          </details>
+          <details class="prompt-card" id="prompt-fundraising-plan">
+            <summary>03 · fundraising-plan — Set the six-week plan <span class="plus">+</span></summary>
+            <p><strong>When:</strong> Week 1; revisit at decision gates. <strong>Keep:</strong> fundraising-plan.md.</p>
+            <pre id="prompt-fundraising-plan-text">Using our agreed raise decision and current context, plan a six-week raise. Ask for the start date, funding deadline, amount, stage, jurisdiction, current investor conversations, possible lead, raise owner and weekly capacity. Confirm whether close means first money received or the full round funded. Assess whether active, passive or hybrid fits; do not promise the deadline. Produce weekly milestones, owners, evidence needed, investor decision and legal dependencies, outreach waves, daily/weekly reviews and fallback decisions. Separate planned from investor-confirmed dates. Return fundraising-plan.md; surface any conflict with our decision or runway.</pre>
+            <button class="copy" data-copy="prompt-fundraising-plan-text" aria-label="Copy fundraising-plan prompt">Copy fundraising-plan prompt</button>
+          </details>
+          <details class="prompt-card" id="prompt-deck">
+            <summary>04 · deck — Prepare the investor story <span class="plus">+</span></summary>
+            <p><strong>When:</strong> Week 1; revise from real feedback. <strong>Keep:</strong> deck.md.</p>
+            <pre id="prompt-deck-text">Using our current context and plan, draft a concise investor pitch with a clear problem, customer, solution, why now, traction, business model, market, competition, team and funding ask tied to milestones. Give each slide a claim-based headline, supporting evidence, proposed visual and speaker notes. Cite the supplied source for material claims; flag missing proof and conflicting numbers. Keep forecasts labelled and remove invented urgency or certainty. Return deck.md. If I request slides, use available file tools and verify the result; otherwise provide slide-ready content without claiming a PowerPoint exists.</pre>
+            <button class="copy" data-copy="prompt-deck-text" aria-label="Copy deck prompt">Copy deck prompt</button>
+          </details>
+          <details class="prompt-card" id="prompt-financial-projection">
+            <summary>05 · financial-projection — Build the financial case <span class="plus">+</span></summary>
+            <p><strong>When:</strong> Week 1; update with actuals. <strong>Keep:</strong> financial-assumptions.md and model.</p>
+            <pre id="prompt-financial-projection-text">Build a driver-based fundraising model from our supplied actuals. Ask for missing cash, revenue drivers, costs, hiring plans and funding assumptions before calculating. Model 18–24 months of monthly revenue, costs, cash and runway, with base and downside cases. Separate actuals, forecasts and editable assumptions; reconcile the ask, use of funds and milestone with the deck. Show formula logic, key sensitivities and a one-page financial-assumptions.md memo. If spreadsheet tools are available, create a formula-based workbook and verify its calculations; otherwise give tables/CSV and a formula map, clearly labelled as a fallback.</pre>
+            <button class="copy" data-copy="prompt-financial-projection-text" aria-label="Copy financial-projection prompt">Copy financial-projection prompt</button>
+          </details>
+          <details class="prompt-card" id="prompt-investor-list">
+            <summary>06 · investor-list — Research and rank investors <span class="plus">+</span></summary>
+            <p><strong>When:</strong> Week 1; expand selectively. <strong>Keep:</strong> investors.tsv and investor-scoring.md.</p>
+            <pre id="prompt-investor-list-text">Build or rescore investor targets for our agreed stage, sector, geography, desired individual check size and lead requirement. Size the list to our plan; do not pad it. Research funds AND partners using available browsing, citing sources and dates; without browsing, use supplied evidence and label it unverified. Gate documented mandate mismatches and direct competitor conflicts before ranking. Score known dimensions 0, 0.5 or 1 with weights: sector 25, stage 20, geography/check size/lead behavior/portfolio relevance/recent activity 10 each, partner relevance 5. Report fit = earned weight / known weight and coverage = known weight / applicable weight, both as percentages. Unknown is not zero or clearance; a sector-only match is 100 fit at 25% coverage and needs research. Exclude genuinely inapplicable dimensions from both denominators; if no evidence is known, report fit as unknown. Missing mandatory fit or conflict evidence means research needed, not eligible. Explain eligibility and research gaps. Return investors.tsv and investor-scoring.md, preserving existing IDs, notes and columns; suggest a qualified first wave.</pre>
+            <button class="copy" data-copy="prompt-investor-list-text" aria-label="Copy investor-list prompt">Copy investor-list prompt</button>
+          </details>
+          <details class="prompt-card" id="prompt-warm-intro-map">
+            <summary>07 · warm-intro-map — Find introduction paths <span class="plus">+</span></summary>
+            <p><strong>When:</strong> Week 1; before each outreach wave. <strong>Keep:</strong> Warm-intro map and draft notes.</p>
+            <pre id="prompt-warm-intro-map-text">Using our investor list and each founder&#x27;s supplied network, identify one best introduction path per qualified target and a backup if supported. Name the relationship owner and label each path verified, unverified or cold. Do not infer a real relationship from a shared employer or social connection alone. Hold blocked targets out of recommended outreach. Draft a short founder-to-connector request and a forwardable investor introduction grounded in what the connector actually knows. List relationships we must confirm and targets needing cold outreach. Return the map and proposed investor-sheet updates; preserve other columns and send nothing.</pre>
+            <button class="copy" data-copy="prompt-warm-intro-map-text" aria-label="Copy warm-intro-map prompt">Copy warm-intro-map prompt</button>
+          </details>
+          <details class="prompt-card" id="prompt-data-room">
+            <summary>08 · data-room — Prepare diligence evidence <span class="plus">+</span></summary>
+            <p><strong>When:</strong> Week 1; deepen during weeks 3–5. <strong>Keep:</strong> Data-room index and gap list.</p>
+            <pre id="prompt-data-room-text">Review our supplied company materials and prepare an investor data-room index. Cover corporate/cap-table records, financing, financials, metrics, product, customers/contracts, team, intellectual property and other relevant diligence. Map material deck claims to actual supporting documents. For every missing or stale item, show its importance, owner and proposed due date. Recommend staged access appropriate to the investor&#x27;s progress and flag sensitive material for review. Return an index, claim-to-proof map and ranked gap list. Do not claim a room exists, upload files, change access or share anything.</pre>
+            <button class="copy" data-copy="prompt-data-room-text" aria-label="Copy data-room prompt">Copy data-room prompt</button>
+          </details>
+          <details class="prompt-card" id="prompt-pitch-rehearsal">
+            <summary>09 · pitch-rehearsal — Practice the pitch <span class="plus">+</span></summary>
+            <p><strong>When:</strong> Before outreach and important meetings. <strong>Keep:</strong> Feedback and rehearsal notes.</p>
+            <pre id="prompt-pitch-rehearsal-text">Run an interactive investor pitch rehearsal using our supplied context and deck. Start by inviting my two-minute opening, then wait for me. Give focused feedback on clarity, evidence and the ask, correcting unsupported claims against the source context. Role-play a skeptical but constructive investor and ask one question at a time. Wait for each answer before critiquing it and suggesting a tighter, factual outline. Do not invent my answers or assess voice/body language from text. At the end, summarize what we actually practiced, evidence gaps and next practice priorities. If I request a preparation pack instead, label it preparation, not a completed rehearsal.</pre>
+            <button class="copy" data-copy="prompt-pitch-rehearsal-text" aria-label="Copy pitch-rehearsal prompt">Copy pitch-rehearsal prompt</button>
+          </details>
+          <details class="prompt-card" id="prompt-outreach">
+            <summary>10 · outreach — Draft the first approach <span class="plus">+</span></summary>
+            <p><strong>When:</strong> Weeks 1–2; later qualified waves. <strong>Keep:</strong> Unsent partner-specific drafts.</p>
+            <pre id="prompt-outreach-text">Draft personalized outreach for the qualified investors I identify, using our context, investor evidence and introduction map. Confirm the sender/relationship owner and whether each approach is warm or cold. Use one specific, sourced reason for this partner, one verified proof point and a small concrete ask. Flag research gaps or portfolio conflicts rather than inventing personalization. Include the subject, email, any connector note needed and a proposed follow-up date consistent with our plan. Avoid fabricated introductions, endorsements, attachments or competing offers. Label all messages unsent; do not send or change last-contact dates.</pre>
+            <button class="copy" data-copy="prompt-outreach-text" aria-label="Copy outreach prompt">Copy outreach prompt</button>
+          </details>
+          <details class="prompt-card" id="prompt-investor-brief">
+            <summary>11 · investor-brief — Prepare for a specific meeting <span class="plus">+</span></summary>
+            <p><strong>When:</strong> Before every investor meeting. <strong>Keep:</strong> investor-brief-[fund].md.</p>
+            <pre id="prompt-investor-brief-text">Prepare a concise brief for [fund / partner] using the supplied company context, investor research, relationship notes and meeting details. Separate confirmed details from proposed times. Summarize fund and partner fit with sources/dates, relevant investments, conflicts, unknowns, relationship owner, last actual contact and open promises. Do not attribute a firm investment personally to a partner without evidence. Give three tailored talking points, likely objections with honest answer outlines, questions to ask and a proposed next step. Flag deck/context discrepancies. Return investor-brief-[fund].md; do not claim calendar/CRM access, book anything or change pipeline stage.</pre>
+            <button class="copy" data-copy="prompt-investor-brief-text" aria-label="Copy investor-brief prompt">Copy investor-brief prompt</button>
+          </details>
+          <details class="prompt-card" id="prompt-pipeline">
+            <summary>12 · pipeline — Keep every investor thread current <span class="plus">+</span></summary>
+            <p><strong>When:</strong> Daily and after every interaction. <strong>Keep:</strong> pipeline.md and follow-up drafts.</p>
+            <pre id="prompt-pipeline-text">Update our investor pipeline from the latest supplied table and factual interaction notes. If either is missing, ask for it. Preserve investor IDs, relationship owners, stages, actual last-contact dates and agreed follow-up dates unless new evidence changes them. Track sourced, intro requested, contacted, meeting, diligence, partner meeting, term sheet, closed and passed as appropriate. Show due/overdue actions with owner and date; exclude passed/closed threads from live chasing. Separate verbal interest, signed amounts and received money; unknown amounts stay unknown. Return pipeline.md, today&#x27;s three priorities and requested unsent follow-up drafts. Drafting is not contact; do not invent inbox sync or sent messages.</pre>
+            <button class="copy" data-copy="prompt-pipeline-text" aria-label="Copy pipeline prompt">Copy pipeline prompt</button>
+          </details>
+          <details class="prompt-card" id="prompt-pace">
+            <summary>13 · pace — Keep the six-week process on track <span class="plus">+</span></summary>
+            <p><strong>When:</strong> Monday/Friday; whenever a milestone slips. <strong>Keep:</strong> Pacing review and pacing-log.md entry.</p>
+            <pre id="prompt-pace-text">Review our dated fundraising plan, context and latest pipeline as of [today]. Compare this week&#x27;s milestones with actual evidence and assess the funding deadline as on track, at risk, off track or unknown. Show days remaining, stale/missing updates, the main blocker, the next skills to run and three priorities with owners/dates. Check consistency across the deck, model and pipeline, and protect time for company operations. Look two weeks ahead at decision, diligence, legal and funding dependencies. Recommend continue, adjust or re-plan; never silently move the deadline. Return a dated entry for pacing-log.md. Do not claim reminders are scheduled.</pre>
+            <button class="copy" data-copy="prompt-pace-text" aria-label="Copy pace prompt">Copy pace prompt</button>
+          </details>
+          <details class="prompt-card" id="prompt-investor-comms">
+            <summary>14 · investor-comms — Keep investors informed <span class="plus">+</span></summary>
+            <p><strong>When:</strong> When there is useful news; monthly thereafter. <strong>Keep:</strong> Unsent investor updates.</p>
+            <pre id="prompt-investor-comms-text">Using the supplied current metrics, prior update and pipeline, draft separate concise updates for live/committed investors and investors who passed or asked to stay informed. Include a one-line summary, consistent metrics versus the prior period, concrete wins, an honest challenge, specific asks and the next milestone. Explain any changed metric definition and label missing comparisons. Respect communication preferences and never imply a passed investor has re-engaged without evidence. Keep verbal, signed and funded statuses distinct. Give suggested recipients and the relationship owner, but label everything unsent and do not publish or change contact dates.</pre>
+            <button class="copy" data-copy="prompt-investor-comms-text" aria-label="Copy investor-comms prompt">Copy investor-comms prompt</button>
+          </details>
+          <details class="prompt-card" id="prompt-closing">
+            <summary>15 · closing — Get from terms to funds received <span class="plus">+</span></summary>
+            <p><strong>When:</strong> Prepare early; use as terms emerge, especially weeks 4–6. <strong>Keep:</strong> Terms comparison and closing checklist.</p>
+            <pre id="prompt-closing-text">Using the supplied proposed terms, cap table, plan and current investor statuses, prepare a closing brief for our decisions with counsel. Explain valuation/cap, dilution assumptions, option pool, preferences, control, investor rights and other material clauses present. Flag jurisdiction-dependent or unclear points; do not invent missing terms or tell us what to sign. Compare supported alternatives and identify negotiation priorities. Build an investor-by-investor checklist for decisions, diligence, approvals, documents, signatures and expected funding, with owners and dates. Keep proposed, agreed, signed and received amounts distinct; verify the close against the stated first-close/full-round target. Do not announce a close or initiate transfers.</pre>
+            <button class="copy" data-copy="prompt-closing-text" aria-label="Copy closing prompt">Copy closing prompt</button>
+          </details>
+          <p>Keep using the <a href="#six-week-plan">six-week milestones</a> and <a href="#fundraising-scorecard">progress scorecard</a>. Browsing, file creation and scheduled tasks depend on the tools available in your chat; copying a prompt does not enable those capabilities.</p>
         </div>
       </details>
 
@@ -665,11 +797,19 @@ Recommend continue, adjust or re-plan; explain why. Give next week's three prior
   });
   function openLinkedQuestion() {
     const question = document.getElementById(location.hash.slice(1));
-    if (question && question.matches('details.qa')) {
+    if (question && question.matches('details.qa, details.prompt-card')) {
       question.open = true;
+      for (let parent = question.parentElement; parent; parent = parent.parentElement) {
+        if (parent.matches('details')) parent.open = true;
+      }
       question.scrollIntoView({block: 'start'});
     }
   }
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', () => {
+      if (link.hash === location.hash) openLinkedQuestion();
+    });
+  });
   window.addEventListener('hashchange', openLinkedQuestion);
   openLinkedQuestion();
   const menu = document.querySelector('.burger');

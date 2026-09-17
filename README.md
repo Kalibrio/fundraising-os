@@ -77,6 +77,12 @@ Invoke by app: `/fundraising-os:<name>` for the Claude plugin,
 | Sustain | `pace` | Next skill, artifact consistency and founder workload |
 | Close | `closing` | Term-sheet explanation, negotiation preparation and close checklist |
 
+## How the skills fit together
+
+See the [fundraising journey, dependency graph and input/output contracts](https://fundraising.atomicscaling.com/#fundraising-map).
+The maps show preparation branches, the recurring meeting loop, human handoffs
+and how shared context, plan and pipeline state connect all 15 skills.
+
 ## Prefer prompts in Claude chat?
 
 Use the [copyable 15-step prompt sequence](https://fundraising.atomicscaling.com/#claude-prompts).

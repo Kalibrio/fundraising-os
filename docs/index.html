@@ -214,6 +214,37 @@
   .prompt-index li{break-inside:avoid}
   @media(max-width:600px){.prompt-index{columns:1}.prompt-card{padding:0 .75rem}}
 
+  .qa-body.process-body{max-width:none}
+  .journey-map{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1.1rem;list-style:none;padding:0!important;margin-top:1.5rem!important}
+  .journey-map>li{position:relative;border-top:2px solid var(--green-border);padding:.9rem .5rem 0 0;font-size:.84rem;min-width:0}
+  .journey-map>li:not(:last-child)::after{content:"→";position:absolute;right:-.8rem;top:-1.05rem;color:var(--green)}
+  .journey-step{display:block;font-family:var(--mono);font-size:.7rem;color:var(--cream-muted);margin-bottom:.4rem}
+  .journey-map strong{display:block;font-size:1rem;margin-bottom:.8rem}
+  .journey-map a{display:block;font-family:var(--mono);font-size:.72rem;line-height:1.8;overflow-wrap:anywhere}
+  .pace-strip{border-left:2px solid var(--green);padding:.8rem 1rem;margin:.5rem 0 1.5rem;color:var(--cream-dim);font-size:.9rem;line-height:1.7}
+  .graph-scroll,.contract-scroll{overflow-x:auto;margin:1rem 0 1.5rem}
+  .dependency-graph{display:block;width:100%;min-width:960px;height:auto;color:var(--green)}
+  .dependency-graph .dep-node rect{fill:var(--bg-2);stroke:var(--green-border);stroke-width:1.5}
+  .dependency-graph a:hover rect,.dependency-graph a:focus rect{stroke:var(--green)}
+  .dependency-graph .dep-name{fill:var(--green);font-family:var(--mono);font-size:16px}
+  .dependency-graph .dep-output,.dependency-graph .dep-label{fill:var(--cream-dim);font-family:var(--mono);font-size:13px}
+  .dependency-graph .dep-label{paint-order:stroke;stroke:var(--bg-2);stroke-width:5px;stroke-linejoin:round}
+  .dependency-graph .dep-edge{fill:none;stroke:currentColor;stroke-width:1.5}
+  .dependency-graph .optional{stroke-dasharray:7 5}
+  .dependency-graph .human{stroke-dasharray:2 5;stroke-width:2}
+  .dependency-graph .dep-external rect{fill:none;stroke:var(--cream-muted);stroke-dasharray:3 4}
+  .dependency-graph .dep-external text{fill:var(--cream-dim);font-family:var(--mono);font-size:14px}
+  .contract-table{width:100%;min-width:740px;border-collapse:collapse;font-size:.84rem;line-height:1.7;color:var(--cream-dim)}
+  .contract-table caption{text-align:left;color:var(--cream);padding:0 0 1rem}
+  .contract-table th,.contract-table td{padding:1rem .8rem;border-bottom:1px solid var(--border);vertical-align:top;text-align:left;font-weight:300}
+  .contract-table thead th{color:var(--cream);font-weight:500}
+  .contract-table tbody th{width:23%}
+  .contract-table tbody th a{font-family:var(--mono);font-size:.78rem}
+  .contract-table tbody th span{display:block;margin-top:.4rem;font-size:.78rem}
+  .skill-contract{scroll-margin-top:90px}
+  .skill-contract:target{background:var(--green-dim)}
+  @media(max-width:750px){.journey-map{grid-template-columns:1fr}.journey-map>li:not(:last-child)::after{content:"↓";right:.3rem;top:auto;bottom:-.7rem}.journey-map>li{padding-bottom:.6rem}.journey-map a{font-size:.8rem}}
+
   /* creator */
   .creator{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;margin-top:3rem;
     background:var(--bg-2);border:1px solid var(--border);border-radius:2px;padding:2.2rem}
@@ -489,7 +520,7 @@ before the momentum leaks.
   <div class="wrap">
     <div class="label">FAQ</div>
     <h2 class="sec-h">Common questions</h2>
-    <p class="sec-sub">Starting a raise? Follow the <a href="#six-week-plan">six-week plan</a>, use the <a href="#fundraising-pace">daily and weekly check-ins</a>, or copy the <a href="#claude-prompts">Claude chat prompt sequence</a>.</p>
+    <p class="sec-sub">Starting a raise? Follow the <a href="#six-week-plan">six-week plan</a>, see the <a href="#fundraising-map">process and dependency maps</a>, use the <a href="#fundraising-pace">daily and weekly check-ins</a>, or copy the <a href="#claude-prompts">Claude chat prompt sequence</a>.</p>
     <div class="faq">
       <details class="qa" id="six-week-plan">
         <summary>I want to close in six weeks. What should I do each week? <span class="plus">+</span></summary>
@@ -532,6 +563,127 @@ before the momentum leaks.
           <p>Work through the remaining approvals, documents, signatures and funding conditions with counsel. Track expected transfers and verify actual receipts against the company account with your finance owner. Use <code>pipeline</code> to keep signed and received amounts distinct. Close out the cap-table and document records with the responsible professionals, then use <code>investor-comms</code> to draft the appropriate investor update.</p>
           <p><strong>Finish-line checkpoint:</strong> report the amount actually received versus the original target, remaining commitments and conditions, and the resulting cash plan. If only a first close is complete, call it a first close and set the next milestone. Do not silently redefine a partially funded round as the full target achieved.</p>
           <p>The week labels above are our planning recommendation. Background reading: <a href="https://www.ycombinator.com/blog/aaron-harris-on-fundraising-and-meeting-with-investors">YC on parallel investor conversations</a> and <a href="https://www.ycombinator.com/blog/how-to-raise-a-seed-round">YC's seed fundraising guide</a>. Instrument and closing mechanics should be confirmed for your company with counsel.</p>
+        </div>
+      </details>
+
+      <details class="qa" id="fundraising-map">
+        <summary>How do the skills fit together? Can I see the stages, dependencies, inputs and outputs? <span class="plus">+</span></summary>
+        <div class="qa-body process-body">
+          <p><strong>Think of a shared workspace with specialised steps.</strong> Company facts live in the context, strategy lives in the plan, and investor activity lives in the pipeline. Each skill reads the relevant inputs and produces something the next step can use. You supply decisions and real-world outcomes; the package does not automatically execute the arrows.</p>
+          <h4>1. The fundraising journey</h4>
+          <p>This is the usual first-use order. Preparation branches can run alongside one another, and you revisit them when facts change. Diligence preparation begins before launch; meeting preparation repeats for every meeting. Week labels describe a six-week target, not a guaranteed timetable.</p>
+          <ol class="journey-map" aria-label="Fundraising stages and skills">
+            <li><span class="journey-step">01 · Week 1</span><strong>Decide</strong><div><a href="#prompt-raise-decision">raise-decision</a></div></li>
+            <li><span class="journey-step">02 · Week 1</span><strong>Set the facts &amp; plan</strong><div><a href="#prompt-raise-context">raise-context</a><a href="#prompt-fundraising-plan">fundraising-plan</a></div></li>
+            <li><span class="journey-step">03 · Week 1; refresh later</span><strong>Prepare in parallel</strong><div><a href="#prompt-financial-projection">financial-projection</a><a href="#prompt-deck">deck</a><a href="#prompt-investor-list">investor-list</a><a href="#prompt-warm-intro-map">warm-intro-map</a><a href="#prompt-data-room">data-room</a><a href="#prompt-pitch-rehearsal">pitch-rehearsal</a></div></li>
+            <li><span class="journey-step">04 · Weeks 1–6</span><strong>Reach, meet &amp; follow up</strong><div><a href="#prompt-outreach">outreach</a><a href="#prompt-investor-brief">investor-brief</a><a href="#prompt-pipeline">pipeline</a></div></li>
+            <li><span class="journey-step">05 · Terms onward</span><strong>Close &amp; stay in touch</strong><div><a href="#prompt-closing">closing</a><a href="#prompt-investor-comms">investor-comms</a></div></li>
+          </ol>
+          <div class="pace-strip"><a href="#prompt-pace">pace</a> spans every stage: review evidence → choose the next skill → check consistency → protect founder time → re-plan when needed.</div>
+          <p><strong>The repeating operating loop:</strong> investor-brief → founder meeting → factual notes into pipeline → follow-up draft → founder sends → pipeline records the actual outcome. Pitch rehearsal helps before the meeting; data-room supports diligence. Investor-comms keeps the appropriate people informed.</p>
+          <h4>2. The dependency and output graph</h4>
+          <p>Each skill box names its main output. <strong>Solid arrows</strong> show a principal input/output handoff. <strong>Dashed arrows</strong> show helpful context or a review loop. <strong>Dotted arrows</strong> require a human action and a confirmed result. The shared-input line is shorthand, not a claim that every skill has identical prerequisites. Select a skill to jump to its exact input/output contract below.</p>
+          <div class="graph-scroll" role="region" aria-label="Dependency graph; scroll horizontally on narrow screens">
+<svg class="dependency-graph" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 1380" role="group" aria-labelledby="dependency-title dependency-desc">
+<title id="dependency-title">Fundraising OS: skills, principal handoffs and outputs</title>
+<desc id="dependency-desc">Fifteen skill nodes, each labelled with its output. Founder facts feed the decision, context and plan. Preparation branches into finance, investors and deck, then evidence, introduction paths and rehearsal. Actual founder actions update pipeline; its state supports meeting briefs, investor updates and closing. Pace reviews progress and feeds re-planning. Shared context and plan inputs and all per-skill contracts are explained in the table below. Arrows show principal handoffs, not automatic execution.</desc>
+<defs><marker id="dep-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/></marker></defs>
+
+<g class="dep-external"><rect x="410" y="10" width="280" height="65" rx="5"/>
+<text x="550.0" y="35" text-anchor="middle">Founder facts &amp; evidence</text>
+<text x="550.0" y="57" text-anchor="middle">user input / supplied records</text>
+</g>
+<path class="dep-edge required" d="M550 75 V115" marker-end="url(#dep-arrow)"/>
+<a href="#io-raise-decision" aria-label="raise-decision: view inputs and outputs"><g class="dep-node"><rect x="410" y="115" width="280" height="82" rx="5"/><text class="dep-name" x="550" y="145" text-anchor="middle">raise-decision</text><text class="dep-output" x="550" y="172" text-anchor="middle">raise-decision.md</text></g></a>
+<g class="dep-external"><rect x="40" y="120" width="280" height="72" rx="5"/>
+<text x="180.0" y="145" text-anchor="middle">Not yet / do not raise</text>
+<text x="180.0" y="167" text-anchor="middle">Milestone gate or alternative</text>
+</g>
+<path class="dep-edge required" d="M410 155 H320" marker-end="url(#dep-arrow)"/>
+<text class="dep-label" x="365" y="142" text-anchor="middle">decision</text>
+<path class="dep-edge required" d="M550 197 V240" marker-end="url(#dep-arrow)"/>
+<text class="dep-label" x="620" y="223" text-anchor="middle">raise now</text>
+<a href="#io-raise-context" aria-label="raise-context: view inputs and outputs"><g class="dep-node"><rect x="410" y="240" width="280" height="82" rx="5"/><text class="dep-name" x="550" y="270" text-anchor="middle">raise-context</text><text class="dep-output" x="550" y="297" text-anchor="middle">raise-context.md</text></g></a>
+<path class="dep-edge required" d="M550 322 V365" marker-end="url(#dep-arrow)"/>
+<text class="dep-label" x="640" y="348" text-anchor="middle">company facts</text>
+<a href="#io-fundraising-plan" aria-label="fundraising-plan: view inputs and outputs"><g class="dep-node"><rect x="410" y="365" width="280" height="82" rx="5"/><text class="dep-name" x="550" y="395" text-anchor="middle">fundraising-plan</text><text class="dep-output" x="550" y="422" text-anchor="middle">fundraising-plan.md</text></g></a>
+<path class="dep-edge required" d="M550 447 V479" marker-end="url(#dep-arrow)"/>
+<path class="dep-edge" d="M180 505 V479 H920 V505 M550 479 V505"/>
+<text class="dep-label" x="550" y="468" text-anchor="middle">Shared context + plan; per-skill requirements in the table</text>
+<path class="dep-edge optional" d="M180 505 V530" marker-end="url(#dep-arrow)"/>
+<path class="dep-edge optional" d="M550 505 V530" marker-end="url(#dep-arrow)"/>
+<path class="dep-edge optional" d="M920 505 V530" marker-end="url(#dep-arrow)"/>
+<a href="#io-financial-projection" aria-label="financial-projection: view inputs and outputs"><g class="dep-node"><rect x="40" y="530" width="280" height="82" rx="5"/><text class="dep-name" x="180" y="560" text-anchor="middle">financial-projection</text><text class="dep-output" x="180" y="587" text-anchor="middle">assumptions + financial model</text></g></a>
+<a href="#io-investor-list" aria-label="investor-list: view inputs and outputs"><g class="dep-node"><rect x="410" y="530" width="280" height="82" rx="5"/><text class="dep-name" x="550" y="560" text-anchor="middle">investor-list</text><text class="dep-output" x="550" y="587" text-anchor="middle">investors.tsv + scoring</text></g></a>
+<a href="#io-deck" aria-label="deck: view inputs and outputs"><g class="dep-node"><rect x="780" y="530" width="280" height="82" rx="5"/><text class="dep-name" x="920" y="560" text-anchor="middle">deck</text><text class="dep-output" x="920" y="587" text-anchor="middle">deck.md / editable slides</text></g></a>
+<path class="dep-edge required" d="M180 612 V680" marker-end="url(#dep-arrow)"/>
+<text class="dep-label" x="180" y="655" text-anchor="middle">model / assumptions</text>
+<path class="dep-edge required" d="M550 612 V680" marker-end="url(#dep-arrow)"/>
+<text class="dep-label" x="550" y="655" text-anchor="middle">target partners</text>
+<path class="dep-edge optional" d="M920 612 V680" marker-end="url(#dep-arrow)"/>
+<text class="dep-label" x="920" y="655" text-anchor="middle">pitch material</text>
+<a href="#io-data-room" aria-label="data-room: view inputs and outputs"><g class="dep-node"><rect x="40" y="680" width="280" height="82" rx="5"/><text class="dep-name" x="180" y="710" text-anchor="middle">data-room</text><text class="dep-output" x="180" y="737" text-anchor="middle">index + proof map + gaps</text></g></a>
+<a href="#io-warm-intro-map" aria-label="warm-intro-map: view inputs and outputs"><g class="dep-node"><rect x="410" y="680" width="280" height="82" rx="5"/><text class="dep-name" x="550" y="710" text-anchor="middle">warm-intro-map</text><text class="dep-output" x="550" y="737" text-anchor="middle">paths + intro drafts</text></g></a>
+<a href="#io-pitch-rehearsal" aria-label="pitch-rehearsal: view inputs and outputs"><g class="dep-node"><rect x="780" y="680" width="280" height="82" rx="5"/><text class="dep-name" x="920" y="710" text-anchor="middle">pitch-rehearsal</text><text class="dep-output" x="920" y="737" text-anchor="middle">feedback + practice notes</text></g></a>
+<path class="dep-edge required" d="M550 762 V830" marker-end="url(#dep-arrow)"/>
+<text class="dep-label" x="625" y="809" text-anchor="middle">paths + owners</text>
+<path class="dep-edge optional" d="M920 830 V793 H180 V830" marker-end="url(#dep-arrow)"/>
+<text class="dep-label" x="315" y="784" text-anchor="middle">thread / meeting context</text>
+<a href="#io-investor-brief" aria-label="investor-brief: view inputs and outputs"><g class="dep-node"><rect x="40" y="830" width="280" height="82" rx="5"/><text class="dep-name" x="180" y="860" text-anchor="middle">investor-brief</text><text class="dep-output" x="180" y="887" text-anchor="middle">investor-brief-[fund].md</text></g></a>
+<a href="#io-outreach" aria-label="outreach: view inputs and outputs"><g class="dep-node"><rect x="410" y="830" width="280" height="82" rx="5"/><text class="dep-name" x="550" y="860" text-anchor="middle">outreach</text><text class="dep-output" x="550" y="887" text-anchor="middle">unsent partner-specific drafts</text></g></a>
+<a href="#io-pipeline" aria-label="pipeline: view inputs and outputs"><g class="dep-node"><rect x="780" y="830" width="280" height="82" rx="5"/><text class="dep-name" x="920" y="860" text-anchor="middle">pipeline</text><text class="dep-output" x="920" y="887" text-anchor="middle">pipeline.md + follow-up drafts</text></g></a>
+<path class="dep-edge human" d="M690 871 H780" marker-end="url(#dep-arrow)"/>
+<text class="dep-label" x="735" y="853" text-anchor="middle">actuals</text><text class="dep-label" x="550" y="975" text-anchor="middle">Founder sends / meets, then supplies actual outcomes</text>
+<path class="dep-edge" d="M920 912 V1015 H180"/>
+<path class="dep-edge required" d="M180 1015 V1050" marker-end="url(#dep-arrow)"/>
+<path class="dep-edge required" d="M550 1015 V1050" marker-end="url(#dep-arrow)"/>
+<text class="dep-label" x="550" y="1004" text-anchor="middle">current thread state</text>
+<path class="dep-edge optional" d="M920 1015 V1050" marker-end="url(#dep-arrow)"/>
+<a href="#io-investor-comms" aria-label="investor-comms: view inputs and outputs"><g class="dep-node"><rect x="40" y="1050" width="280" height="82" rx="5"/><text class="dep-name" x="180" y="1080" text-anchor="middle">investor-comms</text><text class="dep-output" x="180" y="1107" text-anchor="middle">unsent investor updates</text></g></a>
+<a href="#io-closing" aria-label="closing: view inputs and outputs"><g class="dep-node"><rect x="410" y="1050" width="280" height="82" rx="5"/><text class="dep-name" x="550" y="1080" text-anchor="middle">closing</text><text class="dep-output" x="550" y="1107" text-anchor="middle">terms + closing checklist</text></g></a>
+<a href="#io-pace" aria-label="pace: view inputs and outputs"><g class="dep-node"><rect x="780" y="1050" width="280" height="82" rx="5"/><text class="dep-name" x="920" y="1080" text-anchor="middle">pace</text><text class="dep-output" x="920" y="1107" text-anchor="middle">next skill + consistency review</text></g></a>
+<path class="dep-edge optional" d="M1060 1091 H1080 V406 H690" marker-end="url(#dep-arrow)"/>
+<text class="dep-label" transform="translate(1096 760) rotate(-90)" text-anchor="middle">pace: review, route work, propose re-planning</text>
+<path class="dep-edge human" d="M550 1132 V1210" marker-end="url(#dep-arrow)"/>
+<text class="dep-label" x="550" y="1181" text-anchor="middle">Human execution + confirmed results</text>
+<g class="dep-external"><rect x="350" y="1210" width="400" height="75" rx="5"/>
+<text x="550.0" y="1235" text-anchor="middle">Founders · counsel · investors · finance</text>
+<text x="550.0" y="1257" text-anchor="middle">Documents / signatures / funds received</text>
+</g>
+<text class="dep-label" x="550" y="1330" text-anchor="middle">Selected handoffs only. Shared inputs and additional useful links are listed below.</text>
+<text class="dep-label" x="550" y="1357" text-anchor="middle">Meeting outcomes → pipeline; new verified facts → context; changed strategy → plan.</text></svg>
+          </div>
+          <p>The graph deliberately omits repeated connections to keep the main paths readable. For example, deck and model must reconcile; the data-room uses their evidence; an investor brief can inform rehearsal. The table gives the fuller dependencies and marks optional inputs. On a narrow screen, scroll the graph or use the text table.</p>
+          <h4>3. Input/output contracts for all 15 skills</h4>
+          <p>These are workflow requirements, not a requirement to start every raise from an empty folder. Provide existing current outputs. In ordinary Claude chat, paste or attach the latest versions; return/save the results yourself when file tools are unavailable. A document being produced does not mean it was sent, published, signed or funded.</p>
+          <div class="contract-scroll"><table class="contract-table">
+            <caption>Skill inputs, outputs and downstream uses</caption>
+            <thead><tr><th scope="col">Skill / first use</th><th scope="col">Reads or needs</th><th scope="col">Produces → used by</th></tr></thead><tbody>
+<tr class="skill-contract" id="io-raise-decision"><th scope="row"><a href="#prompt-raise-decision">raise-decision</a><span>Decide · week 1</span></th><td>Founder positions, objectives and rough financing facts. Existing raise-context is helpful, not required.</td><td>raise-decision.md: raise now / not yet / do not raise; disagreements, rationale, gates.<br/><strong>Next:</strong> Context and plan; a not-yet/no verdict routes to milestones or an alternative.</td></tr>
+<tr class="skill-contract" id="io-raise-context"><th scope="row"><a href="#prompt-raise-context">raise-context</a><span>Foundation · week 1 + refreshes</span></th><td>Founder answers and supplied company evidence; an agreed decision if already recorded. Missing facts are interviewed.</td><td>raise-context.md: dated facts, narrative, raise parameters, networks and readiness gaps.<br/><strong>Next:</strong> Shared company facts for every preparation and operating skill.</td></tr>
+<tr class="skill-contract" id="io-fundraising-plan"><th scope="row"><a href="#prompt-fundraising-plan">fundraising-plan</a><span>Foundation · week 1 + decision gates</span></th><td>Raise decision and current context, including runway and traction. Unresolved decision conflicts must be addressed.</td><td>fundraising-plan.md: mode, raise lead, window, intensity, ownership and decision gates.<br/><strong>Next:</strong> Targeting, outreach, pipeline, data room, updates, closing and pace.</td></tr>
+<tr class="skill-contract" id="io-financial-projection"><th scope="row"><a href="#prompt-financial-projection">financial-projection</a><span>Build · week 1 + actuals updates</span></th><td>Context: actual business drivers, cash, costs, unit economics and use of funds. Unknown assumptions must be surfaced.</td><td>financial-assumptions.md and a model; financial-model.xlsx when tools allow, otherwise labelled tables/formula map.<br/><strong>Next:</strong> Deck ask/runway, data-room financial evidence and financing decisions.</td></tr>
+<tr class="skill-contract" id="io-deck"><th scope="row"><a href="#prompt-deck">deck</a><span>Build · week 1 + revisions</span></th><td>Current context and defensible claims. Model assumptions/results where needed for the ask and runway.</td><td>deck.md: slide narrative and evidence; editable presentation if available tools support it.<br/><strong>Next:</strong> Pitch practice, meeting material and the data-room claim-to-proof review.</td></tr>
+<tr class="skill-contract" id="io-investor-list"><th scope="row"><a href="#prompt-investor-list">investor-list</a><span>Build · week 1 + selective expansion</span></th><td>Plan, context/ideal investor profile, conflict criteria and source-backed research.</td><td>investors.tsv and investor-scoring.md: partners, fit, evidence coverage, eligibility and gaps.<br/><strong>Next:</strong> Introduction mapping, outreach and initial pipeline creation.</td></tr>
+<tr class="skill-contract" id="io-warm-intro-map"><th scope="row"><a href="#prompt-warm-intro-map">warm-intro-map</a><span>Build / reach · before an approach</span></th><td>Investor list and each founder&#x27;s actual network from context; verify inferred relationships.</td><td>Paths with relationship owners, connector requests and forwardable drafts; Warm Path? updates in investors.tsv.<br/><strong>Next:</strong> Outreach through one supported path, or a personalised cold approach.</td></tr>
+<tr class="skill-contract" id="io-data-room"><th scope="row"><a href="#prompt-data-room">data-room</a><span>Prepare / diligence · week 1 onward</span></th><td>Plan and context; available deck claims, model and supporting documents for the evidence review.</td><td>Room index, claim-to-proof map, ranked gaps and access recommendations.<br/><strong>Next:</strong> Founder-controlled sharing, diligence responses and closing preparation; no room hosting is bundled.</td></tr>
+<tr class="skill-contract" id="io-pitch-rehearsal"><th scope="row"><a href="#prompt-pitch-rehearsal">pitch-rehearsal</a><span>Prepare / meetings · repeat as needed</span></th><td>Available context, deck, assumptions or supplied pitch. An investor brief is optional; missing files do not block practice.</td><td>Interactive feedback and revised answer outlines; pitch-rehearsal.md notes when requested or at session end.<br/><strong>Next:</strong> Founder delivery and proposed deck improvements; it does not silently change company facts.</td></tr>
+<tr class="skill-contract" id="io-outreach"><th scope="row"><a href="#prompt-outreach">outreach</a><span>Reach · weeks 1–2 + qualified waves</span></th><td>Plan, context, investor list and warm-intro map; named sender and qualified target.</td><td>Partner-specific unsent messages, connector requests and follow-up proposals.<br/><strong>Next:</strong> Founder reviews/sends through an authorized channel; actual outcomes are then supplied to pipeline.</td></tr>
+<tr class="skill-contract" id="io-pipeline"><th scope="row"><a href="#prompt-pipeline">pipeline</a><span>Run · daily + after interactions</span></th><td>Existing pipeline first, or investor list to initialize; plan, context and actual interaction updates.</td><td>pipeline.md: thread stages, owners, last touch and next action; briefs and unsent follow-ups.<br/><strong>Next:</strong> Meeting briefs, updates, closing and pace. A draft alone never advances a contact stage.</td></tr>
+<tr class="skill-contract" id="io-investor-brief"><th scope="row"><a href="#prompt-investor-brief">investor-brief</a><span>Meetings · before each call</span></th><td>Available context, investor row, pipeline, deck and meeting details. Supplied notes suffice; browser/CRM/calendar sources are optional.</td><td>investor-brief-[fund-or-partner].md: meeting status, history, fit, talking points, objections and proposed next step.<br/><strong>Next:</strong> Founder meeting preparation and optional rehearsal; actual meeting outcomes return to pipeline.</td></tr>
+<tr class="skill-contract" id="io-investor-comms"><th scope="row"><a href="#prompt-investor-comms">investor-comms</a><span>Sustain · useful milestones + monthly</span></th><td>Context, plan and pipeline/recipient status; current and prior metrics for comparisons.</td><td>Unsent updates for live/committed investors and a separate passed/not-now track.<br/><strong>Next:</strong> Founder-approved communication; confirmed responses can update the pipeline.</td></tr>
+<tr class="skill-contract" id="io-closing"><th scope="row"><a href="#prompt-closing">closing</a><span>Close · prepare early; terms through funding</span></th><td>Proposed terms, plan, context and pipeline; counsel and investor updates as decisions progress.</td><td>Term-sheet explanation, negotiation preparation, close window and checklist.<br/><strong>Next:</strong> Founders decide; counsel/investors/finance handle execution. Confirmed signatures and cash update pipeline.</td></tr>
+<tr class="skill-contract" id="io-pace"><th scope="row"><a href="#prompt-pace">pace</a><span>Across all stages · weekly + when blocked</span></th><td>Whatever decision, context, plan, investor list and pipeline files exist. Missing or stale inputs are themselves findings.</td><td>Next-skill recommendation, consistency check and attention review; dated pacing log if requested.<br/><strong>Next:</strong> Routes work and proposes re-planning. It does not run a scheduler, send messages or make investor decisions.</td></tr>
+            </tbody></table></div>
+          <h4>4. Which file changes when something happens?</h4>
+          <ul>
+            <li><strong>A company fact changes:</strong> update <code>raise-context.md</code>, then reconcile the deck, model, data-room claims and affected drafts.</li>
+            <li><strong>An investor replies or a meeting happens:</strong> supply the actual outcome to <code>pipeline</code>; keep proposed next steps distinct from agreed dates.</li>
+            <li><strong>A deadline or strategy stops being credible:</strong> use <code>pace</code> to diagnose it, then explicitly agree changes through <code>fundraising-plan</code>.</li>
+            <li><strong>Terms, signatures or funds arrive:</strong> update the closing checklist and pipeline from confirmed evidence. Signed amounts and cash received remain separate.</li>
+          </ul>
+          <p><strong>Example:</strong> after an investor asks for retention evidence, pipeline records the request and its owner/date; data-room identifies the missing proof; the founder supplies a verified analysis; context/deck/model are reconciled where affected; an unsent reply is prepared; the founder sends it; pipeline records the real send. Pace checks whether the delay threatens the funding deadline.</p>
+          <p>Ready to run a step? Each skill name links to its <a href="#claude-prompts">copyable Claude prompt</a>. Use the <a href="#six-week-plan">six-week plan</a> for dates and the <a href="#fundraising-pace">pacing routine</a> to decide what runs next.</p>
         </div>
       </details>
 
@@ -797,8 +949,8 @@ Recommend continue, adjust or re-plan; explain why. Give next week's three prior
   });
   function openLinkedQuestion() {
     const question = document.getElementById(location.hash.slice(1));
-    if (question && question.matches('details.qa, details.prompt-card')) {
-      question.open = true;
+    if (question && question.matches('details.qa, details.prompt-card, .skill-contract')) {
+      if (question.matches('details')) question.open = true;
       for (let parent = question.parentElement; parent; parent = parent.parentElement) {
         if (parent.matches('details')) parent.open = true;
       }
